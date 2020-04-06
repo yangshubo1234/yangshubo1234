@@ -186,22 +186,22 @@
         </li>
       
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
           </a>
         </li>
       
@@ -248,7 +248,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/06/%E3%80%9004%E3%80%91Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9Av-text%E5%92%8Cv-html%E7%9A%84%E4%BD%BF%E7%94%A8/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/01/%E3%80%90015%E3%80%91Vue%E5%85%A8%E5%B1%80API%E5%AD%A6%E4%B9%A0%EF%BC%9AVue-nextTick/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="19年的猪">
@@ -267,7 +267,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/04/06/%E3%80%9004%E3%80%91Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9Av-text%E5%92%8Cv-html%E7%9A%84%E4%BD%BF%E7%94%A8/" itemprop="url">【04】Vue基础学习：v-text和v-html的使用</a></h1>
+                <a class="post-title-link" href="/2020/04/01/%E3%80%90015%E3%80%91Vue%E5%85%A8%E5%B1%80API%E5%AD%A6%E4%B9%A0%EF%BC%9AVue-nextTick/" itemprop="url">【02】Vue全局API学习：Vue.nextTick</a></h1>
         
 
         <div class="post-meta">
@@ -279,8 +279,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-06T19:36:54+08:00">
-                2020-04-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-01T19:57:00+08:00">
+                2020-04-01
               </time>
             
 
@@ -302,8 +302,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">Vue基础学习</span>
+                  <a href="/categories/Vue%E5%85%A8%E5%B1%80API%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue全局API学习</span>
                   </a>
                 </span>
 
@@ -341,212 +341,33 @@
       
         
           
-            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在上面几章中，我们写入数据采用的都是<code></code>的方式，<br>但是有时我们会看到一个现象，那就是当我们刷新页面时，页面会先出现<code></code>这几个文字，<br>然后才出现或者不出现我们想要的内容。造出这种现象的原因是网速较慢或者加载vue.js文件报错，<br>导致数据无法成功渲染。这时我们可以使用 v-text 和 v-html 解决这个问题。</p>
-<h3 id="v-text-的使用"><a href="#v-text-的使用" class="headerlink" title="v-text 的使用"></a>v-text 的使用</h3><p>模版写法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-text&#x3D;&quot;title&quot;&gt;&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
-
-<p>完整代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;v-text&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;div v-text&#x3D;&quot;title&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			var vm &#x3D; new Vue(&#123;</span><br><span class="line">				el: &#39;#app&#39;,</span><br><span class="line">				data() &#123;</span><br><span class="line">					return &#123;</span><br><span class="line">						title: &#39;v-text&#39;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;)</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>在浏览器运行此文件，可以看到成功显示出<code>v-text</code></p>
-<h3 id="v-html-的使用"><a href="#v-html-的使用" class="headerlink" title="v-html 的使用"></a>v-html 的使用</h3><blockquote>
-<p>v-text 会将数据解释为纯文本，而非HTML。有时我们需要输出真正的HTML，这时就可以使用<code>v-html</code>。</p>
+            <h3 id="用法一"><a href="#用法一" class="headerlink" title="用法一"></a>用法一</h3><blockquote>
+<p>在下次 DOM 更新循环结束之后执行延迟回调。在修改数据之后立即使用这个方法，获取更新后的 DOM。</p>
 </blockquote>
-<p>模版写法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-html&#x3D;&quot;title&quot;&gt;&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+<p>模版代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Vue.nextTick(() &#x3D;&gt; &#123;</span><br><span class="line">	alert(&#39;数据发生了改变&#39;);</span><br><span class="line">&#125;, 1000)</span><br></pre></td></tr></table></figure>
 
-<p>完整代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;v-html&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;div v-html&#x3D;&quot;title&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			var vm &#x3D; new Vue(&#123;</span><br><span class="line">				el: &#39;#app&#39;,</span><br><span class="line">				data() &#123;</span><br><span class="line">					return &#123;</span><br><span class="line">						title: &#39;&lt;h1&gt;v-html&lt;&#x2F;h1&gt;&#39;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;)</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+<p>示例代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;div&gt;&#123;&#123; msg &#125;&#125;&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			var vm &#x3D; new Vue(&#123;</span><br><span class="line">				el: &#39;#app&#39;,</span><br><span class="line">				data() &#123;</span><br><span class="line">					return &#123;</span><br><span class="line">						msg: &#39;改变前&#39;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;);</span><br><span class="line">			setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">				vm.msg &#x3D; &#39;改变后&#39;;</span><br><span class="line">				Vue.nextTick(() &#x3D;&gt; &#123;</span><br><span class="line">					alert(&#39;数据发生了改变&#39;);</span><br><span class="line">				&#125;, 1000)</span><br><span class="line">			&#125;)</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
 
-<p>在浏览器运行此文件，可以看到成功显示出<code>v-html</code></p>
-<p>注意：生产环境中动态渲染HTML是非常危险的，容易导致XSS攻击。所以在使用v-html时，不要在用户提交或可操作的网页上使用。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/06/%E3%80%9003%E3%80%91Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9Av-for%E7%9A%84%E4%BD%BF%E7%94%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="19年的猪">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="19年的猪">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/04/06/%E3%80%9003%E3%80%91Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9Av-for%E7%9A%84%E4%BD%BF%E7%94%A8/" itemprop="url">【03】Vue基础学习：v-for的使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-06T19:36:26+08:00">
-                2020-04-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">Vue基础学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="v-for-的基本用法"><a href="#v-for-的基本用法" class="headerlink" title="v-for 的基本用法"></a>v-for 的基本用法</h3><blockquote>
-<p>v-for 用于实现列表渲染，可以使用<code>item in items</code>和<code>item of items</code>的语法</p>
+<p>在浏览器运行一下上面的代码，可以看到，页面先显示了<code>改变前</code>，然后弹出一个框，内容为<code>数据发生了改变</code>，这时先不要关掉弹出框，我们看一下页面的内容还是为<code>改变前</code>，当我们把弹出框关掉后，页面的内容显示为<code>改变后</code>。  </p>
+<blockquote>
+<p>从例子中我们可以得出：<br>Vue 实现响应式并不是数据发生变化之后 DOM 立即变化，而是按一定的策略进行 DOM 的更新。</p>
 </blockquote>
-<p>模版写法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;li v-for&#x3D;&quot;item in items&quot;&gt;&#123;&#123; item &#125;&#125;&lt;&#x2F;li&gt;</span><br><span class="line">或：</span><br><span class="line">&lt;li v-for&#x3D;&quot;item of items&quot;&gt;&#123;&#123; item &#125;&#125;&lt;&#x2F;li&gt;</span><br></pre></td></tr></table></figure>
-
-<p>js写法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var vm &#x3D; new Vue(&#123;</span><br><span class="line">	el: &#39;#app&#39;,</span><br><span class="line">	data() &#123;</span><br><span class="line">		return &#123;</span><br><span class="line">			items: [1, 2, 3, 4, 5]</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>完整代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;v-for&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;ul&gt;</span><br><span class="line">				&lt;li v-for&#x3D;&quot;item in items&quot;&gt;&#123;&#123; item &#125;&#125;&lt;&#x2F;li&gt;</span><br><span class="line">			&lt;&#x2F;ul&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			var vm &#x3D; new Vue(&#123;</span><br><span class="line">				el: &#39;#app&#39;,</span><br><span class="line">				data() &#123;</span><br><span class="line">					return &#123;</span><br><span class="line">						items: [1, 2, 3, 4, 5]</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;)</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>在浏览器运行此文件，可以看到成功显示出如下数据：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td></tr></table></figure>
-
-<h3 id="v-for-渲染对象的键值对"><a href="#v-for-渲染对象的键值对" class="headerlink" title="v-for 渲染对象的键值对"></a>v-for 渲染对象的键值对</h3><blockquote>
-<p>键值对是元素的索引值，也就是本例中的对象在数组中所占的下标。</p>
+<h3 id="用法二"><a href="#用法二" class="headerlink" title="用法二"></a>用法二</h3><blockquote>
+<p>从第一节我们可以知道 Vue 是异步执行 DOM 更新的，既然这样，那么<code>Vue.nextTick</code>是不是就可以作为一个<code>Promise</code>使用呢？下面写一段代码试一下。</p>
 </blockquote>
-<p>模版写法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;li v-for&#x3D;&quot;(item, index) in items&quot;&gt;&#123;&#123; item &#125;&#125;&lt;&#x2F;li&gt;</span><br><span class="line">或：</span><br><span class="line">&lt;li v-for&#x3D;&quot;(item, item) of items&quot;&gt;&#123;&#123; item &#125;&#125;&lt;&#x2F;li&gt;</span><br></pre></td></tr></table></figure>
+<p>模版代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Vue.nextTick()</span><br><span class="line">	.then(() &#x3D;&gt; &#123;</span><br><span class="line">		alert(&#39;数据发生了改变&#39;);</span><br><span class="line">	&#125;);</span><br></pre></td></tr></table></figure>
 
-<p>其实就是多了一个<code>index</code>。</p>
-<p>完整代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;v-for&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;ul&gt;</span><br><span class="line">				&lt;li v-for&#x3D;&quot;(item, index) in items&quot;&gt;</span><br><span class="line">					&#123;&#123; item &#125;&#125; --- &#123;&#123; index &#125;&#125;</span><br><span class="line">				&lt;&#x2F;li&gt;</span><br><span class="line">			&lt;&#x2F;ul&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			var vm &#x3D; new Vue(&#123;</span><br><span class="line">				el: &#39;#app&#39;,</span><br><span class="line">				data() &#123;</span><br><span class="line">					return &#123;</span><br><span class="line">						items: [1, 2, 3, 4, 5]</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;)</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+<p>示例代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;div&gt;&#123;&#123; msg &#125;&#125;&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			var vm &#x3D; new Vue(&#123;</span><br><span class="line">				el: &#39;#app&#39;,</span><br><span class="line">				data() &#123;</span><br><span class="line">					return &#123;</span><br><span class="line">						msg: &#39;改变前&#39;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;);</span><br><span class="line">			setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">				vm.msg &#x3D; &#39;改变后&#39;;</span><br><span class="line">				Vue.nextTick()</span><br><span class="line">					.then(() &#x3D;&gt; &#123;</span><br><span class="line">						alert(&#39;数据发生了改变&#39;);</span><br><span class="line">					&#125;);</span><br><span class="line">			&#125;)</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
 
-<p>在浏览器运行此文件，可以看到成功显示出如下数据：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1 --- 0</span><br><span class="line">2 --- 1</span><br><span class="line">3 --- 2</span><br><span class="line">4 --- 3</span><br><span class="line">5 --- 4</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="key的说明"><a href="#key的说明" class="headerlink" title="key的说明"></a><code>key</code>的说明</h3><ol>
-<li>就地复用策略：当在进行列表渲染时，vue会直接对已有的标签进行复用，不会将所有的标签重新删除和创建，只会创建新的元素然后把新的数据渲染进去。</li>
-<li>key属性可以用来提升v-for渲染的效率，vue不会去改变原有的元素和数据，而是创建新的元素然后把新的数据渲染进去。</li>
-<li>key属性必须是唯一的标识，很多人使用<code>index</code>，不过建议使用数据的<code>id</code>可能会更好。</li>
-<li>是否使用<code>key</code>都不会影响功能的实现，但是在<code>vue2.2.0+</code>版本中，如果不实用<code>key</code>，将会出现警告。</li>
+<p>在浏览器运行上面的代码，发现和第一节的代码运行结果是一样的。</p>
+<h3 id="常用场景"><a href="#常用场景" class="headerlink" title="常用场景"></a>常用场景</h3><ol>
+<li>在视图更新之后，基于新的视图进行操作。比如在在<code>created</code>和<code>mounted</code>阶段。<code>created</code>和<code>mounted</code>都是生命周期，这个会在后面提到，现在可以先记一下，加点印象。</li>
+<li>点击获取元素宽度时会用到，因为我们只要在DOM渲染完成后才能准确获取宽高。</li>
 </ol>
-<h3 id="key的使用"><a href="#key的使用" class="headerlink" title="key的使用"></a><code>key</code>的使用</h3><p>模版写法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;li v-for&#x3D;&quot;(item, index) in items&quot; :key&#x3D;&quot;index&quot;&gt;&#123;&#123; item &#125;&#125;&lt;&#x2F;li&gt;</span><br><span class="line">或：</span><br><span class="line">&lt;li v-for&#x3D;&quot;(item, item) of items&quot; :key&#x3D;&quot;index&quot;&gt;&#123;&#123; item &#125;&#125;&lt;&#x2F;li&gt;</span><br></pre></td></tr></table></figure>
-
-<p>完整代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;v-for&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;ul&gt;</span><br><span class="line">				&lt;li </span><br><span class="line">					v-for&#x3D;&quot;(item, index) in items&quot;</span><br><span class="line">					:key&#x3D;&quot;index&quot;</span><br><span class="line">				&gt;</span><br><span class="line">					&#123;&#123; item &#125;&#125; --- &#123;&#123; index &#125;&#125;</span><br><span class="line">				&lt;&#x2F;li&gt;</span><br><span class="line">			&lt;&#x2F;ul&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			var vm &#x3D; new Vue(&#123;</span><br><span class="line">				el: &#39;#app&#39;,</span><br><span class="line">				data() &#123;</span><br><span class="line">					return &#123;</span><br><span class="line">						items: [1, 2, 3, 4, 5]</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;)</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>在浏览器运行此文件，可以看到成功显示出如下数据：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1 --- 0</span><br><span class="line">2 --- 1</span><br><span class="line">3 --- 2</span><br><span class="line">4 --- 3</span><br><span class="line">5 --- 4</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>通过以上各种例子可以发现，其实v-for也不会太难，而且在工作中，v-for是经常使用的，比如在加载商品列表时会使用，加载信息记录时也会使用，所以平时需要多写一下。</p>
 
           
         
@@ -595,7 +416,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/06/%E3%80%9002%E3%80%91Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9Av-if%E5%92%8Cv-show%E7%9A%84%E4%BD%BF%E7%94%A8/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/01/%E3%80%90014%E3%80%91Vue%E5%85%A8%E5%B1%80API%E5%AD%A6%E4%B9%A0%EF%BC%9AVue-extend/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="19年的猪">
@@ -614,7 +435,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/04/06/%E3%80%9002%E3%80%91Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9Av-if%E5%92%8Cv-show%E7%9A%84%E4%BD%BF%E7%94%A8/" itemprop="url">【02】Vue基础学习：v-if和v-show的使用</a></h1>
+                <a class="post-title-link" href="/2020/04/01/%E3%80%90014%E3%80%91Vue%E5%85%A8%E5%B1%80API%E5%AD%A6%E4%B9%A0%EF%BC%9AVue-extend/" itemprop="url">【01】Vue全局API学习：Vue.extend</a></h1>
         
 
         <div class="post-meta">
@@ -626,8 +447,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-06T19:36:01+08:00">
-                2020-04-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-01T18:56:00+08:00">
+                2020-04-01
               </time>
             
 
@@ -649,8 +470,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">Vue基础学习</span>
+                  <a href="/categories/Vue%E5%85%A8%E5%B1%80API%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue全局API学习</span>
                   </a>
                 </span>
 
@@ -688,220 +509,1393 @@
       
         
           
-            <h3 id="先写一个例子"><a href="#先写一个例子" class="headerlink" title="先写一个例子"></a>先写一个例子</h3><p>创建一个<code>HelloWorld.html</code>文件，开始写入以下代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;Hello World&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;h1&gt;&#123;&#123; title &#125;&#125;&lt;&#x2F;h1&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			var vm &#x3D; new Vue(&#123;</span><br><span class="line">				el: &#39;#app&#39;,</span><br><span class="line">				data() &#123;</span><br><span class="line">					return &#123;</span><br><span class="line">						title: &#39;Hello World&#39;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;)</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>在浏览器运行此文件，可以看到<code>Hello World</code>成功显示出来。</p>
-<h3 id="v-if-v-show-指令"><a href="#v-if-v-show-指令" class="headerlink" title="v-if, v-show 指令"></a>v-if, v-show 指令</h3><ul>
-<li>v-if 的使用  </li>
-</ul>
-<blockquote>
-<p>用来判断是否加载html的DOM  </p>
-<p><code>v-if</code> 的使用方法并不复杂，只需要挂在元素上即可，与之配套的有 <code>v-else-if</code> 和 <code>v-else</code>，这两个只能个 <code>v-if</code> 配套使用。</p>
-</blockquote>
-<p>创建一个<code>v-if.html</code>文件，开始写入以下代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line"> &lt;html&gt;</span><br><span class="line"> 	&lt;head&gt;</span><br><span class="line"> 		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line"> 		&lt;title&gt;v-if&lt;&#x2F;title&gt;</span><br><span class="line"> 		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line"> 	&lt;&#x2F;head&gt;</span><br><span class="line"> 	&lt;body&gt;</span><br><span class="line"> 		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line"> 			&lt;div v-if&#x3D;&quot;isShow&quot;&gt;isShow 为 true，所以我要显示出来&lt;&#x2F;div&gt;</span><br><span class="line">			&lt;div v-else&gt;isShow 为 false，所以我要隐藏出来&lt;&#x2F;div&gt;</span><br><span class="line"> 		&lt;&#x2F;div&gt;</span><br><span class="line"> 		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line"> 			var vm &#x3D; new Vue(&#123;</span><br><span class="line"> 				el: &#39;#app&#39;,</span><br><span class="line"> 				data() &#123;</span><br><span class="line"> 					return &#123;</span><br><span class="line"> 						isShow: true</span><br><span class="line"> 					&#125;</span><br><span class="line"> 				&#125;</span><br><span class="line"> 			&#125;)</span><br><span class="line"> 		&lt;&#x2F;script&gt;</span><br><span class="line"> 	&lt;&#x2F;body&gt;</span><br><span class="line"> &lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>在浏览器运行此文件，可以看到<code>isShow 为 true，所以我要显示出来</code>成功显示出来。<br>如果将 <code>isShow</code> 的值修改为 <code>false</code>，则显示出<code>isShow 为 false，所以我要隐藏出来</code></p>
-<ul>
-<li>v-show 的使用</li>
-</ul>
-<blockquote>
-<p>调整css中display属性，DOM已经加载，只是CSS控制没有显示出来。</p>
-</blockquote>
-<p>创建一个<code>v-show.html</code>文件，开始写入以下代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line"> &lt;html&gt;</span><br><span class="line"> 	&lt;head&gt;</span><br><span class="line"> 		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line"> 		&lt;title&gt;v-show&lt;&#x2F;title&gt;</span><br><span class="line"> 		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line"> 	&lt;&#x2F;head&gt;</span><br><span class="line"> 	&lt;body&gt;</span><br><span class="line"> 		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line"> 			&lt;div v-show&#x3D;&quot;isShow&quot;&gt;isShow 为 true，所以我要显示出来&lt;&#x2F;div&gt;</span><br><span class="line"> 		&lt;&#x2F;div&gt;</span><br><span class="line"> 		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line"> 			var vm &#x3D; new Vue(&#123;</span><br><span class="line"> 				el: &#39;#app&#39;,</span><br><span class="line"> 				data() &#123;</span><br><span class="line"> 					return &#123;</span><br><span class="line"> 						isShow: false</span><br><span class="line"> 					&#125;</span><br><span class="line"> 				&#125;</span><br><span class="line"> 			&#125;)</span><br><span class="line"> 		&lt;&#x2F;script&gt;</span><br><span class="line"> 	&lt;&#x2F;body&gt;</span><br><span class="line"> &lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>在浏览器运行此文件，可以看到页面一片空白什么都没有。但是，当打开浏览器调试界面<code>按F12</code>时，可以看到有以下代码出现：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style&#x3D;&quot;display: none;&quot;&gt;isShow 为 true，所以我要显示出来&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
-
-<p>由此可以看出，其实内容已经加载出来了，只是使用了 css 中的 <code>display: none;</code> 给隐藏了。</p>
-<h3 id="v-if-和-v-show-的区别"><a href="#v-if-和-v-show-的区别" class="headerlink" title="v-if 和 v-show 的区别"></a>v-if 和 v-show 的区别</h3><ul>
-<li>v-if 在切换中将组件上的事件监听器和子组件销毁和重建。</li>
-<li>v-show 调整了 dispaly 属性，可以使客户端操作更加流畅。</li>
-<li>v-show 有更高的初始渲染开销，而 v-if 有更高的切换开销。</li>
-</ul>
-<p>简单点理解就是：v-if被判定为假时，Vue不会做任何事情，而 v-show 不管为真假，Vue都会进行DOM渲染。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/06/%E3%80%9001%E3%80%91Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="19年的猪">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="19年的猪">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/04/06/%E3%80%9001%E3%80%91Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87/" itemprop="url">【01】Vue基础学习：前期准备</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-06T19:35:01+08:00">
-                2020-04-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">Vue基础学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="学习Vue的前提条件"><a href="#学习Vue的前提条件" class="headerlink" title="学习Vue的前提条件"></a>学习<code>Vue</code>的前提条件</h3><ul>
-<li>HTML的基础知识，比如基本元素的使用和结构代码的编写  </li>
-<li>CSS的基础知识，比如常见样式的编写和页面的布局  </li>
-<li>Javascript的基础知识，比如常见函数的使用  </li>
-<li>如果能懂一点node 和 webpack，那就更好了</li>
-</ul>
-<h3 id="开发工具的选用"><a href="#开发工具的选用" class="headerlink" title="开发工具的选用"></a>开发工具的选用</h3><p>开发工具的选用并没有太多的要求，只要适合自己的就行，我在三年前使用的是<code>WebStorm</code>，现在使用的是<code>VSCode</code>。</p>
-<h3 id="安装和引入"><a href="#安装和引入" class="headerlink" title="安装和引入"></a>安装和引入</h3><p>在<a href="https://cn.vuejs.org/v2/guide/installation.html" target="_blank" rel="noopener"><code>Vue官网</code></a>中有两个版本，分别是：  </p>
+            <h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><blockquote>
 <ol>
-<li>开发版本：包含了完整的警告和调试模式  </li>
-<li>生产版本：删除了警告  </li>
+<li>使用基础 Vue 构造器，创建一个“子类”。参数是一个包含组件选项的对象。</li>
+<li>data 选项是特例，需要注意 - 在 Vue.extend() 中它必须是函数</li>
 </ol>
-<h4 id="1，安装方式一：直接用-lt-script-gt-引入（不推荐）"><a href="#1，安装方式一：直接用-lt-script-gt-引入（不推荐）" class="headerlink" title="1，安装方式一：直接用&lt;script&gt;引入（不推荐）"></a>1，安装方式一：直接用<code>&lt;script&gt;</code>引入（不推荐）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 最新版本 --&gt;</span><br><span class="line">&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue&#x2F;dist&#x2F;vue.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 明确的版本号 --&gt;</span><br><span class="line">&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>示例代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			var Profile &#x3D; Vue.extend(&#123;</span><br><span class="line">				template: &#96;&lt;p&gt;My name is &#123;&#123; name &#125;&#125;, I am &#123;&#123; age &#125;&#125;&lt;p&gt;&#96;,</span><br><span class="line">				data() &#123;</span><br><span class="line">					return &#123;</span><br><span class="line">						name: &#39;zhangsan&#39;,</span><br><span class="line">						age: 18</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;);</span><br><span class="line">			new Profile().$mount(&#39;#app&#39;);</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
 
-<h4 id="2，安装方式二：使用npm进行安装（推荐）"><a href="#2，安装方式二：使用npm进行安装（推荐）" class="headerlink" title="2，安装方式二：使用npm进行安装（推荐）"></a>2，安装方式二：使用<code>npm</code>进行安装（推荐）</h4><p>打开cmd命令窗口，输入以下命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install vue</span><br><span class="line">或：</span><br><span class="line">npm i vue</span><br></pre></td></tr></table></figure>
+<p>打开浏览器运行代码，可以看到页面显示内容为：<code>My name is zhangsan, I am 18.</code></p>
+<h3 id="更进一步"><a href="#更进一步" class="headerlink" title="更进一步"></a>更进一步</h3><p>示例代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;profile&gt;&lt;&#x2F;profile&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			var Profile &#x3D; Vue.extend(&#123;</span><br><span class="line">				template: &#96;&lt;p&gt;My name is &#123;&#123; name &#125;&#125;, I am &#123;&#123; age &#125;&#125;.&lt;p&gt;&#96;,</span><br><span class="line">				data() &#123;</span><br><span class="line">					return &#123;</span><br><span class="line">						name: &#39;zhangsan&#39;,</span><br><span class="line">						age: 18</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;);</span><br><span class="line">			&#x2F;&#x2F; 看这里</span><br><span class="line">			Vue.component(&#39;profile&#39;, Profile)</span><br><span class="line">			new Vue(&#123; el: &#39;#app&#39; &#125;);</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
 
-<p>注：</p>
+<p>打开浏览器运行代码，可以看到页面显示内容同样为：<code>My name is zhangsan, I am 18.</code></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>通过上面第一节和第二节的示例代码，我们发现<code>Vue.extend</code>和<code>Vue.component</code>好像有一点关系。现在我们将Vue基础学习中的基础组件代码拿一部分出来比较一下。</p>
+<p>先看一下<code>vue.component</code>的用法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 自定义组件</span><br><span class="line">Vue.component(&#39;v-btn&#39;, &#123;</span><br><span class="line">	template: &#96;&lt;p&gt;My name is &#123;&#123; name &#125;&#125;, I am &#123;&#123; age &#125;&#125;&lt;p&gt;&#96;,</span><br><span class="line">	data() &#123;</span><br><span class="line">		return &#123;</span><br><span class="line">			name: &#39;zhangsan&#39;,</span><br><span class="line">			age: 18</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br><span class="line">&#x2F;&#x2F; 实例化</span><br><span class="line">new Vue(&#123; el: &#39;#app&#39; &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>在看一下<code>vue.extend</code>的用法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var Profile &#x3D; Vue.extend(&#123;</span><br><span class="line">	template: &#96;&lt;p&gt;My name is &#123;&#123; name &#125;&#125;, I am &#123;&#123; age &#125;&#125;&lt;p&gt;&#96;,</span><br><span class="line">	data() &#123;</span><br><span class="line">		return &#123;</span><br><span class="line">			name: &#39;zhangsan&#39;,</span><br><span class="line">			age: 18</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br><span class="line">new Profile().$mount(&#39;#app&#39;);</span><br></pre></td></tr></table></figure>
+
+
 <blockquote>
-<p>npm是随同NodeJS一起安装的包管理工具，新版的nodejs已经集成了npm，所以不需要另外安装npm，可以通过输入 “npm -v” 进行检测是否安装成功。  </p>
+<p>比较后我们发现，<code>vue.extend</code>不需要实例化，只需要通过<code>$mount</code>挂载到自定义的元素上即可。</p>
 </blockquote>
-<p>nodejs的安装方法比较简单，不懂的可以<code>百度</code>或<code>谷歌</code>，这里就不再阐述。</p>
-<h3 id="安装cnpm"><a href="#安装cnpm" class="headerlink" title="安装cnpm"></a>安装<code>cnpm</code></h3><blockquote>
-<p>由于用于npm的仓库源是在国外，资源传输速度较慢而且可能会受到限制，所以建议使用淘宝镜像源<code>cnpm</code></p>
+<p>再结合第二节的示例代码，我们可以得出：  </p>
+<ul>
+<li><code>vue.extend</code>创建的是一个组件构造器，不是直接挂载在vue的示例对象。简单理解就是<code>vue.extend</code>构造了一个和vue组件内部有一样结构的对象，并且还需要通过<code>Vue.components</code>注册才可以使用的。</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/31/%E3%80%90013%E3%80%91Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9A%E6%B7%B7%E5%85%A5%E5%92%8C%E8%BF%87%E6%BB%A4%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="19年的猪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="19年的猪">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/31/%E3%80%90013%E3%80%91Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9A%E6%B7%B7%E5%85%A5%E5%92%8C%E8%BF%87%E6%BB%A4%E5%99%A8/" itemprop="url">【13】Vue基础学习：混入和过滤器</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-31T18:11:00+08:00">
+                2020-03-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue基础学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="mixin混入"><a href="#mixin混入" class="headerlink" title="mixin混入"></a><code>mixin</code>混入</h3><blockquote>
+<p>混入 (mixin) 提供了一种非常灵活的方式，来分发 Vue 组件中的可复用功能。一个混入对象可以包含任意组件选项。当组件使用混入对象时，所有混入对象的选项将被“混合”进入该组件本身的选项。</p>
 </blockquote>
-<p>打开cmd命令窗口，输入以下命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm -registry&#x3D;https:&#x2F;&#x2F;registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+<p>示例代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;mixin 混入&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;div&gt;姓名：&#123;&#123; name &#125;&#125;，性别：&#123;&#123; sex &#125;&#125;&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			var mixin &#x3D; &#123;</span><br><span class="line">				data() &#123;</span><br><span class="line">					return &#123;</span><br><span class="line">						name: &#39;张三&#39;,</span><br><span class="line">						sex: &#39;男&#39;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			new Vue(&#123;</span><br><span class="line">				el: &#39;#app&#39;,</span><br><span class="line">				mixins: [mixin]</span><br><span class="line">			&#125;);</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
 
-<p>执行完后，可输入以下命令进行检测<code>cnpm</code>是否安装成功：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm -v</span><br></pre></td></tr></table></figure>
+<ul>
+<li>当组件和混入对象含有同名选项时，这些选项将以恰当的方式进行“合并”。</li>
+<li>数据对象在内部会进行递归合并，并在发生冲突时以组件数据优先。</li>
+</ul>
+<h3 id="filters过滤器"><a href="#filters过滤器" class="headerlink" title="filters过滤器"></a><code>filters</code>过滤器</h3><blockquote>
+<p>Vue.js 允许你自定义过滤器，可被用于一些常见的文本格式化。过滤器可以用在两个地方：双花括号插值和 v-bind 表达式 (后者从 2.1.0+ 开始支持)。过滤器应该被添加在 JavaScript 表达式的尾部，由“管道”符号指示。</p>
+</blockquote>
+<p>模版代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 在双花括号中 --&gt;</span><br><span class="line">&lt;div&gt;&#123;&#123; msg | toUpperCase &#125;&#125;&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 在 &#96;v-bind&#96; 中 --&gt;</span><br><span class="line">&lt;div v-bind:msg&#x3D;&quot;msg | toUpperCase&quot;&gt;&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
 
-<p>使用<code>cnpm</code>安装vue：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cnpm install vue</span><br><span class="line">或：</span><br><span class="line">cnpm i vue</span><br></pre></td></tr></table></figure>
-
-<p>执行完后，可输入以下命令进行检测<code>Vue</code>是否安装成功：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue -V</span><br></pre></td></tr></table></figure>
+<p>示例代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;filters 过滤器&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;div&gt;&#123;&#123; msg | toUpperCase &#125;&#125;&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			new Vue(&#123;</span><br><span class="line">				el: &#39;#app&#39;,</span><br><span class="line">				filters: &#123;</span><br><span class="line">					toUpperCase(val) &#123;</span><br><span class="line">						return val.toUpperCase();</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;,</span><br><span class="line">				data() &#123;</span><br><span class="line">					return &#123;</span><br><span class="line">						msg: &#39;abcdefg&#39;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;);</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
 
 
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>前期准备差不多就这些了，其中官网推荐在浏览器安装<a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener"><code>Vue Devtools</code></a>，这个我想在后面需要用时再进行安装。还有脚手架<code>vue-cli</code>也会在<code>Vue</code>基础学完后进行使用。<br>好了，下一章就准备开始写vue了。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>在开发过程中，<code>filters</code>过滤器是比较常用的，比如订单状态，时间格式转换等都会使用一下。而<code>mixin</code>混入用的相对会少一些，虽然<code>mixin</code>混入不需要传递状态，但是也比较容易被滥用。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/31/%E3%80%90012%E3%80%91Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%B0%86%E5%8E%9F%E7%94%9F%E4%BA%8B%E4%BB%B6%E7%BB%91%E5%AE%9A%E5%88%B0%E7%BB%84%E4%BB%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="19年的猪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="19年的猪">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/31/%E3%80%90012%E3%80%91Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%B0%86%E5%8E%9F%E7%94%9F%E4%BA%8B%E4%BB%B6%E7%BB%91%E5%AE%9A%E5%88%B0%E7%BB%84%E4%BB%B6/" itemprop="url">【12】Vue基础学习：将原生事件绑定到组件</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-31T16:58:00+08:00">
+                2020-03-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue基础学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="native修饰符"><a href="#native修饰符" class="headerlink" title=".native修饰符"></a><code>.native</code>修饰符</h3><blockquote>
+<p>我们有时候需要对封装好的组件做一些原生事件的操作，比如点击<code>click</code>事件，这个时候可以使用<code>.native</code>修饰符完成。</p>
+</blockquote>
+<p>模版代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;v-demo @click.native&#x3D;&quot;onClick&quot;&gt;&lt;&#x2F;v-demo&gt;</span><br></pre></td></tr></table></figure>
+
+<p>示例代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;.native 修饰符&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;v-btn @click.native&#x3D;&quot;onClick&quot;&gt;&lt;&#x2F;v-btn&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			var VBtn &#x3D; &#123;</span><br><span class="line">				template: &#96;&lt;button&gt;点击我&lt;&#x2F;button&gt;&#96;</span><br><span class="line">			&#125;;</span><br><span class="line">			new Vue(&#123;</span><br><span class="line">				el: &#39;#app&#39;,</span><br><span class="line">				data() &#123;</span><br><span class="line">					return &#123;</span><br><span class="line">						msg: &#39;&#39;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;,</span><br><span class="line">				components: &#123;</span><br><span class="line">					&#39;v-btn&#39;: VBtn</span><br><span class="line">				&#125;,</span><br><span class="line">				methods: &#123;</span><br><span class="line">					onClick(event) &#123;</span><br><span class="line">						alert(&#39;我被点击了&#39;);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;);</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在浏览器运行时，点击按钮时，弹出<code>我被点击了</code>，说明<code>.native</code>修饰符生效。如果去掉<code>.native</code>修饰符后，再次点击按钮没有任何反应。</p>
+<h3 id="其他情况"><a href="#其他情况" class="headerlink" title="其他情况"></a>其他情况</h3><blockquote>
+<p><code>.native</code>修饰符虽然在一定场景下很使用，但是在尝试监听一个类似<code>&lt;input&gt;</code>的元素时，该修饰符不起作用。为了解决这个问题，Vue 提供了一个 $listeners 属性，它是一个对象，里面包含了作用在这个组件上的所有监听器。</p>
+</blockquote>
+<p>示例代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">	&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;$listeners&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;div&gt;文本框内容为：&#123;&#123; msg &#125;&#125;&lt;&#x2F;div&gt;</span><br><span class="line">			&lt;v-input @input.native&#x3D;&quot;onInput&quot;&gt;&lt;&#x2F;v-input&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			var VInput &#x3D; &#123;</span><br><span class="line">				&#x2F;&#x2F; computed 是计算属性，这个后期会提到</span><br><span class="line">				computed: &#123;</span><br><span class="line">					inputListeners() &#123;</span><br><span class="line">						var vm &#x3D; this;</span><br><span class="line">						&#x2F;&#x2F; &#96;Object.assign&#96; 将所有的对象合并为一个新对象</span><br><span class="line">						return Object.assign(</span><br><span class="line">							&#123;&#125;,</span><br><span class="line">							&#x2F;&#x2F; 从父级添加所有的监听器</span><br><span class="line">							vm.$listeners,</span><br><span class="line">							&#123;</span><br><span class="line">								&#x2F;&#x2F; 复写 input 事件</span><br><span class="line">								input(event) &#123;</span><br><span class="line">									vm.$emit(&#39;input&#39;, event.target.value);</span><br><span class="line">								&#125;</span><br><span class="line">							&#125;</span><br><span class="line">						)</span><br><span class="line">					&#125;,</span><br><span class="line">				&#125;,</span><br><span class="line">				template: &#96;</span><br><span class="line">					&lt;label&gt;</span><br><span class="line">						&lt;span&gt;将原生事件绑定到组件：&lt;&#x2F;span&gt;</span><br><span class="line">						&lt;input v-on&#x3D;&quot;inputListeners&quot;&gt;</span><br><span class="line">					&lt;&#x2F;label&gt;</span><br><span class="line">				&#96;</span><br><span class="line">			&#125;;</span><br><span class="line">			new Vue(&#123;</span><br><span class="line">				el: &#39;#app&#39;,</span><br><span class="line">				data() &#123;</span><br><span class="line">					return &#123;</span><br><span class="line">						msg: &#39;&#39;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;,</span><br><span class="line">				components: &#123;</span><br><span class="line">					&#39;v-input&#39;: VInput</span><br><span class="line">				&#125;,</span><br><span class="line">				methods: &#123;</span><br><span class="line">					onInput(event) &#123;</span><br><span class="line">						this.msg &#x3D; event.target.value;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;);</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="题外：-sync修饰符"><a href="#题外：-sync修饰符" class="headerlink" title="题外：.sync修饰符"></a>题外：<code>.sync</code>修饰符</h3><blockquote>
+<ol>
+<li>.sync 修饰符是为了解决prop进行‘双向绑定’的问题。</li>
+<li>需要注意带有 .sync 修饰符的 v-bind 不能和表达式一起使用 (例如 v-bind:title.sync=”doc.title + ‘!’” 是无效的)。</li>
+</ol>
+</blockquote>
+<p>模版代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;v-demo :title.sync&#x3D;&quot;msg&quot;&gt;&lt;&#x2F;v-demo&gt;</span><br></pre></td></tr></table></figure>
+
+<p>示例代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;.sync 修饰符&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;div&gt;父组件：&#123;&#123; msg &#125;&#125;&lt;&#x2F;div&gt;</span><br><span class="line">			&lt;v-demo :title.sync&#x3D;&quot;msg&quot;&gt;&lt;&#x2F;v-demo&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			var VDemo &#x3D; &#123;</span><br><span class="line">				props: [ &#39;title&#39; ],</span><br><span class="line">				template: &#96;&lt;div&gt;&#123;&#123; title &#125;&#125;&lt;&#x2F;div&gt;&#96;,</span><br><span class="line">				mounted() &#123;</span><br><span class="line">					setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">						this.$emit(&#39;update:title&#39;, 123)</span><br><span class="line">					&#125;, 2000);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;;</span><br><span class="line">			new Vue(&#123;</span><br><span class="line">				el: &#39;#app&#39;,</span><br><span class="line">				data() &#123;</span><br><span class="line">					return &#123;</span><br><span class="line">						msg: &#39;我是标题&#39;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;,</span><br><span class="line">				components: &#123;</span><br><span class="line">					&#39;v-demo&#39;: VDemo</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;);</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>在日常开发中，将<code>input</code>封装成组件这种事还是很常见的，所以第二节中的示例代码还是需要多看看多练习一下。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/30/%E3%80%90011%E3%80%91Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9A%E7%BB%84%E4%BB%B6%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%89%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="19年的猪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="19年的猪">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/30/%E3%80%90011%E3%80%91Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9A%E7%BB%84%E4%BB%B6%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%89%EF%BC%89/" itemprop="url">【11】Vue基础学习：组件基础（三）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-30T18:55:00+08:00">
+                2020-03-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue基础学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="定义组件名"><a href="#定义组件名" class="headerlink" title="定义组件名"></a>定义组件名</h3><p>两种方式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 使用 kebab-case</span><br><span class="line">Vue.component(&#39;my-component-name&#39;, &#123; &#x2F;* ... *&#x2F; &#125;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 使用 PascalCase</span><br><span class="line">Vue.component(&#39;MyComponentName&#39;, &#123; &#x2F;* ... *&#x2F; &#125;)</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="组件的注册"><a href="#组件的注册" class="headerlink" title="组件的注册"></a>组件的注册</h3><blockquote>
+<p>组件的注册分为<code>全局注册</code>和<code>局部注册</code>两种</p>
+</blockquote>
+<h4 id="1-全局注册："><a href="#1-全局注册：" class="headerlink" title="1. 全局注册："></a>1. 全局注册：</h4><p>代码模版：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(&#39;ComponentName&#39;, &#123;...&#125;);</span><br><span class="line">new Vue(&#123; el: &#39;#app&#39; &#125;)</span><br></pre></td></tr></table></figure>
+<p>在组件基础中的所有代码都为全局注册，这里就不再写示例代码，如有需要可以返回查看。</p>
+<h4 id="2-局部注册"><a href="#2-局部注册" class="headerlink" title="2. 局部注册"></a>2. 局部注册</h4><p>代码模版：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 编写 v-demo 组件</span><br><span class="line">var VDemo &#x3D; &#123;</span><br><span class="line">	template: &#96;&lt;h1&gt;我是标题&lt;&#x2F;h1&gt;&#96;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 注册 v-demo 组件</span><br><span class="line">new Vue(&#123;</span><br><span class="line">	el: &#39;#app&#39;,</span><br><span class="line">	components: &#123;</span><br><span class="line">		&#39;v-demo&#39;: VDemo</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>示例代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;深入了解组件&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;v-demo&gt;&lt;&#x2F;v-demo&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			var VDemo &#x3D; &#123;</span><br><span class="line">				template: &#96;&lt;h1&gt;我是标题&lt;&#x2F;h1&gt;&#96;</span><br><span class="line">			&#125;;</span><br><span class="line">			new Vue(&#123;</span><br><span class="line">				el: &#39;#app&#39;,</span><br><span class="line">				components: &#123;</span><br><span class="line">					&#39;v-demo&#39;: VDemo</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;);</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="3-全局注册-和-局部注册-的区别"><a href="#3-全局注册-和-局部注册-的区别" class="headerlink" title="3. 全局注册 和 局部注册 的区别"></a>3. 全局注册 和 局部注册 的区别</h4><p>全局注册往往是不够理想的。比如，如果你使用一个像 webpack 这样的构建系统，全局注册所有的组件意味着即便你已经不再使用一个组件了，它仍然会被包含在你最终的构建结果中。这造成了用户下载的 JavaScript 的无谓的增加。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/29/%E3%80%90010%E3%80%91Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9A%E7%BB%84%E4%BB%B6%E5%9F%BA%E7%A1%80%EF%BC%88%E4%BA%8C%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="19年的猪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="19年的猪">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/29/%E3%80%90010%E3%80%91Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9A%E7%BB%84%E4%BB%B6%E5%9F%BA%E7%A1%80%EF%BC%88%E4%BA%8C%EF%BC%89/" itemprop="url">【10】Vue基础学习：组件基础（二）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-29T23:21:00+08:00">
+                2020-03-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue基础学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="通过-Prop-向子组件传递数据"><a href="#通过-Prop-向子组件传递数据" class="headerlink" title="通过 Prop 向子组件传递数据"></a>通过 Prop 向子组件传递数据</h3><p>模版写法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(&#39;v-h1&#39;, &#123;</span><br><span class="line">	props: [&#39;msg&#39;],</span><br><span class="line">	template: &#96;&lt;h1&gt;&#123;&#123; msg &#125;&#125;&lt;&#x2F;h1&gt;&#96;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>示例代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;组件基础&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;v-h1 msg&#x3D;&quot;我是标题&quot;&gt;&lt;&#x2F;v-h1&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			Vue.component(&#39;v-h1&#39;, &#123;</span><br><span class="line">				props: [&#39;msg&#39;],</span><br><span class="line">				template: &#96;&lt;h1&gt;&#123;&#123; msg &#125;&#125;&lt;&#x2F;h1&gt;&#96;</span><br><span class="line">			&#125;);</span><br><span class="line">			new Vue(&#123; el: &#39;#app&#39; &#125;);</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="监听子组件事件"><a href="#监听子组件事件" class="headerlink" title="监听子组件事件"></a>监听子组件事件</h3><blockquote>
+<p>在我们开发组件时，它的一些功能可能要求我们和父级组件进行沟通。</p>
+</blockquote>
+<p>示例代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;组件基础&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;div :style&#x3D;&quot;&#123; fontSize: fontSize + &#39;em&#39; &#125;&quot;&gt;</span><br><span class="line">				&lt;v-p @big-font&#x3D;&quot;fontSize++&quot;&gt;&lt;&#x2F;v-p&gt;</span><br><span class="line">			&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			Vue.component(&#39;v-p&#39;, &#123;</span><br><span class="line">				template: &#96;</span><br><span class="line">					&lt;div&gt;</span><br><span class="line">						&lt;p&gt;我是标题&lt;&#x2F;p&gt;</span><br><span class="line">						&lt;button @click&#x3D;&quot;$emit(&#39;big-font&#39;)&quot;&gt;放大文字&lt;&#x2F;button&gt;</span><br><span class="line">					&lt;&#x2F;div&gt;</span><br><span class="line">				&#96;</span><br><span class="line">			&#125;);</span><br><span class="line">			new Vue(&#123; </span><br><span class="line">				el: &#39;#app&#39;,</span><br><span class="line">				data() &#123;</span><br><span class="line">					return &#123;</span><br><span class="line">						fontSize: 1</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;);</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>通过上面的代码可以发现，子组件可以通过调用内建的<code>$emit</code>方法并传入事件名称来触发一个事件，代码片段：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 子组件 --&gt;</span><br><span class="line">&lt;button @click&#x3D;&quot;$emit(&#39;big-font&#39;)&quot;&gt;放大文字&lt;&#x2F;button&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 父组件 --&gt;</span><br><span class="line">&lt;v-p @big-font&#x3D;&quot;fontSize++&quot;&gt;&lt;&#x2F;v-p&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="使用事件抛出一个值"><a href="#使用事件抛出一个值" class="headerlink" title="使用事件抛出一个值"></a>使用事件抛出一个值</h4><p>示例代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;组件基础&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;div :style&#x3D;&quot;&#123; fontSize: fontSize + &#39;em&#39; &#125;&quot;&gt;</span><br><span class="line">				&lt;v-p @big-font&#x3D;&quot;fontSize +&#x3D; $event&quot;&gt;&lt;&#x2F;v-p&gt;</span><br><span class="line">			&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			Vue.component(&#39;v-p&#39;, &#123;</span><br><span class="line">				template: &#96;</span><br><span class="line">					&lt;div&gt;</span><br><span class="line">						&lt;p&gt;我是标题&lt;&#x2F;p&gt;</span><br><span class="line">						&lt;button @click&#x3D;&quot;$emit(&#39;big-font&#39;, 0.1)&quot;&gt;放大文字&lt;&#x2F;button&gt;</span><br><span class="line">					&lt;&#x2F;div&gt;</span><br><span class="line">				&#96;</span><br><span class="line">			&#125;);</span><br><span class="line">			new Vue(&#123; </span><br><span class="line">				el: &#39;#app&#39;,</span><br><span class="line">				data() &#123;</span><br><span class="line">					return &#123;</span><br><span class="line">						fontSize: 1</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;);</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>代码片段：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 子组件 --&gt;</span><br><span class="line">&lt;button @click&#x3D;&quot;$emit(&#39;big-font&#39;, 0.1)&quot;&gt;放大文字&lt;&#x2F;button&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 父组件 --&gt;</span><br><span class="line">&lt;v-p @big-font&#x3D;&quot;fontSize +&#x3D; $event&quot;&gt;&lt;&#x2F;v-p&gt;</span><br></pre></td></tr></table></figure>
+
+<p>跟上面的例子做对比可以发现，使用事件抛出一个值时，只需在<code>$emit</code>上添加多一个参数即可，接收时使用<code>$event</code>进行接收。</p>
+<h3 id="通过插槽分发内容"><a href="#通过插槽分发内容" class="headerlink" title="通过插槽分发内容"></a>通过插槽分发内容</h3><p>在编写组件的过程中，有时我们希望组件里面能自己定义一些HTML元素，这时我们可以使用<code>&lt;slot&gt;</code>实现。</p>
+<p>示例代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;组件基础&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;v-demo&gt;</span><br><span class="line">				&lt;p style&#x3D;&quot;color: red;&quot;&gt;我是内容&lt;&#x2F;p&gt;</span><br><span class="line">			&lt;&#x2F;v-demo&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			Vue.component(&#39;v-demo&#39;, &#123;</span><br><span class="line">				template: &#96;</span><br><span class="line">					&lt;div&gt;</span><br><span class="line">						&lt;h1&gt;我是标题&lt;&#x2F;h1&gt;</span><br><span class="line">						&lt;slot&gt;&lt;&#x2F;slot&gt;</span><br><span class="line">					&lt;&#x2F;div&gt;</span><br><span class="line">				&#96;</span><br><span class="line">			&#125;);</span><br><span class="line">			new Vue(&#123; el: &#39;#app&#39; &#125;);</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/29/%E3%80%90009%E3%80%91Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9A%E7%BB%84%E4%BB%B6%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%80%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="19年的猪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="19年的猪">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/29/%E3%80%90009%E3%80%91Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9A%E7%BB%84%E4%BB%B6%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%80%EF%BC%89/" itemprop="url">【09】Vue基础学习：组件基础（一）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-29T18:26:00+08:00">
+                2020-03-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue基础学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="基本示例"><a href="#基本示例" class="headerlink" title="基本示例"></a>基本示例</h3><blockquote>
+<ol>
+<li>在Vue中，组件是一个很强大的功能，组件可以扩展HTML元素，封装可重用的代码。比如在页面中的某一部分需要在多个场景中使用，那么我们可以将需要部分提取出来，从而提高代码的复用率。</li>
+<li>所有的Vue组件都是Vue的实列，因此它可以接受Vue中的所有的生命周期钩子。</li>
+</ol>
+</blockquote>
+<p>示例代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;组件基础&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;v-btn&gt;&lt;&#x2F;v-btn&gt;</span><br><span class="line">			&lt;hr &#x2F;&gt;</span><br><span class="line">			&lt;v-btn&gt;&lt;&#x2F;v-btn&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			&#x2F;&#x2F; 自定义组件</span><br><span class="line">			Vue.component(&#39;v-btn&#39;, &#123;</span><br><span class="line">				data: function () &#123;</span><br><span class="line">					return &#123;</span><br><span class="line">						count: 0</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;,</span><br><span class="line">				template: &#96;</span><br><span class="line">					&lt;div&gt;</span><br><span class="line">						&lt;h1&gt;&#123;&#123; count &#125;&#125;&lt;&#x2F;h1&gt;</span><br><span class="line">						&lt;button @click&#x3D;&#39;count++&#39;&gt;点击我试试&lt;&#x2F;button&gt;</span><br><span class="line">					&lt;&#x2F;div&gt;</span><br><span class="line">				&#96;</span><br><span class="line">			&#125;)</span><br><span class="line">			&#x2F;&#x2F; 实例化</span><br><span class="line">			new Vue(&#123; el: &#39;#app&#39; &#125;);</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="data-必须是一个函数"><a href="#data-必须是一个函数" class="headerlink" title="data 必须是一个函数"></a>data 必须是一个函数</h3><p>在上面的示例代码中，我们可以看到有一段代码是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">data: function () &#123;</span><br><span class="line">	return &#123;</span><br><span class="line">		count: 0</span><br><span class="line">	&#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>那么，为什么<code>data</code>中的数据需要使用函数<code>return</code>回来，而不直接使用Object形式呢？</p>
+</blockquote>
+<ol>
+<li>vue组件中data值不能为对象，因为对象是引用类型，组件可能会被多个实例同时引用。如果data值为对象，将导致多个实例共享一个对象，其中一个组件改变data属性值，其它实例也会受到影响。</li>
+<li>data为函数，通过return 返回对象的拷贝，致使每个实例都有自己独立的对象，实例之间可以互不影响的改变data属性值。</li>
+</ol>
+<h4 id="例子一【引用类型】："><a href="#例子一【引用类型】：" class="headerlink" title="例子一【引用类型】："></a>例子一【引用类型】：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;例子&lt;&#x2F;title&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script&gt;</span><br><span class="line">			const fn &#x3D; function() &#123;&#125;;</span><br><span class="line">			fn.prototype.data &#x3D; &#123; a: 1 &#125;;</span><br><span class="line">			const demo01 &#x3D; new fn();</span><br><span class="line">			const demo02 &#x3D; new fn();</span><br><span class="line">			demo01.data.a &#x3D; 5;</span><br><span class="line">			document.getElementById(&#39;app&#39;).innerHTML &#x3D; &#96;</span><br><span class="line">				&lt;div&gt;[demo02.data.a]：$&#123;demo02.data.a&#125;&lt;&#x2F;div&gt;</span><br><span class="line">			&#96;;</span><br><span class="line">			</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>打开浏览器运行上面的代码：可以看到页面显示内容为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[demo02.data.a]：5</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>为什么<code>demo02.data.a</code>不是<code>1</code>呢？</p>
+<ul>
+<li>因为每个组件的data都在内存的同一个地址中，一个数据改变了其他也会跟着改变。</li>
+</ul>
+</blockquote>
+<h4 id="例子二【函数】："><a href="#例子二【函数】：" class="headerlink" title="例子二【函数】："></a>例子二【函数】：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;例子&lt;&#x2F;title&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script&gt;</span><br><span class="line">			const fn &#x3D; function() &#123;</span><br><span class="line">				this.data &#x3D; this.data();</span><br><span class="line">			&#125;;</span><br><span class="line">			fn.prototype.data &#x3D; function() &#123;</span><br><span class="line">				return &#123; a: 1 &#125;;</span><br><span class="line">			&#125;;</span><br><span class="line">			const demo01 &#x3D; new fn();</span><br><span class="line">			const demo02 &#x3D; new fn();</span><br><span class="line">			demo01.data.a &#x3D; 5;</span><br><span class="line">			document.getElementById(&#39;app&#39;).innerHTML &#x3D; &#96;</span><br><span class="line">				&lt;div&gt;[demo02.data.a]：$&#123;demo02.data.a&#125;&lt;&#x2F;div&gt;</span><br><span class="line">			&#96;;</span><br><span class="line">			</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>打开浏览器运行上面的代码：可以看到页面显示内容为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[demo02.data.a]：1</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>为什么<code>demo02.data.a</code>是<code>1</code>呢？</p>
+<ul>
+<li>因为data是一个函数时，每个组件实例都有自己的作用域，每个实例相互独立,不会相互影响</li>
+</ul>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/28/%E3%80%90008%E3%80%91Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%85%B6%E4%BB%96%E6%8C%87%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="19年的猪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="19年的猪">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/28/%E3%80%90008%E3%80%91Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%85%B6%E4%BB%96%E6%8C%87%E4%BB%A4/" itemprop="url">【08】Vue基础学习：其他指令</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-28T16:34:00+08:00">
+                2020-03-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue基础学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="v-once-指令"><a href="#v-once-指令" class="headerlink" title="v-once 指令"></a>v-once 指令</h3><blockquote>
+<p>只渲染元素和组件一次。随后的重新渲染，元素/组件及其所有的子节点将被视为静态内容并跳过。</p>
+</blockquote>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;v-once&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;div v-once&gt;&#123;&#123; msg &#125;&#125;&lt;&#x2F;div&gt;</span><br><span class="line">			&lt;input v-model&#x3D;&quot;msg&quot; &#x2F;&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			var vm &#x3D; new Vue(&#123;</span><br><span class="line">				el: &#39;#app&#39;,</span><br><span class="line">				data() &#123;</span><br><span class="line">					return &#123;</span><br><span class="line">						msg: 123</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;)</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在浏览器中运行代码时可以发现，在文本框中输入内容时，div元素中的内容并没有跟着改变，这是因为在浏览器运行时，DOM元素已经渲染完成了。</p>
+<h3 id="v-pre-指令"><a href="#v-pre-指令" class="headerlink" title="v-pre 指令"></a>v-pre 指令</h3><blockquote>
+<p>跳过这个元素和它的子元素的编译过程。可以用来显示原始 Mustache 标签。跳过大量没有指令的节点会加快编译。 </p>
+</blockquote>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;v-pre&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;div v-pre&gt;&#123;&#123; msg &#125;&#125;&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			var vm &#x3D; new Vue(&#123;</span><br><span class="line">				el: &#39;#app&#39;,</span><br><span class="line">				data() &#123;</span><br><span class="line">					return &#123;</span><br><span class="line">						msg: 123</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;)</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在浏览器中运行代码时可以看到，页面显示的内容为<code></code>。</p>
+<h3 id="v-cloak-指令"><a href="#v-cloak-指令" class="headerlink" title="v-cloak 指令"></a>v-cloak 指令</h3><blockquote>
+<p>这个指令保持在元素上直到关联实例结束编译。和 CSS 规则如 [v-cloak] { display: none } 一起用时，这个指令可以隐藏未编译的 Mustache 标签直到实例准备完毕。 </p>
+</blockquote>
+<p>css写法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[v-cloak] &#123;</span><br><span class="line">	display: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;v-cloak&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt;</span><br><span class="line">			[v-cloak] &#123;</span><br><span class="line">				display: none;</span><br><span class="line">			&#125;</span><br><span class="line">		&lt;&#x2F;style&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;div v-cloak&gt;&#123;&#123; msg &#125;&#125;&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			var vm &#x3D; new Vue(&#123;</span><br><span class="line">				el: &#39;#app&#39;,</span><br><span class="line">				data() &#123;</span><br><span class="line">					return &#123;</span><br><span class="line">						msg: 123</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;)</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<p><code>&lt;div v-cloak&gt;&lt;/div&gt;</code>里的内容不会显示，直到编译结束后才会进行显示。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/28/%E3%80%90007%E3%80%91Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9Av-bind%E7%9A%84%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="19年的猪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="19年的猪">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/28/%E3%80%90007%E3%80%91Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9Av-bind%E7%9A%84%E4%BD%BF%E7%94%A8/" itemprop="url">【07】Vue基础学习：v-bind的使用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-28T15:08:00+08:00">
+                2020-03-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue基础学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>v-bind 用于处理 HTML 中的标签属性。</p>
+</blockquote>
+<h3 id="class-对象语法"><a href="#class-对象语法" class="headerlink" title="class 对象语法"></a>class 对象语法</h3><p>模版写法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-bind:class&#x3D;&quot;&#123; green: isActive01 &#125;&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">多个：</span><br><span class="line">&lt;div v-bind:class&#x3D;&quot;&#123; red: isActive02, font: isActive03 &#125;&quot;&gt;白色&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- -------------------- 简写 -------------------- --&gt;</span><br><span class="line">&lt;div :class&#x3D;&quot;&#123; green: isActive01 &#125;&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">多个：</span><br><span class="line">&lt;div :class&#x3D;&quot;&#123; red: isActive02, font: isActive03 &#125;&quot;&gt;白色&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>完整代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line"> &lt;html&gt;</span><br><span class="line"> 	&lt;head&gt;</span><br><span class="line"> 		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line"> 		&lt;title&gt;v-bind class&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt;</span><br><span class="line">			.blue &#123;</span><br><span class="line">				width: 100px;</span><br><span class="line">				height: 100px;</span><br><span class="line">				background-color: blue;</span><br><span class="line">			&#125;</span><br><span class="line">			.green &#123;</span><br><span class="line">				width: 100px;</span><br><span class="line">				height: 100px;</span><br><span class="line">				background-color: green;</span><br><span class="line">			&#125;</span><br><span class="line">			.red &#123;</span><br><span class="line">				width: 100px;</span><br><span class="line">				height: 100px;</span><br><span class="line">				background-color: red;</span><br><span class="line">			&#125;</span><br><span class="line">			.font &#123;</span><br><span class="line">				color: white;</span><br><span class="line">			&#125;</span><br><span class="line">		&lt;&#x2F;style&gt;</span><br><span class="line"> 		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line"> 	&lt;&#x2F;head&gt;</span><br><span class="line"> 	&lt;body&gt;</span><br><span class="line"> 		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line"> 			&lt;div v-bind:class&#x3D;&quot;styl&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">			&lt;div v-bind:class&#x3D;&quot;&#123; green: isActive01 &#125;&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">			&lt;div v-bind:class&#x3D;&quot;&#123; red: isActive02, font: isActive03 &#125;&quot;&gt;白色&lt;&#x2F;div&gt;</span><br><span class="line"> 		&lt;&#x2F;div&gt;</span><br><span class="line"> 		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line"> 			var vm &#x3D; new Vue(&#123;</span><br><span class="line"> 				el: &#39;#app&#39;,</span><br><span class="line"> 				data() &#123;</span><br><span class="line"> 					return &#123;</span><br><span class="line"> 						styl: &#39;blue&#39;,</span><br><span class="line">						isActive01: true,</span><br><span class="line">						isActive02: true,</span><br><span class="line">						isActive03: true</span><br><span class="line"> 					&#125;</span><br><span class="line"> 				&#125;</span><br><span class="line"> 			&#125;)</span><br><span class="line"> 		&lt;&#x2F;script&gt;</span><br><span class="line"> 	&lt;&#x2F;body&gt;</span><br><span class="line"> &lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="class-数组语法"><a href="#class-数组语法" class="headerlink" title="class 数组语法"></a>class 数组语法</h3><p>模版写法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-bind:class&#x3D;&quot;[ class01, class02 ]&quot;&gt;白色&lt;&#x2F;div&gt;</span><br><span class="line">&lt;!-- -------------------- 简写 -------------------- --&gt;</span><br><span class="line">&lt;div :class&#x3D;&quot;[ class01, class02 ]&quot;&gt;白色&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>完整代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;v-bind class&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt;</span><br><span class="line">			.red &#123;</span><br><span class="line">				width: 100px;</span><br><span class="line">				height: 100px;</span><br><span class="line">				background-color: red;</span><br><span class="line">			&#125;</span><br><span class="line">			.font &#123;</span><br><span class="line">				color: white;</span><br><span class="line">			&#125;</span><br><span class="line">		&lt;&#x2F;style&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;div v-bind:class&#x3D;&quot;[ class01, class02 ]&quot;&gt;白色&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			var vm &#x3D; new Vue(&#123;</span><br><span class="line">				el: &#39;#app&#39;,</span><br><span class="line">				data() &#123;</span><br><span class="line">					return &#123;</span><br><span class="line">						class01: &#39;red&#39;,</span><br><span class="line">						class02: &#39;font&#39;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;)</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="style-对象语法"><a href="#style-对象语法" class="headerlink" title="style 对象语法"></a>style 对象语法</h3><p>模版写法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-bind:style&#x3D;&quot;&#123; color: &#39;red&#39;, fontSize: &#39;50px&#39; &#125;&quot;&gt;文字&lt;&#x2F;div&gt;</span><br><span class="line">&lt;!-- -------------------- 简写 -------------------- --&gt;</span><br><span class="line">&lt;div :style&#x3D;&quot;&#123; color: &#39;red&#39;, fontSize: &#39;50px&#39; &#125;&quot;&gt;文字&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>完整代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">	&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;v-bind style&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;div v-bind:style&#x3D;&quot;&#123; color: &#39;red&#39;, fontSize: &#39;50px&#39; &#125;&quot;&gt;文字&lt;&#x2F;div&gt;</span><br><span class="line">			&lt;div v-bind:style&#x3D;&quot;styleObject&quot;&gt;白色&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			var vm &#x3D; new Vue(&#123;</span><br><span class="line">				el: &#39;#app&#39;,</span><br><span class="line">				data() &#123;</span><br><span class="line">					return &#123;</span><br><span class="line">						styleObject: &#123;</span><br><span class="line">							width: &#39;100px&#39;,</span><br><span class="line">							height: &#39;100px&#39;,</span><br><span class="line">							backgroundColor: &#39;red&#39;,</span><br><span class="line">							color: &#39;white&#39;</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;)</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>注：当样式类似于<code>font-size</code>这种形式时，需要改写为<code>fontSize</code>。</p>
+<h3 id="style-数组语法"><a href="#style-数组语法" class="headerlink" title="style 数组语法"></a>style 数组语法</h3><p>模版写法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-bind:style&#x3D;&quot;[style01, style02]&quot;&gt;文字&lt;&#x2F;div&gt;</span><br><span class="line">&lt;!-- -------------------- 简写 -------------------- --&gt;</span><br><span class="line">&lt;div :style&#x3D;&quot;[style01, style02]&quot;&gt;文字&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+
+<p>完整代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">	&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;v-bind style&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;div v-bind:style&#x3D;&quot;[style01, style02]&quot;&gt;文字&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			var vm &#x3D; new Vue(&#123;</span><br><span class="line">				el: &#39;#app&#39;,</span><br><span class="line">				data() &#123;</span><br><span class="line">					return &#123;</span><br><span class="line">						style01: &#123;</span><br><span class="line">							width: &#39;100px&#39;,</span><br><span class="line">							height: &#39;100px&#39;,</span><br><span class="line">							backgroundColor: &#39;red&#39;</span><br><span class="line">						&#125;,</span><br><span class="line">						style02: &#123;</span><br><span class="line">							color: &#39;white&#39;</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;)</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="需要注意的地方"><a href="#需要注意的地方" class="headerlink" title="需要注意的地方"></a>需要注意的地方</h3><p>v-bind 不仅用于 class 和 style 中，还用于其它，如：src，href等等。<br>当<code>v-bind:style</code>使用需要添加浏览器引擎前缀的 CSS 属性时，如 transform，Vue.js 会自动侦测并添加相应的前缀。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/27/%E3%80%90006%E3%80%91Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9Av-model%E7%9A%84%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="19年的猪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="19年的猪">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/27/%E3%80%90006%E3%80%91Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9Av-model%E7%9A%84%E4%BD%BF%E7%94%A8/" itemprop="url">【06】Vue基础学习：v-model的使用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-27T16:46:00+08:00">
+                2020-03-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue基础学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="基础用法"><a href="#基础用法" class="headerlink" title="基础用法"></a>基础用法</h3><p>模版写法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input v-model&#x3D;&quot;message&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>完整代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;v-model&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;input v-model&#x3D;&quot;message&quot; &#x2F;&gt;</span><br><span class="line">			&lt;div&gt;&#123;&#123; message &#125;&#125;&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			var vm &#x3D; new Vue(&#123;</span><br><span class="line">				el: &#39;#app&#39;,</span><br><span class="line">				data() &#123;</span><br><span class="line">					return &#123;</span><br><span class="line">						message: &#39;123&#39;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;)</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在浏览器运行此文件后，在文本框输入内容时可以看到文本框下面的内容也在跟着变化，这是因为v-model 指令在表单<code>&lt;input&gt;</code>、<code>&lt;textarea&gt;</code>及<code>&lt;select&gt;</code>元素上创建双向数据绑定，它会根据控件类型自动选取正确的方法来更新元素。</p>
+<p>注意：<br>v-model 会忽略所有表单元素的 value、checked、selected attribute 的初始值而总是将 Vue 实例的数据作为数据来源。你应该通过 JavaScript 在组件的 data 选项中声明初始值。</p>
+<h3 id="常见修饰符"><a href="#常见修饰符" class="headerlink" title="常见修饰符"></a>常见修饰符</h3><table>
+<thead>
+<tr>
+<th>修饰符</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>.lazy</td>
+<td>取代 input 监听 change 事件。</td>
+</tr>
+<tr>
+<td>.number</td>
+<td>输入字符串转为数字。</td>
+</tr>
+<tr>
+<td>.trim</td>
+<td>输入去掉首尾空格。</td>
+</tr>
+</tbody></table>
+<p>模版写法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input v-model.trim&#x3D;&quot;msg&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>完整代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;v-model&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;input v-model.trim&#x3D;&quot;message&quot; &#x2F;&gt;</span><br><span class="line">			&lt;div&gt;&#123;&#123; message &#125;&#125;&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			var vm &#x3D; new Vue(&#123;</span><br><span class="line">				el: &#39;#app&#39;,</span><br><span class="line">				data() &#123;</span><br><span class="line">					return &#123;</span><br><span class="line">						message: &#39;123&#39;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;)</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在浏览器运行此文件后，可以看到在文本框的头和尾输入空格是无效的。</p>
 
           
         
@@ -941,7 +1935,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="accessibility.prev_page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="accessibility.prev_page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="accessibility.next_page"></i></a>
   </nav>
 
           </div>
@@ -985,7 +1979,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -996,7 +1990,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1007,7 +2001,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

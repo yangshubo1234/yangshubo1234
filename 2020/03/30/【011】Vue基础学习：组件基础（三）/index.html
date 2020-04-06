@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Vue基础学习," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="定义组件名两种方式： 12345&#x2F;&#x2F; 使用 kebab-caseVue.component(&#39;my-component-name&#39;, &amp;#123; &#x2F;* ... *&#x2F; &amp;#125;)&#x2F;&#x2F; 使用 PascalCaseVue.component(&#39;MyComponentName&#39;, &amp;#123; &#x2F;*">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【11】Vue基础学习：组件基础（三）">
+<meta property="og:url" content="http://yoursite.com/2020/03/30/%E3%80%90011%E3%80%91Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9A%E7%BB%84%E4%BB%B6%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%89%EF%BC%89/index.html">
+<meta property="og:site_name" content="19年的猪">
+<meta property="og:description" content="定义组件名两种方式： 12345&#x2F;&#x2F; 使用 kebab-caseVue.component(&#39;my-component-name&#39;, &amp;#123; &#x2F;* ... *&#x2F; &amp;#125;)&#x2F;&#x2F; 使用 PascalCaseVue.component(&#39;MyComponentName&#39;, &amp;#123; &#x2F;*">
+<meta property="article:published_time" content="2020-03-30T10:55:00.000Z">
+<meta property="article:modified_time" content="2020-04-06T14:27:24.436Z">
+<meta property="article:author" content="19年的猪">
+<meta property="article:tag" content="Vue基础学习">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/03/30/【011】Vue基础学习：组件基础（三）/"/>
+
+
+
+
+
+  <title>【11】Vue基础学习：组件基础（三） | 19年的猪</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">19年的猪</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/30/%E3%80%90011%E3%80%91Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9A%E7%BB%84%E4%BB%B6%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%89%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="19年的猪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="19年的猪">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">【11】Vue基础学习：组件基础（三）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-30T18:55:00+08:00">
+                2020-03-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue基础学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="定义组件名"><a href="#定义组件名" class="headerlink" title="定义组件名"></a>定义组件名</h3><p>两种方式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 使用 kebab-case</span><br><span class="line">Vue.component(&#39;my-component-name&#39;, &#123; &#x2F;* ... *&#x2F; &#125;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 使用 PascalCase</span><br><span class="line">Vue.component(&#39;MyComponentName&#39;, &#123; &#x2F;* ... *&#x2F; &#125;)</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="组件的注册"><a href="#组件的注册" class="headerlink" title="组件的注册"></a>组件的注册</h3><blockquote>
+<p>组件的注册分为<code>全局注册</code>和<code>局部注册</code>两种</p>
+</blockquote>
+<h4 id="1-全局注册："><a href="#1-全局注册：" class="headerlink" title="1. 全局注册："></a>1. 全局注册：</h4><p>代码模版：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(&#39;ComponentName&#39;, &#123;...&#125;);</span><br><span class="line">new Vue(&#123; el: &#39;#app&#39; &#125;)</span><br></pre></td></tr></table></figure>
+<p>在组件基础中的所有代码都为全局注册，这里就不再写示例代码，如有需要可以返回查看。</p>
+<h4 id="2-局部注册"><a href="#2-局部注册" class="headerlink" title="2. 局部注册"></a>2. 局部注册</h4><p>代码模版：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 编写 v-demo 组件</span><br><span class="line">var VDemo &#x3D; &#123;</span><br><span class="line">	template: &#96;&lt;h1&gt;我是标题&lt;&#x2F;h1&gt;&#96;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 注册 v-demo 组件</span><br><span class="line">new Vue(&#123;</span><br><span class="line">	el: &#39;#app&#39;,</span><br><span class="line">	components: &#123;</span><br><span class="line">		&#39;v-demo&#39;: VDemo</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>示例代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;深入了解组件&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;v-demo&gt;&lt;&#x2F;v-demo&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			var VDemo &#x3D; &#123;</span><br><span class="line">				template: &#96;&lt;h1&gt;我是标题&lt;&#x2F;h1&gt;&#96;</span><br><span class="line">			&#125;;</span><br><span class="line">			new Vue(&#123;</span><br><span class="line">				el: &#39;#app&#39;,</span><br><span class="line">				components: &#123;</span><br><span class="line">					&#39;v-demo&#39;: VDemo</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;);</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="3-全局注册-和-局部注册-的区别"><a href="#3-全局注册-和-局部注册-的区别" class="headerlink" title="3. 全局注册 和 局部注册 的区别"></a>3. 全局注册 和 局部注册 的区别</h4><p>全局注册往往是不够理想的。比如，如果你使用一个像 webpack 这样的构建系统，全局注册所有的组件意味着即便你已经不再使用一个组件了，它仍然会被包含在你最终的构建结果中。这造成了用户下载的 JavaScript 的无谓的增加。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/" rel="tag"># Vue基础学习</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/29/%E3%80%90010%E3%80%91Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9A%E7%BB%84%E4%BB%B6%E5%9F%BA%E7%A1%80%EF%BC%88%E4%BA%8C%EF%BC%89/" rel="next" title="【10】Vue基础学习：组件基础（二）">
+                <i class="fa fa-chevron-left"></i> 【10】Vue基础学习：组件基础（二）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/03/31/%E3%80%90012%E3%80%91Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%B0%86%E5%8E%9F%E7%94%9F%E4%BA%8B%E4%BB%B6%E7%BB%91%E5%AE%9A%E5%88%B0%E7%BB%84%E4%BB%B6/" rel="prev" title="【12】Vue基础学习：将原生事件绑定到组件">
+                【12】Vue基础学习：将原生事件绑定到组件 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">19年的猪</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义组件名"><span class="nav-number">1.</span> <span class="nav-text">定义组件名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组件的注册"><span class="nav-number">2.</span> <span class="nav-text">组件的注册</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-全局注册："><span class="nav-number">2.1.</span> <span class="nav-text">1. 全局注册：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-局部注册"><span class="nav-number">2.2.</span> <span class="nav-text">2. 局部注册</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-全局注册-和-局部注册-的区别"><span class="nav-number">2.3.</span> <span class="nav-text">3. 全局注册 和 局部注册 的区别</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">19年的猪</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

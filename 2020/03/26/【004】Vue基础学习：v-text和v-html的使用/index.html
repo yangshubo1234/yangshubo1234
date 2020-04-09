@@ -53,16 +53,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-16x16-next.png?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/images/favicon-16x16-next.png?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/favicon.png?v=5.1.4" color="#222">
 
 
 
@@ -83,7 +83,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="【004】Vue基础学习：v-text和v-html的使用">
 <meta property="og:url" content="http://yoursite.com/2020/03/26/%E3%80%90004%E3%80%91Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9Av-text%E5%92%8Cv-html%E7%9A%84%E4%BD%BF%E7%94%A8/index.html">
-<meta property="og:site_name" content="19年的猪">
+<meta property="og:site_name" content="个人博客">
 <meta property="og:description" content="前言在上面几章中，我们写入数据采用的都是的方式，但是有时我们会看到一个现象，那就是当我们刷新页面时，页面会先出现这几个文字，然后才出现或者不出现我们想要的内容。造出这种现象的原因是网速较慢或者加载vue.js文件报错，导致数据无法成功渲染。这时我们可以使用 v-text 和 v-html 解决这个问题。 v-text 的使用模版写法： 1&lt;div v-text&#x3D;&quot;titl">
 <meta property="article:published_time" content="2020-03-26T11:53:00.000Z">
 <meta property="article:modified_time" content="2020-04-07T08:37:29.889Z">
@@ -99,7 +99,7 @@
     root: '/',
     scheme: 'Pisces',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -125,7 +125,7 @@
 
 
 
-  <title>【004】Vue基础学习：v-text和v-html的使用 | 19年的猪</title>
+  <title>【004】Vue基础学习：v-text和v-html的使用 | 个人博客</title>
   
 
 
@@ -144,7 +144,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -155,7 +155,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">19年的猪</span>
+        <span class="site-title">个人博客</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -257,11 +257,11 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="19年的猪">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/favicon.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="19年的猪">
+      <meta itemprop="name" content="个人博客">
     </span>
 
     
@@ -468,6 +468,10 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image"
+                src="/images/favicon.png"
+                alt="19年的猪" />
+            
               <p class="site-author-name" itemprop="name">19年的猪</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
@@ -519,7 +523,18 @@
           
           
 
-          
+          <style>
+    .gzhname {
+        color: #999;
+        text-align: center;
+        margin-top: -12px;
+        font-size: 13px;
+    }
+</style>
+<div style="margin-top: 10px;">
+    <img src="/images/gzh.jpg" />
+    <div class="gzhname">个人公众号：每日快闪</div>
+</div>
 
         </div>
       </section>
@@ -592,6 +607,8 @@
     
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
         
       </div>
     

@@ -53,16 +53,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-16x16-next.png?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/images/favicon-16x16-next.png?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/favicon.png?v=5.1.4" color="#222">
 
 
 
@@ -83,7 +83,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="【014】Vue全局API学习：Vue.extend">
 <meta property="og:url" content="http://yoursite.com/2020/04/01/%E3%80%90014%E3%80%91Vue%E5%85%A8%E5%B1%80API%E5%AD%A6%E4%B9%A0%EF%BC%9AVue-extend/index.html">
-<meta property="og:site_name" content="19年的猪">
+<meta property="og:site_name" content="个人博客">
 <meta property="og:description" content="用法  使用基础 Vue 构造器，创建一个“子类”。参数是一个包含组件选项的对象。 data 选项是特例，需要注意 - 在 Vue.extend() 中它必须是函数   示例代码： 1234567891011121314151617181920212223&lt;!DOCTYPE html&gt;&lt;html&gt;	&lt;head&gt;		&lt;meta charset&#x3D;&amp;q">
 <meta property="article:published_time" content="2020-04-01T10:56:00.000Z">
 <meta property="article:modified_time" content="2020-04-07T08:38:40.555Z">
@@ -99,7 +99,7 @@
     root: '/',
     scheme: 'Pisces',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -125,7 +125,7 @@
 
 
 
-  <title>【014】Vue全局API学习：Vue.extend | 19年的猪</title>
+  <title>【014】Vue全局API学习：Vue.extend | 个人博客</title>
   
 
 
@@ -144,7 +144,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -155,7 +155,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">19年的猪</span>
+        <span class="site-title">个人博客</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -257,11 +257,11 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="19年的猪">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/favicon.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="19年的猪">
+      <meta itemprop="name" content="个人博客">
     </span>
 
     
@@ -478,6 +478,10 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image"
+                src="/images/favicon.png"
+                alt="19年的猪" />
+            
               <p class="site-author-name" itemprop="name">19年的猪</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
@@ -529,7 +533,18 @@
           
           
 
-          
+          <style>
+    .gzhname {
+        color: #999;
+        text-align: center;
+        margin-top: -12px;
+        font-size: 13px;
+    }
+</style>
+<div style="margin-top: 10px;">
+    <img src="/images/gzh.jpg" />
+    <div class="gzhname">个人公众号：每日快闪</div>
+</div>
 
         </div>
       </section>
@@ -602,6 +617,8 @@
     
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
         
       </div>
     

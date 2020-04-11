@@ -272,6 +272,330 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/11/%E3%80%90033%E3%80%91vue-cli4-0%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="19年的猪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/favicon.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/11/%E3%80%90033%E3%80%91vue-cli4-0%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE/" itemprop="url">【033】vue-cli4.0基础学习：创建项目</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-11T21:31:25+08:00">
+                2020-04-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/vue-cli4-0/" itemprop="url" rel="index">
+                    <span itemprop="name">vue-cli4.0</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><ol>
+<li>打开cmd命令窗口  </li>
+<li>进入我们需要存放代码的目录  </li>
+<li>输入命令：<code>vue create vue-cli</code>  </li>
+<li>回车后，我们会看到<code>Please pick a preset</code>，这是让我们选择预设值，前期我们直接选择默认的就好  </li>
+<li>再次回车，创建项目开始了  </li>
+<li>过了一会，创建完成后，我们输入命令<code>cd vue-cli</code>进入这个项目  </li>
+<li>进入后输入命令<code>npm run serve</code>回车开启项目  </li>
+<li>好了，能看懂英文的同学已经看到了两个地址，我们在浏览器中打开这两个地址就可以了</li>
+</ol>
+<h3 id="项目中的文件介绍"><a href="#项目中的文件介绍" class="headerlink" title="项目中的文件介绍"></a>项目中的文件介绍</h3><p>我们在开发工具中打开<code>vue-cli</code>项目，看看里面都有什么文件，分别有什么作用。</p>
+<p>项目目录如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">|-- node_modules		&#x2F;&#x2F; 依赖包，里面有各种项目所需要的包</span><br><span class="line">|-- public				&#x2F;&#x2F; 避开webpack</span><br><span class="line">|   |-- favicon.ico		&#x2F;&#x2F; 小图标</span><br><span class="line">|   |-- index.html		&#x2F;&#x2F; 模板文件，作用是生成项目的入口文件</span><br><span class="line">|-- src					&#x2F;&#x2F; 源码目录，我们写的代码基本会放在这里</span><br><span class="line">|   |-- assets			&#x2F;&#x2F; 公共文件存放处</span><br><span class="line">|   |-- components		&#x2F;&#x2F; vue公共组件</span><br><span class="line">|   |-- App.vue			&#x2F;&#x2F; 页面入口文件</span><br><span class="line">|   |-- main.js			&#x2F;&#x2F; 程序入口文件，加载各种公共组件</span><br><span class="line">|-- .gitignore			&#x2F;&#x2F; 上传github的配置，前期先不管</span><br><span class="line">|-- babel.config.js		&#x2F;&#x2F; babel配置，前期先不管</span><br><span class="line">|-- package-lock.json	&#x2F;&#x2F; 在 &#96;npm install&#96;时候生成一份文件，用以记录当前状态下实际安装的各个npm package的具体来源和版本号</span><br><span class="line">|-- package.json		&#x2F;&#x2F; 包信息，项目所需的包信息都在里面，指向&#96;npm install&#96;下载依赖包</span><br><span class="line">|-- README.md			&#x2F;&#x2F; 项目说明，暂时不管</span><br><span class="line">.</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="看一下-App-vue"><a href="#看一下-App-vue" class="headerlink" title="看一下 App.vue"></a>看一下 App.vue</h3><p>我们先打开看一下<code>App.vue</code>文件，可以发现里面的代码既熟悉又陌生。比如 html 中的内容为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">		&lt;img alt&#x3D;&quot;Vue logo&quot; src&#x3D;&quot;.&#x2F;assets&#x2F;logo.png&quot;&gt;</span><br><span class="line">		&lt;HelloWorld msg&#x3D;&quot;Welcome to Your Vue.js App&quot;&#x2F;&gt;</span><br><span class="line">	&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br></pre></td></tr></table></figure>
+
+<p><code>template</code>标签以前讲过，这里不再讲解。  </p>
+<p>我们再看：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;HelloWorld msg&#x3D;&quot;Welcome to Your Vue.js App&quot;&#x2F;&gt;</span><br></pre></td></tr></table></figure>
+<p>是不是很熟悉？这个就是组件的使用，只是<code>HelloWorld</code>组件被单独放在了<code>components</code>文件夹里面，需要使用<code>import</code>引入，而以前我们都是在同一个文件中使用<code>Vue.component()</code>写的，这里有点小区别。  </p>
+<p>还有：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">export default &#123;</span><br><span class="line">	name: &#39;App&#39;,</span><br><span class="line">	components: &#123;</span><br><span class="line">		HelloWorld</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以前我们是直接使用<code>new Vue()</code>，这里使用的是<code>export default {}</code>，相当于提供一个接口给外界，让其他文件通过<code>import</code>来引入使用。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>当我们创建完项目再打开这些文件来看时，对于初次接触<code>vue-cli</code>的小伙伴来说一定会感觉很陌生，甚至会有很多疑问，这些都是正常的。我们可以打开<code>vue-cli</code>文档看看，慢慢了解，千万不要急躁，也可以在里面先随便尝试下，不要怕出错，如果错了实在不知道怎么改了，就把这个项目删掉，然后重新再创建项目，继续试，实在不行了，大家可以私信我，把疑问的地方提出来，我给大家讲解。</p>
+<p>注意：<code>import/export</code>是ES6引入的新规范，因为浏览器引擎兼容问题，需要在 node中 用 babel 将 ES6语法 编译成 ES5语法，初学者可能有点不太明白，这里大家先这样用就可以了，用多了就明白了。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/11/%E3%80%90032%E3%80%91vue-cli4-0%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="19年的猪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/favicon.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/11/%E3%80%90032%E3%80%91vue-cli4-0%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87/" itemprop="url">【032】vue-cli4.0基础学习：前期准备</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-11T21:30:37+08:00">
+                2020-04-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/vue-cli4-0/" itemprop="url" rel="index">
+                    <span itemprop="name">vue-cli4.0</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="学习准备"><a href="#学习准备" class="headerlink" title="学习准备"></a>学习准备</h3><ol>
+<li>HTML的基础知识，比如基本元素的使用和结构代码的编写  </li>
+<li>CSS的基础知识，比如常见样式的编写和页面的布局  </li>
+<li>Javascript的基础知识，比如常见函数的使用  </li>
+<li>已经看完了前面所发布的文章<code>vue基础学习</code>，<code>vue全局API学习</code>，<code>vue选项</code>  </li>
+</ol>
+<h3 id="关于-vue-cli"><a href="#关于-vue-cli" class="headerlink" title="关于 vue-cli"></a>关于 vue-cli</h3><p>vue-cli 是一个基于 Vue.js 进行快速开发的完整系统，简单理解就是快速构建单页应用的脚手架。如果小伙伴们对 vue 还是不太熟悉，建议再看一遍以前的文章加深一下理解。因为在学 vue-cli 时，我们可能会遇到一些以前从来没有见过的东西，比如<code>webpack</code>，<code>babel</code>，<code>vuex</code>，<code>vue-router</code>等，在刚开始的学习中，我会尽量减少接触这几个，到中期时再慢慢讲解。这个过程可能会有点痛苦，让人产生一些放弃的想法，但是一定要坚持住，坚持完了，那么小伙伴们就可以试着开始实战了。</p>
+<h3 id="安装-vue-cli"><a href="#安装-vue-cli" class="headerlink" title="安装 vue-cli"></a>安装 vue-cli</h3><blockquote>
+<p>虽然目前还有一些公司用的是<code>vue-cli 2.0</code>，不过既然已经有了最新的，那么我们就直接安装最新的吧。</p>
+</blockquote>
+<ol>
+<li>打开cmd命令窗口，输入命令：<code>npm install -g @vue/cli</code>  </li>
+<li>等到执行完后，我们可以使用<code>vue --version</code>或<code>vue -V</code>来检验是否安装成功。<br>如果有显示类似<code>@vue/cli 4.3.1</code>的内容，说明我们已经安装成功了，下面就可以直接创建个项目开搞了。</li>
+</ol>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>有些小伙伴喜欢用<code>yarn</code>安装依赖，其实只要能达到目的，用哪一个都是可以的，选择自己喜欢的就好。要是实在太慢了，大家也可以用<code>cnpm</code>试试，方法挺多，问题不大。关于<code>yarn</code>的用法，有兴趣的小伙伴可以直接在网上搜索，其实跟<code>npm</code>的用法差不多，区别不大。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/09/%E3%80%90031%E3%80%91Vue%E9%80%89%E9%A1%B9%EF%BC%9Akeep-alive%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1570,340 +1894,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/05/%E3%80%90023%E3%80%91Vue%E9%80%89%E9%A1%B9%EF%BC%9A%E6%95%B0%E6%8D%AE%E4%B8%AD%E7%9A%84props/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="19年的猪">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/favicon.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/04/05/%E3%80%90023%E3%80%91Vue%E9%80%89%E9%A1%B9%EF%BC%9A%E6%95%B0%E6%8D%AE%E4%B8%AD%E7%9A%84props/" itemprop="url">【023】Vue选项：数据中的 props</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-05T19:26:00+08:00">
-                2020-04-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Vue2-0/" itemprop="url" rel="index">
-                    <span itemprop="name">Vue2.0</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>在前面的一些章节中已经简单地使用过<code>props</code>，知道它是用来接受来自父组件的数据的。这一章来深入了解一下 props 的更多使用方法。</p>
-<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><blockquote>
-<p>props 可以是数组或对象，用于接收来自父组件的数据。props 可以是简单的数组，或者使用对象作为替代，对象允许配置高级选项，如类型检测、自定义验证和设置默认值。</p>
-</blockquote>
-<h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><table>
-<thead>
-<tr>
-<th>选项</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>type</td>
-<td>数据类型</td>
-</tr>
-<tr>
-<td>default</td>
-<td>默认值</td>
-</tr>
-<tr>
-<td>required</td>
-<td>是否必填</td>
-</tr>
-<tr>
-<td>validator</td>
-<td>自定义验证函数</td>
-</tr>
-</tbody></table>
-<blockquote>
-<p>数据类型可以为<code>String</code>、<code>Number</code>、<code>Boolean</code>、<code>Array</code>、<code>Object</code>、<code>Date</code>、<code>Function</code>、<code>Symbol</code>、任何自定义构造函数、或上述内容组成的数组。如果prop不是给定的类型将会抛出警告。</p>
-</blockquote>
-<p>示例代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;!-- 注意，引入vue.js时需要使用开发环境版本，这样才能在看到报错提示效果 --&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue&#x2F;dist&#x2F;vue.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;input type&#x3D;&quot;number&quot; v-model&#x3D;&quot;msg&quot; &#x2F;&gt;</span><br><span class="line">			&lt;v-demo :age&#x3D;&quot;msg&quot;&gt;&lt;&#x2F;v-demo&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			Vue.component(&#39;v-demo&#39;, &#123;</span><br><span class="line">				props: &#123;</span><br><span class="line">					age: &#123;</span><br><span class="line">						type: [Number, String],</span><br><span class="line">						default: 18,</span><br><span class="line">						required: true,</span><br><span class="line">						validator: function (value) &#123;</span><br><span class="line">							return value &gt;&#x3D; 1;</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;,</span><br><span class="line">				template: &#96;&lt;div&gt;我今年 &#123;&#123; age &#125;&#125; 岁。&lt;&#x2F;div&gt;&#96;</span><br><span class="line">			&#125;)</span><br><span class="line">			var vm &#x3D; new Vue(&#123;</span><br><span class="line">				el: &#39;#app&#39;,</span><br><span class="line">				data() &#123;</span><br><span class="line">					return &#123;</span><br><span class="line">						msg: 1</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;)</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-
-
-<blockquote>
-<p>注意：<br>validator只是验证，这个函数返回值是布尔值，用这个布尔值来判断是否通过，它的返回值是验证作用，而不是修改props，如果想要修改原始数据，那么可以采用其他的方式，比如computed等方式修改，后面会讲到。</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/05/%E3%80%90022%E3%80%91Vue%E9%80%89%E9%A1%B9%EF%BC%9A%E6%95%B0%E6%8D%AE%E4%B8%AD%E7%9A%84data/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="19年的猪">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/favicon.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/04/05/%E3%80%90022%E3%80%91Vue%E9%80%89%E9%A1%B9%EF%BC%9A%E6%95%B0%E6%8D%AE%E4%B8%AD%E7%9A%84data/" itemprop="url">【022】Vue选项：数据中的 data</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-05T16:29:00+08:00">
-                2020-04-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Vue2-0/" itemprop="url" rel="index">
-                    <span itemprop="name">Vue2.0</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><blockquote>
-<p>Vue 实例的数据对象。Vue 将会递归将 data 的属性转换为 getter/setter，从而让 data 的属性能够响应数据变化。对象必须是纯粹的对象 (含有零个或多个的 key/value 对)：浏览器 API 创建的原生对象，原型上的属性会被忽略。大概来说，data 应该只能是数据 - 不推荐观察拥有状态行为的对象。</p>
-</blockquote>
-<p>模版代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">data() &#123;</span><br><span class="line">	return &#123;</span><br><span class="line">		title: &#39;Hello World&#39;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>示例代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;h1&gt;&#123;&#123; title &#125;&#125;&lt;&#x2F;h1&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			var vm &#x3D; new Vue(&#123;</span><br><span class="line">				el: &#39;#app&#39;,</span><br><span class="line">				data() &#123;</span><br><span class="line">					return &#123;</span><br><span class="line">						title: &#39;Hello World&#39;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;)</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>是不是很熟悉？其实在开发过程中，data的使用是不可或缺的，我们以前写的那些例子，基本都是有用到的。</p>
-<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>当一个组件被定义，data 必须声明为返回一个初始数据对象的函数，因为组件可能被用来创建多个实例。如果 data 仍然是一个纯粹的对象，则所有的实例将共享引用同一个数据对象！通过提供 data 函数，每次创建一个新实例后，我们能够调用 data 函数，从而返回初始数据的一个全新副本数据对象。</p>
-<blockquote>
-<p>如果有需要深究的小伙伴，可以返回<a href="[https://www.jianshu.com/p/f2eb1845bb61](https://www.jianshu.com/p/f2eb1845bb61)">vue基础学习：组件基础（一）</a>中的<code>data 必须是一个函数</code>进行了解，里面有两个详细的示例代码进行解释，在这里就不再详解。</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1956,7 +1946,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">39</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1967,7 +1957,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1978,7 +1968,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

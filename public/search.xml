@@ -4,6 +4,56 @@
   
     
     <entry>
+      <title>【033】vue-cli4.0基础学习：创建项目</title>
+      <link href="/2020/04/11/%E3%80%90033%E3%80%91vue-cli4-0%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE/"/>
+      <url>/2020/04/11/%E3%80%90033%E3%80%91vue-cli4-0%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE/</url>
+      
+        <content type="html"><![CDATA[<h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><ol><li>打开cmd命令窗口  </li><li>进入我们需要存放代码的目录  </li><li>输入命令：<code>vue create vue-cli</code>  </li><li>回车后，我们会看到<code>Please pick a preset</code>，这是让我们选择预设值，前期我们直接选择默认的就好  </li><li>再次回车，创建项目开始了  </li><li>过了一会，创建完成后，我们输入命令<code>cd vue-cli</code>进入这个项目  </li><li>进入后输入命令<code>npm run serve</code>回车开启项目  </li><li>好了，能看懂英文的同学已经看到了两个地址，我们在浏览器中打开这两个地址就可以了</li></ol><h3 id="项目中的文件介绍"><a href="#项目中的文件介绍" class="headerlink" title="项目中的文件介绍"></a>项目中的文件介绍</h3><p>我们在开发工具中打开<code>vue-cli</code>项目，看看里面都有什么文件，分别有什么作用。</p><p>项目目录如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">|-- node_modules&#x2F;&#x2F; 依赖包，里面有各种项目所需要的包</span><br><span class="line">|-- public&#x2F;&#x2F; 避开webpack</span><br><span class="line">|   |-- favicon.ico&#x2F;&#x2F; 小图标</span><br><span class="line">|   |-- index.html&#x2F;&#x2F; 模板文件，作用是生成项目的入口文件</span><br><span class="line">|-- src&#x2F;&#x2F; 源码目录，我们写的代码基本会放在这里</span><br><span class="line">|   |-- assets&#x2F;&#x2F; 公共文件存放处</span><br><span class="line">|   |-- components&#x2F;&#x2F; vue公共组件</span><br><span class="line">|   |-- App.vue&#x2F;&#x2F; 页面入口文件</span><br><span class="line">|   |-- main.js&#x2F;&#x2F; 程序入口文件，加载各种公共组件</span><br><span class="line">|-- .gitignore&#x2F;&#x2F; 上传github的配置，前期先不管</span><br><span class="line">|-- babel.config.js&#x2F;&#x2F; babel配置，前期先不管</span><br><span class="line">|-- package-lock.json&#x2F;&#x2F; 在 &#96;npm install&#96;时候生成一份文件，用以记录当前状态下实际安装的各个npm package的具体来源和版本号</span><br><span class="line">|-- package.json&#x2F;&#x2F; 包信息，项目所需的包信息都在里面，指向&#96;npm install&#96;下载依赖包</span><br><span class="line">|-- README.md&#x2F;&#x2F; 项目说明，暂时不管</span><br><span class="line">.</span><br></pre></td></tr></table></figure><h3 id="看一下-App-vue"><a href="#看一下-App-vue" class="headerlink" title="看一下 App.vue"></a>看一下 App.vue</h3><p>我们先打开看一下<code>App.vue</code>文件，可以发现里面的代码既熟悉又陌生。比如 html 中的内容为：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">&lt;img alt&#x3D;&quot;Vue logo&quot; src&#x3D;&quot;.&#x2F;assets&#x2F;logo.png&quot;&gt;</span><br><span class="line">&lt;HelloWorld msg&#x3D;&quot;Welcome to Your Vue.js App&quot;&#x2F;&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br></pre></td></tr></table></figure><p><code>template</code>标签以前讲过，这里不再讲解。  </p><p>我们再看：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;HelloWorld msg&#x3D;&quot;Welcome to Your Vue.js App&quot;&#x2F;&gt;</span><br></pre></td></tr></table></figure><p>是不是很熟悉？这个就是组件的使用，只是<code>HelloWorld</code>组件被单独放在了<code>components</code>文件夹里面，需要使用<code>import</code>引入，而以前我们都是在同一个文件中使用<code>Vue.component()</code>写的，这里有点小区别。  </p><p>还有：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">export default &#123;</span><br><span class="line">name: &#39;App&#39;,</span><br><span class="line">components: &#123;</span><br><span class="line">HelloWorld</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>以前我们是直接使用<code>new Vue()</code>，这里使用的是<code>export default {}</code>，相当于提供一个接口给外界，让其他文件通过<code>import</code>来引入使用。</p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>当我们创建完项目再打开这些文件来看时，对于初次接触<code>vue-cli</code>的小伙伴来说一定会感觉很陌生，甚至会有很多疑问，这些都是正常的。我们可以打开<code>vue-cli</code>文档看看，慢慢了解，千万不要急躁，也可以在里面先随便尝试下，不要怕出错，如果错了实在不知道怎么改了，就把这个项目删掉，然后重新再创建项目，继续试，实在不行了，大家可以私信我，把疑问的地方提出来，我给大家讲解。</p><p>注意：<code>import/export</code>是ES6引入的新规范，因为浏览器引擎兼容问题，需要在 node中 用 babel 将 ES6语法 编译成 ES5语法，初学者可能有点不太明白，这里大家先这样用就可以了，用多了就明白了。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> vue-cli4.0 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vue-cli4.0基础学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>【032】vue-cli4.0基础学习：前期准备</title>
+      <link href="/2020/04/11/%E3%80%90032%E3%80%91vue-cli4-0%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87/"/>
+      <url>/2020/04/11/%E3%80%90032%E3%80%91vue-cli4-0%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87/</url>
+      
+        <content type="html"><![CDATA[<h3 id="学习准备"><a href="#学习准备" class="headerlink" title="学习准备"></a>学习准备</h3><ol><li>HTML的基础知识，比如基本元素的使用和结构代码的编写  </li><li>CSS的基础知识，比如常见样式的编写和页面的布局  </li><li>Javascript的基础知识，比如常见函数的使用  </li><li>已经看完了前面所发布的文章<code>vue基础学习</code>，<code>vue全局API学习</code>，<code>vue选项</code>  </li></ol><h3 id="关于-vue-cli"><a href="#关于-vue-cli" class="headerlink" title="关于 vue-cli"></a>关于 vue-cli</h3><p>vue-cli 是一个基于 Vue.js 进行快速开发的完整系统，简单理解就是快速构建单页应用的脚手架。如果小伙伴们对 vue 还是不太熟悉，建议再看一遍以前的文章加深一下理解。因为在学 vue-cli 时，我们可能会遇到一些以前从来没有见过的东西，比如<code>webpack</code>，<code>babel</code>，<code>vuex</code>，<code>vue-router</code>等，在刚开始的学习中，我会尽量减少接触这几个，到中期时再慢慢讲解。这个过程可能会有点痛苦，让人产生一些放弃的想法，但是一定要坚持住，坚持完了，那么小伙伴们就可以试着开始实战了。</p><h3 id="安装-vue-cli"><a href="#安装-vue-cli" class="headerlink" title="安装 vue-cli"></a>安装 vue-cli</h3><blockquote><p>虽然目前还有一些公司用的是<code>vue-cli 2.0</code>，不过既然已经有了最新的，那么我们就直接安装最新的吧。</p></blockquote><ol><li>打开cmd命令窗口，输入命令：<code>npm install -g @vue/cli</code>  </li><li>等到执行完后，我们可以使用<code>vue --version</code>或<code>vue -V</code>来检验是否安装成功。<br>如果有显示类似<code>@vue/cli 4.3.1</code>的内容，说明我们已经安装成功了，下面就可以直接创建个项目开搞了。</li></ol><h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>有些小伙伴喜欢用<code>yarn</code>安装依赖，其实只要能达到目的，用哪一个都是可以的，选择自己喜欢的就好。要是实在太慢了，大家也可以用<code>cnpm</code>试试，方法挺多，问题不大。关于<code>yarn</code>的用法，有兴趣的小伙伴可以直接在网上搜索，其实跟<code>npm</code>的用法差不多，区别不大。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> vue-cli4.0 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vue-cli4.0基础学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【031】Vue选项：keep-alive的生命周期钩子</title>
       <link href="/2020/04/09/%E3%80%90031%E3%80%91Vue%E9%80%89%E9%A1%B9%EF%BC%9Akeep-alive%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90/"/>
       <url>/2020/04/09/%E3%80%90031%E3%80%91Vue%E9%80%89%E9%A1%B9%EF%BC%9Akeep-alive%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90/</url>

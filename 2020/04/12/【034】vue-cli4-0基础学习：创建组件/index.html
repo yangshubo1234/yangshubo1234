@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="javascript," />
+  <meta name="keywords" content="vue-cli4.0基础学习," />
 
 
 
@@ -79,17 +79,19 @@
 
 
 
-<meta name="description" content="参考文档：Object.defineProperty 一，语法1Object.defineProperty(obj, prop, desc)    参数 说明    obj 需要定义属性的当前对象   prop 当前需要定义的属性名   desc 属性描述符   二，示例12345678910let obj &#x3D; &amp;#123;&amp;#125;;Object.defineProperty(obj">
+<meta name="description" content="看一下 HelloWorld.vue打开 components 文件夹中的 HelloWorld.vue 文件，先简单看一下，可以看到其实和 App.vue 是差不多的。    html 结构内容写在 template里面   js 部分写在script里面，使用export default{}暴露出去   css 部分写在style里面，不过有点区别，就是多了一个scoped    scoped">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Object.defineProperty 的基本使用">
-<meta property="og:url" content="http://yoursite.com/2019/11/08/%E3%80%90801%E3%80%91Object-defineProperty%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:title" content="【034】vue-cli4.0基础学习：创建组件">
+<meta property="og:url" content="http://yoursite.com/2020/04/12/%E3%80%90034%E3%80%91vue-cli4-0%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%88%9B%E5%BB%BA%E7%BB%84%E4%BB%B6/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="参考文档：Object.defineProperty 一，语法1Object.defineProperty(obj, prop, desc)    参数 说明    obj 需要定义属性的当前对象   prop 当前需要定义的属性名   desc 属性描述符   二，示例12345678910let obj &#x3D; &amp;#123;&amp;#125;;Object.defineProperty(obj">
-<meta property="article:published_time" content="2019-11-08T11:36:00.000Z">
-<meta property="article:modified_time" content="2020-04-06T14:23:19.211Z">
+<meta property="og:description" content="看一下 HelloWorld.vue打开 components 文件夹中的 HelloWorld.vue 文件，先简单看一下，可以看到其实和 App.vue 是差不多的。    html 结构内容写在 template里面   js 部分写在script里面，使用export default{}暴露出去   css 部分写在style里面，不过有点区别，就是多了一个scoped    scoped">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/8802304-8d040813b4e25754.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="article:published_time" content="2020-04-12T14:50:04.000Z">
+<meta property="article:modified_time" content="2020-04-12T14:51:01.619Z">
 <meta property="article:author" content="19年的猪">
-<meta property="article:tag" content="javascript">
+<meta property="article:tag" content="vue-cli4.0基础学习">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/8802304-8d040813b4e25754.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -119,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/11/08/【801】Object-defineProperty的基本使用/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/04/12/【034】vue-cli4-0基础学习：创建组件/"/>
 
 
 
 
 
-  <title>Object.defineProperty 的基本使用 | 个人博客</title>
+  <title>【034】vue-cli4.0基础学习：创建组件 | 个人博客</title>
   
 
 
@@ -276,7 +278,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/%E3%80%90801%E3%80%91Object-defineProperty%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/12/%E3%80%90034%E3%80%91vue-cli4-0%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%88%9B%E5%BB%BA%E7%BB%84%E4%BB%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="19年的猪">
@@ -293,7 +295,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Object.defineProperty 的基本使用</h1>
+          <h1 class="post-title" itemprop="name headline">【034】vue-cli4.0基础学习：创建组件</h1>
         
 
         <div class="post-meta">
@@ -305,8 +307,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:36:00+08:00">
-                2019-11-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-12T22:50:04+08:00">
+                2020-04-12
               </time>
             
 
@@ -328,8 +330,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
+                  <a href="/categories/vue-cli4-0/" itemprop="url" rel="index">
+                    <span itemprop="name">vue-cli4.0</span>
                   </a>
                 </span>
 
@@ -365,93 +367,23 @@
       
 
       
-        <p>参考文档：<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty" target="_blank" rel="noopener"><code>Object.defineProperty</code></a></p>
-<h3 id="一，语法"><a href="#一，语法" class="headerlink" title="一，语法"></a>一，语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Object.defineProperty(obj, prop, desc)</span><br></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>obj</td>
-<td>需要定义属性的当前对象</td>
-</tr>
-<tr>
-<td>prop</td>
-<td>当前需要定义的属性名</td>
-</tr>
-<tr>
-<td>desc</td>
-<td>属性描述符</td>
-</tr>
-</tbody></table>
-<h3 id="二，示例"><a href="#二，示例" class="headerlink" title="二，示例"></a>二，示例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">let obj &#x3D; &#123;&#125;;</span><br><span class="line">Object.defineProperty(obj, &#39;a&#39;, &#123;</span><br><span class="line">	value : 20,</span><br><span class="line">	writable : true,</span><br><span class="line">	enumerable : true,</span><br><span class="line">	configurable : true,</span><br><span class="line">	get() &#123;&#125;,</span><br><span class="line">	set() &#123;&#125;</span><br><span class="line">&#125;);</span><br><span class="line">console.log(obj.a);  &#x2F;&#x2F; 20</span><br></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>value</td>
-<td>属性的初始化值</td>
-</tr>
-<tr>
-<td>writeble</td>
-<td>是否可修改值的内容</td>
-</tr>
-<tr>
-<td>enumerable</td>
-<td>是否可枚举，默认为false</td>
-</tr>
-<tr>
-<td>configurable</td>
-<td>是否可删除，默认为false</td>
-</tr>
-<tr>
-<td>get</td>
-<td>在读取属性时调用的函数，默认值为undefined</td>
-</tr>
-<tr>
-<td>set</td>
-<td>在写入属性时调用的函数，默认值为undefined</td>
-</tr>
-</tbody></table>
-<h3 id="三，writeble-属性"><a href="#三，writeble-属性" class="headerlink" title="三，writeble 属性"></a>三，writeble 属性</h3><blockquote>
-<p>当writable属性设置为false时，该属性被称为“不可写”。它不能被重新分配。</p>
-</blockquote>
-<p>默认为 <code>false</code>，如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let obj &#x3D; &#123;&#125;;</span><br><span class="line">obj.a &#x3D; 10;</span><br><span class="line">console.log(obj.a); &#x2F;&#x2F; 10</span><br><span class="line">Object.defineProperty(obj, &#39;b&#39;, &#123;&#125;);</span><br><span class="line">console.log(obj.b); &#x2F;&#x2F; undefined</span><br><span class="line">obj.b &#x3D; 20</span><br><span class="line">console.log(obj.b) &#x2F;&#x2F; undefined</span><br></pre></td></tr></table></figure>
-
-<p>设置为 <code>true</code>，如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let obj &#x3D; &#123;&#125;;</span><br><span class="line">obj.a &#x3D; 10;</span><br><span class="line">console.log(obj.a) &#x2F;&#x2F; 10</span><br><span class="line">Object.defineProperty(obj, &#39;b&#39;, &#123; writable: true &#125;);</span><br><span class="line">console.log(obj.b) &#x2F;&#x2F; undefined</span><br><span class="line">obj.b &#x3D; 20</span><br><span class="line">console.log(obj.b) &#x2F;&#x2F; 20</span><br></pre></td></tr></table></figure>
+        <h3 id="看一下-HelloWorld-vue"><a href="#看一下-HelloWorld-vue" class="headerlink" title="看一下 HelloWorld.vue"></a>看一下 HelloWorld.vue</h3><p>打开 components 文件夹中的 HelloWorld.vue 文件，先简单看一下，可以看到其实和 App.vue 是差不多的。  </p>
+<ol>
+<li>html 结构内容写在 <code>template</code>里面  </li>
+<li>js 部分写在<code>script</code>里面，使用<code>export default{}</code>暴露出去  </li>
+<li>css 部分写在<code>style</code>里面，不过有点区别，就是多了一个<code>scoped</code>  </li>
+</ol>
+<h3 id="scoped-的作用"><a href="#scoped-的作用" class="headerlink" title="scoped 的作用"></a>scoped 的作用</h3><p>scoped 的作用是下面样式的作用域就是当前这个组件，其他组件无法使用这个组件的样式。目前我们只需要知道是这么回事就可以了。</p>
+<h3 id="创建组件"><a href="#创建组件" class="headerlink" title="创建组件"></a>创建组件</h3><p>我们在 components 文件夹中创建一个<code>v-header.vue</code>文件，也就是<code>v-header</code>组件。在网页中，头部一般有导航菜单，比如：首页，产品，新闻，招聘，关于等，那么我们先模仿<code>HelloWorld.vue</code>开始编写代码。  </p>
+<p>全部代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;v-header&quot;&gt;</span><br><span class="line">        &lt;ul class&#x3D;&quot;menus&quot;&gt;</span><br><span class="line">            &lt;li </span><br><span class="line">                class&#x3D;&quot;menu&quot; </span><br><span class="line">                v-for&#x3D;&quot;item in menus&quot; </span><br><span class="line">                :key&#x3D;&quot;item.id&quot;</span><br><span class="line">            &gt;&#123;&#123; item.name &#125;&#125;&lt;&#x2F;li&gt;</span><br><span class="line">        &lt;&#x2F;ul&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">    name: &#39;v-header&#39;,</span><br><span class="line">    desc: &#39;头部信息&#39;,</span><br><span class="line">    data() &#123;</span><br><span class="line">        return &#123;</span><br><span class="line">            menus: [</span><br><span class="line">                &#123; id: 1, name: &#39;首页&#39; &#125;,</span><br><span class="line">                &#123; id: 2, name: &#39;产品&#39; &#125;,</span><br><span class="line">                &#123; id: 3, name: &#39;新闻&#39; &#125;,</span><br><span class="line">                &#123; id: 4, name: &#39;招聘&#39; &#125;,</span><br><span class="line">                &#123; id: 5, name: &#39;关于&#39; &#125;,</span><br><span class="line">            ]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">.v-header &#123;</span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 70px;</span><br><span class="line">    background-color: #fff;</span><br><span class="line">    box-shadow: 3px 3px 3px #ddd;</span><br><span class="line">    color: #333;</span><br><span class="line">&#125;</span><br><span class="line">.menus &#123;</span><br><span class="line">    list-style: none;</span><br><span class="line">    padding: 0 20px;</span><br><span class="line">&#125;</span><br><span class="line">.menu &#123;</span><br><span class="line">    float: left;</span><br><span class="line">    padding: 0 20px;</span><br><span class="line">    height: 70px;</span><br><span class="line">    line-height: 80px;</span><br><span class="line">    transition: .3s;</span><br><span class="line">&#125;</span><br><span class="line">.menu:hover &#123;</span><br><span class="line">    cursor: pointer;</span><br><span class="line">    color: #0051ff;</span><br><span class="line">    background-color: #efefef;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
 
 
-<h3 id="四，enumerable-属性"><a href="#四，enumerable-属性" class="headerlink" title="四，enumerable 属性"></a>四，enumerable 属性</h3><p>默认为 <code>false</code></p>
-<blockquote>
-<p>enumerable 定义了对象的属性是否可以在 for…in 循环和 Object.keys() 中被枚举。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">let obj &#x3D; &#123;&#125;;</span><br><span class="line">Object.defineProperty(obj, &#39;a&#39;, &#123; enumerable: false &#125;);</span><br><span class="line">Object.defineProperty(obj, &#39;b&#39;, &#123; enumerable: true &#125;);</span><br><span class="line">Object.defineProperty(obj, &#39;c&#39;, &#123;&#125;);</span><br><span class="line">obj.d &#x3D; null;  &#x2F;&#x2F; 直接赋值时, enumerable 为 true</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; ------ for...in ------</span><br><span class="line">let arr &#x3D; [];</span><br><span class="line">for (let i in obj) &#123;</span><br><span class="line">	arr.push(i);</span><br><span class="line">&#125;</span><br><span class="line">console.log(arr);  &#x2F;&#x2F; [&quot;b&quot;, &quot;d&quot;]</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; ------ Object.keys() ------</span><br><span class="line">let keys &#x3D; Object.keys(obj);</span><br><span class="line">console.log(keys);  &#x2F;&#x2F; [&quot;b&quot;, &quot;d&quot;]</span><br></pre></td></tr></table></figure>
+<h3 id="引入组件"><a href="#引入组件" class="headerlink" title="引入组件"></a>引入组件</h3><p>上一章说过，App.vue 是页面入口文件，所以我们需要修改这个文件，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">        &lt;v-header &#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import vHeader from &#39;.&#x2F;components&#x2F;v-header.vue&#39;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">    name: &#39;App&#39;,</span><br><span class="line">    components: &#123;</span><br><span class="line">        vHeader</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">* &#123;</span><br><span class="line">    padding: 0;</span><br><span class="line">    margin: 0;</span><br><span class="line">&#125;</span><br><span class="line">#app &#123;</span><br><span class="line">    font-family: Avenir, Helvetica, Arial, sans-serif;</span><br><span class="line">    -webkit-font-smoothing: antialiased;</span><br><span class="line">    -moz-osx-font-smoothing: grayscale;</span><br><span class="line">    color: #2c3e50;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
 
-<h3 id="五，configurable-属性"><a href="#五，configurable-属性" class="headerlink" title="五，configurable 属性"></a>五，configurable 属性</h3><blockquote>
-<p>configurable 特性表示对象的属性是否可以被删除，以及除value和writable特性外的其他特性是否可以被修改。</p>
-</blockquote>
-<p>默认为 <code>false</code>，如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">let obj &#x3D; &#123;&#125;;</span><br><span class="line">Object.defineProperty(obj, &#39;a&#39;, &#123;</span><br><span class="line">	configurable: false,</span><br><span class="line">	get() &#123;</span><br><span class="line">		return 123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br><span class="line">console.log(obj.a);  &#x2F;&#x2F; 123</span><br><span class="line">delete obj.a;</span><br><span class="line">console.log(obj.a);  &#x2F;&#x2F; 123</span><br></pre></td></tr></table></figure>
-
-<p>设置为 <code>true</code>，如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">let obj &#x3D; &#123;&#125;;</span><br><span class="line">Object.defineProperty(obj, &#39;a&#39;, &#123;</span><br><span class="line">	configurable: true,</span><br><span class="line">	get() &#123;</span><br><span class="line">		return 123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br><span class="line">console.log(obj.a);  &#x2F;&#x2F; 123</span><br><span class="line">delete obj.a;</span><br><span class="line">console.log(obj.a);  &#x2F;&#x2F; undefined</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="六，一般的-Setters-和-Getters"><a href="#六，一般的-Setters-和-Getters" class="headerlink" title="六，一般的 Setters 和 Getters"></a>六，一般的 Setters 和 Getters</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function fn (args) &#123;</span><br><span class="line">	Object.defineProperty(this, &#39;myproperty&#39;, &#123;</span><br><span class="line">		get() &#123;</span><br><span class="line">			return args;</span><br><span class="line">		&#125;,</span><br><span class="line">		set(res) &#123;</span><br><span class="line">			this.val &#x3D; res;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line">let _fn &#x3D; new fn(&#39;get&#39;);</span><br><span class="line">let myproperty &#x3D; _fn.myproperty;</span><br><span class="line">console.log(myproperty);  &#x2F;&#x2F; get</span><br><span class="line">_fn.myproperty &#x3D; &#39;set&#39;;</span><br><span class="line">let val &#x3D; _fn.val;</span><br><span class="line">console.log(val);  &#x2F;&#x2F; set</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="七，添加多个属性和默认值"><a href="#七，添加多个属性和默认值" class="headerlink" title="七，添加多个属性和默认值"></a>七，添加多个属性和默认值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">let obj &#x3D; &#123;&#125;;</span><br><span class="line">	</span><br><span class="line">obj.a &#x3D; 1;</span><br><span class="line">&#x2F;&#x2F; 等同于</span><br><span class="line">Object.defineProperty(obj, &#39;a&#39;, &#123;</span><br><span class="line">	value: 1,</span><br><span class="line">	writable: true,</span><br><span class="line">	enumerable: true,</span><br><span class="line">	configurable: true</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">Object.defineProperty(obj, &#39;b&#39;, &#123; value: 2 &#125;);</span><br><span class="line">&#x2F;&#x2F; 等同于</span><br><span class="line">Object.defineProperty(obj, &#39;a&#39;, &#123;</span><br><span class="line">	value: 1,</span><br><span class="line">	writable: false,</span><br><span class="line">	enumerable: false,</span><br><span class="line">	configurable: false</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
+<h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><p>完成这一系列操作后，来看一下效果怎么样，如图：<br><img src="https://upload-images.jianshu.io/upload_images/8802304-8d040813b4e25754.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="效果图.png"></p>
+<p>如果大家的效果和效果图一样，那么恭喜大家，成功创建了一个组件。相信大家此刻一定有想继续做下去的冲动，先不要急，大家再好好看一下这个项目的其他文件，冷静一下，我们需要保持清醒。</p>
 
       
     </div>
@@ -469,7 +401,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/javascript/" rel="tag"># javascript</a>
+            <a href="/tags/vue-cli4-0%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/" rel="tag"># vue-cli4.0基础学习</a>
           
         </div>
       
@@ -482,15 +414,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2020/04/11/%E3%80%90033%E3%80%91vue-cli4-0%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE/" rel="next" title="【033】vue-cli4.0基础学习：创建项目">
+                <i class="fa fa-chevron-left"></i> 【033】vue-cli4.0基础学习：创建项目
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/11/25/%E3%80%90802%E3%80%91html%E6%96%87%E6%9C%AC%E5%92%8C%E5%85%83%E7%B4%A0%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD/" rel="prev" title="html文本和元素垂直居中">
-                html文本和元素垂直居中 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -637,7 +569,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一，语法"><span class="nav-number">1.</span> <span class="nav-text">一，语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二，示例"><span class="nav-number">2.</span> <span class="nav-text">二，示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三，writeble-属性"><span class="nav-number">3.</span> <span class="nav-text">三，writeble 属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四，enumerable-属性"><span class="nav-number">4.</span> <span class="nav-text">四，enumerable 属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五，configurable-属性"><span class="nav-number">5.</span> <span class="nav-text">五，configurable 属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#六，一般的-Setters-和-Getters"><span class="nav-number">6.</span> <span class="nav-text">六，一般的 Setters 和 Getters</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#七，添加多个属性和默认值"><span class="nav-number">7.</span> <span class="nav-text">七，添加多个属性和默认值</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#看一下-HelloWorld-vue"><span class="nav-number">1.</span> <span class="nav-text">看一下 HelloWorld.vue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scoped-的作用"><span class="nav-number">2.</span> <span class="nav-text">scoped 的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建组件"><span class="nav-number">3.</span> <span class="nav-text">创建组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引入组件"><span class="nav-number">4.</span> <span class="nav-text">引入组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#效果"><span class="nav-number">5.</span> <span class="nav-text">效果</span></a></li></ol></div>
             
 
           </div>

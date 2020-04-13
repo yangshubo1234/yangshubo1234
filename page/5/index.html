@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Vue选项," />
+  <meta name="keywords" content="19年的猪, vue基础学习, vue全局API学习, vue选项" />
 
 
 
@@ -79,16 +79,11 @@
 
 
 
-<meta name="description" content="关于 keep-alive 组件 在开发时，经常会出现页签之类的组件，当在这些组件之间切换的时候，你有时会想保持这些组件的状态，以避免反复重渲染导致的性能问题。为了解决这个问题，我们可以用一个&lt;keep-alive&gt;元素将其动态组件包裹起来，从而在它们第一次被创建的时候缓存下来。 &lt;keep-alive&gt;包裹动态组件时，会缓存不活动的组件实例，而不是销毁它们。&lt;kee">
-<meta property="og:type" content="article">
-<meta property="og:title" content="【031】Vue选项：keep-alive的生命周期钩子">
-<meta property="og:url" content="http://yoursite.com/2020/04/09/%E3%80%90031%E3%80%91Vue%E9%80%89%E9%A1%B9%EF%BC%9Akeep-alive%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="个人博客">
+<meta property="og:url" content="http://yoursite.com/page/5/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="关于 keep-alive 组件 在开发时，经常会出现页签之类的组件，当在这些组件之间切换的时候，你有时会想保持这些组件的状态，以避免反复重渲染导致的性能问题。为了解决这个问题，我们可以用一个&lt;keep-alive&gt;元素将其动态组件包裹起来，从而在它们第一次被创建的时候缓存下来。 &lt;keep-alive&gt;包裹动态组件时，会缓存不活动的组件实例，而不是销毁它们。&lt;kee">
-<meta property="article:published_time" content="2020-04-09T08:02:09.000Z">
-<meta property="article:modified_time" content="2020-04-09T08:03:04.393Z">
 <meta property="article:author" content="19年的猪">
-<meta property="article:tag" content="Vue选项">
 <meta name="twitter:card" content="summary">
 
 
@@ -119,13 +114,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/04/09/【031】Vue选项：keep-alive的生命周期钩子/"/>
+  <link rel="canonical" href="http://yoursite.com/page/5/"/>
 
 
 
 
 
-  <title>【031】Vue选项：keep-alive的生命周期钩子 | 个人博客</title>
+  <title>个人博客</title>
   
 
 
@@ -144,7 +139,8 @@
     
   
 
-  <div class="container sidebar-position-right page-post-detail">
+  <div class="container sidebar-position-right 
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -261,9 +257,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -276,7 +272,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/09/%E3%80%90031%E3%80%91Vue%E9%80%89%E9%A1%B9%EF%BC%9Akeep-alive%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/%E3%80%90801%E3%80%91Object-defineProperty%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="19年的猪">
@@ -293,7 +289,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">【031】Vue选项：keep-alive的生命周期钩子</h1>
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/08/%E3%80%90801%E3%80%91Object-defineProperty%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" itemprop="url">Object.defineProperty 的基本使用</a></h1>
         
 
         <div class="post-meta">
@@ -305,8 +303,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-09T16:02:09+08:00">
-                2020-04-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:36:00+08:00">
+                2019-11-08
               </time>
             
 
@@ -328,8 +326,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Vue2-0/" itemprop="url" rel="index">
-                    <span itemprop="name">Vue2.0</span>
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
                   </a>
                 </span>
 
@@ -365,59 +363,98 @@
       
 
       
-        <h3 id="关于-keep-alive-组件"><a href="#关于-keep-alive-组件" class="headerlink" title="关于 keep-alive 组件"></a>关于 keep-alive 组件</h3><blockquote>
-<p>在开发时，经常会出现页签之类的组件，当在这些组件之间切换的时候，你有时会想保持这些组件的状态，以避免反复重渲染导致的性能问题。为了解决这个问题，我们可以用一个<code>&lt;keep-alive&gt;</code>元素将其动态组件包裹起来，从而在它们第一次被创建的时候缓存下来。</p>
-<p><code>&lt;keep-alive&gt;</code>包裹动态组件时，会缓存不活动的组件实例，而不是销毁它们。<code>&lt;keep-alive&gt;</code>是一个抽象组件：它自身不会渲染一个<code>DOM</code>元素，也不会出现在组件的父组件链中。</p>
-</blockquote>
-<h3 id="属性介绍"><a href="#属性介绍" class="headerlink" title="属性介绍"></a>属性介绍</h3><blockquote>
-<p>钩子在服务器端渲染期间不被调用。</p>
-<p>当组件在<code>&lt;keep-alive&gt;</code>内被切换，它的 activated 和 deactivated 这两个生命周期钩子函数将会被对应执行。</p>
-</blockquote>
+        
+          
+            <p>参考文档：<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty" target="_blank" rel="noopener"><code>Object.defineProperty</code></a></p>
+<h3 id="一，语法"><a href="#一，语法" class="headerlink" title="一，语法"></a>一，语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Object.defineProperty(obj, prop, desc)</span><br></pre></td></tr></table></figure>
 <table>
 <thead>
 <tr>
-<th>属性</th>
+<th>参数</th>
 <th>说明</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>include</td>
-<td>字符串或正则表达式。只有名称匹配的组件会被缓存。</td>
+<td>obj</td>
+<td>需要定义属性的当前对象</td>
 </tr>
 <tr>
-<td>exclude</td>
-<td>字符串或正则表达式。任何名称匹配的组件都不会被缓存。</td>
+<td>prop</td>
+<td>当前需要定义的属性名</td>
 </tr>
 <tr>
-<td>max</td>
-<td>数字。最多可以缓存多少组件实例。</td>
+<td>desc</td>
+<td>属性描述符</td>
 </tr>
 </tbody></table>
-<p>模版代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;keep-alive :include&#x3D;&quot;include&quot; :exclude&#x3D;&quot;exclude&quot; :max&#x3D;&quot;max&quot;&gt;</span><br><span class="line">	&lt;component :is&#x3D;&quot;currentTab&quot;&gt;&lt;&#x2F;component&gt;</span><br><span class="line">&lt;&#x2F;keep-alive&gt;</span><br></pre></td></tr></table></figure>
-
-<p>属性的使用方法后期遇到了再讲解，在本章中主要看下生命周期钩子。</p>
-<h3 id="生命周期钩子函数的用法"><a href="#生命周期钩子函数的用法" class="headerlink" title="生命周期钩子函数的用法"></a>生命周期钩子函数的用法</h3><table>
+<h3 id="二，示例"><a href="#二，示例" class="headerlink" title="二，示例"></a>二，示例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">let obj &#x3D; &#123;&#125;;</span><br><span class="line">Object.defineProperty(obj, &#39;a&#39;, &#123;</span><br><span class="line">	value : 20,</span><br><span class="line">	writable : true,</span><br><span class="line">	enumerable : true,</span><br><span class="line">	configurable : true,</span><br><span class="line">	get() &#123;&#125;,</span><br><span class="line">	set() &#123;&#125;</span><br><span class="line">&#125;);</span><br><span class="line">console.log(obj.a);  &#x2F;&#x2F; 20</span><br></pre></td></tr></table></figure>
+<table>
 <thead>
 <tr>
-<th>周期</th>
+<th>参数</th>
 <th>说明</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>activated</td>
-<td>被 keep-alive 缓存的组件激活时调用</td>
+<td>value</td>
+<td>属性的初始化值</td>
 </tr>
 <tr>
-<td>deactivated</td>
-<td>被 keep-alive 缓存的组件停用时调用。</td>
+<td>writeble</td>
+<td>是否可修改值的内容</td>
+</tr>
+<tr>
+<td>enumerable</td>
+<td>是否可枚举，默认为false</td>
+</tr>
+<tr>
+<td>configurable</td>
+<td>是否可删除，默认为false</td>
+</tr>
+<tr>
+<td>get</td>
+<td>在读取属性时调用的函数，默认值为undefined</td>
+</tr>
+<tr>
+<td>set</td>
+<td>在写入属性时调用的函数，默认值为undefined</td>
 </tr>
 </tbody></table>
-<p>示例代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;style&gt;</span><br><span class="line">			.btn &#123;</span><br><span class="line">				padding: 5px 10px;</span><br><span class="line">				border-top-left-radius: 3px;</span><br><span class="line">				border-top-right-radius: 3px;</span><br><span class="line">				border: 1px solid #ddd;</span><br><span class="line">				cursor: pointer;</span><br><span class="line">				background-color: #fff;</span><br><span class="line">				margin-bottom: -1px;</span><br><span class="line">				margin-right: -1px;</span><br><span class="line">			&#125;</span><br><span class="line">			.currentTab,</span><br><span class="line">			.btn:hover &#123;</span><br><span class="line">				background-color: #ddd;</span><br><span class="line">			&#125;</span><br><span class="line">			.btn:focus&#123;</span><br><span class="line">				outline: 0;</span><br><span class="line">			&#125;</span><br><span class="line">			.component &#123;</span><br><span class="line">				padding: 10px 15px;</span><br><span class="line">				border: 1px solid #ddd;</span><br><span class="line">				width: 300px;</span><br><span class="line">			&#125;</span><br><span class="line">		&lt;&#x2F;style&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;div class&#x3D;&quot;btns&quot;&gt;</span><br><span class="line">				&lt;button </span><br><span class="line">					class&#x3D;&quot;btn&quot;</span><br><span class="line">					:class&#x3D;&quot;currentTab &#x3D;&#x3D;&#x3D; item ? &#39;currentTab&#39; : &#39;&#39;&quot;</span><br><span class="line">					type&#x3D;&quot;button&quot;</span><br><span class="line">					v-for&#x3D;&quot;(item, index) in tabs&quot;</span><br><span class="line">					:key&#x3D;&quot;index&quot;</span><br><span class="line">					@click&#x3D;&quot;currentTab &#x3D; item&quot;</span><br><span class="line">				&gt;&#123;&#123; item &#125;&#125;&lt;&#x2F;button&gt;</span><br><span class="line">			&lt;&#x2F;div&gt;</span><br><span class="line">			&lt;keep-alive&gt;</span><br><span class="line">				&lt;component :is&#x3D;&quot;currentTab&quot;&gt;&lt;&#x2F;component&gt;</span><br><span class="line">			&lt;&#x2F;keep-alive&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			Vue.component(&#39;tab01&#39;, &#123;</span><br><span class="line">				template: &#96;&lt;div class&#x3D;&quot;component&quot;&gt;tab01&lt;div&gt;&#96;,</span><br><span class="line">				activated() &#123;</span><br><span class="line">					alert(&#39;activated &#x3D; tab01&#39;);</span><br><span class="line">				&#125;,</span><br><span class="line">				deactivated() &#123;</span><br><span class="line">					alert(&#39;deactivated &#x3D; tab01&#39;);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;)</span><br><span class="line">			Vue.component(&#39;tab02&#39;, &#123;</span><br><span class="line">				template: &#96;&lt;div class&#x3D;&quot;component&quot;&gt;tab02&lt;div&gt;&#96;,</span><br><span class="line">				activated() &#123;</span><br><span class="line">					alert(&#39;activated &#x3D; tab01&#39;);</span><br><span class="line">				&#125;,</span><br><span class="line">				deactivated() &#123;</span><br><span class="line">					alert(&#39;deactivated &#x3D; tab01&#39;);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;)</span><br><span class="line">			var vm &#x3D; new Vue(&#123;</span><br><span class="line">				el: &#39;#app&#39;,</span><br><span class="line">				data() &#123;</span><br><span class="line">					return &#123;</span><br><span class="line">						tabs: [&#39;tab01&#39;, &#39;tab02&#39;],</span><br><span class="line">						currentTab: &#39;tab01&#39;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;)</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="三，writeble-属性"><a href="#三，writeble-属性" class="headerlink" title="三，writeble 属性"></a>三，writeble 属性</h3><blockquote>
+<p>当writable属性设置为false时，该属性被称为“不可写”。它不能被重新分配。</p>
+</blockquote>
+<p>默认为 <code>false</code>，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let obj &#x3D; &#123;&#125;;</span><br><span class="line">obj.a &#x3D; 10;</span><br><span class="line">console.log(obj.a); &#x2F;&#x2F; 10</span><br><span class="line">Object.defineProperty(obj, &#39;b&#39;, &#123;&#125;);</span><br><span class="line">console.log(obj.b); &#x2F;&#x2F; undefined</span><br><span class="line">obj.b &#x3D; 20</span><br><span class="line">console.log(obj.b) &#x2F;&#x2F; undefined</span><br></pre></td></tr></table></figure>
 
-<p>运行上面的代码，过程就不再一一讲解了，都是一样的套路。</p>
+<p>设置为 <code>true</code>，如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let obj &#x3D; &#123;&#125;;</span><br><span class="line">obj.a &#x3D; 10;</span><br><span class="line">console.log(obj.a) &#x2F;&#x2F; 10</span><br><span class="line">Object.defineProperty(obj, &#39;b&#39;, &#123; writable: true &#125;);</span><br><span class="line">console.log(obj.b) &#x2F;&#x2F; undefined</span><br><span class="line">obj.b &#x3D; 20</span><br><span class="line">console.log(obj.b) &#x2F;&#x2F; 20</span><br></pre></td></tr></table></figure>
 
+
+<h3 id="四，enumerable-属性"><a href="#四，enumerable-属性" class="headerlink" title="四，enumerable 属性"></a>四，enumerable 属性</h3><p>默认为 <code>false</code></p>
+<blockquote>
+<p>enumerable 定义了对象的属性是否可以在 for…in 循环和 Object.keys() 中被枚举。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">let obj &#x3D; &#123;&#125;;</span><br><span class="line">Object.defineProperty(obj, &#39;a&#39;, &#123; enumerable: false &#125;);</span><br><span class="line">Object.defineProperty(obj, &#39;b&#39;, &#123; enumerable: true &#125;);</span><br><span class="line">Object.defineProperty(obj, &#39;c&#39;, &#123;&#125;);</span><br><span class="line">obj.d &#x3D; null;  &#x2F;&#x2F; 直接赋值时, enumerable 为 true</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; ------ for...in ------</span><br><span class="line">let arr &#x3D; [];</span><br><span class="line">for (let i in obj) &#123;</span><br><span class="line">	arr.push(i);</span><br><span class="line">&#125;</span><br><span class="line">console.log(arr);  &#x2F;&#x2F; [&quot;b&quot;, &quot;d&quot;]</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; ------ Object.keys() ------</span><br><span class="line">let keys &#x3D; Object.keys(obj);</span><br><span class="line">console.log(keys);  &#x2F;&#x2F; [&quot;b&quot;, &quot;d&quot;]</span><br></pre></td></tr></table></figure>
+
+<h3 id="五，configurable-属性"><a href="#五，configurable-属性" class="headerlink" title="五，configurable 属性"></a>五，configurable 属性</h3><blockquote>
+<p>configurable 特性表示对象的属性是否可以被删除，以及除value和writable特性外的其他特性是否可以被修改。</p>
+</blockquote>
+<p>默认为 <code>false</code>，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">let obj &#x3D; &#123;&#125;;</span><br><span class="line">Object.defineProperty(obj, &#39;a&#39;, &#123;</span><br><span class="line">	configurable: false,</span><br><span class="line">	get() &#123;</span><br><span class="line">		return 123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br><span class="line">console.log(obj.a);  &#x2F;&#x2F; 123</span><br><span class="line">delete obj.a;</span><br><span class="line">console.log(obj.a);  &#x2F;&#x2F; 123</span><br></pre></td></tr></table></figure>
+
+<p>设置为 <code>true</code>，如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">let obj &#x3D; &#123;&#125;;</span><br><span class="line">Object.defineProperty(obj, &#39;a&#39;, &#123;</span><br><span class="line">	configurable: true,</span><br><span class="line">	get() &#123;</span><br><span class="line">		return 123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br><span class="line">console.log(obj.a);  &#x2F;&#x2F; 123</span><br><span class="line">delete obj.a;</span><br><span class="line">console.log(obj.a);  &#x2F;&#x2F; undefined</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="六，一般的-Setters-和-Getters"><a href="#六，一般的-Setters-和-Getters" class="headerlink" title="六，一般的 Setters 和 Getters"></a>六，一般的 Setters 和 Getters</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function fn (args) &#123;</span><br><span class="line">	Object.defineProperty(this, &#39;myproperty&#39;, &#123;</span><br><span class="line">		get() &#123;</span><br><span class="line">			return args;</span><br><span class="line">		&#125;,</span><br><span class="line">		set(res) &#123;</span><br><span class="line">			this.val &#x3D; res;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line">let _fn &#x3D; new fn(&#39;get&#39;);</span><br><span class="line">let myproperty &#x3D; _fn.myproperty;</span><br><span class="line">console.log(myproperty);  &#x2F;&#x2F; get</span><br><span class="line">_fn.myproperty &#x3D; &#39;set&#39;;</span><br><span class="line">let val &#x3D; _fn.val;</span><br><span class="line">console.log(val);  &#x2F;&#x2F; set</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="七，添加多个属性和默认值"><a href="#七，添加多个属性和默认值" class="headerlink" title="七，添加多个属性和默认值"></a>七，添加多个属性和默认值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">let obj &#x3D; &#123;&#125;;</span><br><span class="line">	</span><br><span class="line">obj.a &#x3D; 1;</span><br><span class="line">&#x2F;&#x2F; 等同于</span><br><span class="line">Object.defineProperty(obj, &#39;a&#39;, &#123;</span><br><span class="line">	value: 1,</span><br><span class="line">	writable: true,</span><br><span class="line">	enumerable: true,</span><br><span class="line">	configurable: true</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">Object.defineProperty(obj, &#39;b&#39;, &#123; value: 2 &#125;);</span><br><span class="line">&#x2F;&#x2F; 等同于</span><br><span class="line">Object.defineProperty(obj, &#39;a&#39;, &#123;</span><br><span class="line">	value: 1,</span><br><span class="line">	writable: false,</span><br><span class="line">	enumerable: false,</span><br><span class="line">	configurable: false</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+          
+        
       
     </div>
     
@@ -432,40 +469,14 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/Vue%E9%80%89%E9%A1%B9/" rel="tag"># Vue选项</a>
-          
-        </div>
+
+      
+
       
 
       
       
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2020/04/09/%E3%80%90030%E3%80%91Vue%E9%80%89%E9%A1%B9%EF%BC%9Avue%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90/" rel="next" title="【030】Vue选项：vue的生命周期钩子">
-                <i class="fa fa-chevron-left"></i> 【030】Vue选项：vue的生命周期钩子
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/04/11/%E3%80%90032%E3%80%91vue-cli4-0%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87/" rel="prev" title="【032】vue-cli4.0基础学习：前期准备">
-                【032】vue-cli4.0基础学习：前期准备 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -475,22 +486,19 @@
   </article>
 
 
+    
+  </section>
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="accessibility.prev_page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+  </nav>
 
           </div>
           
 
 
           
-
-  
-
-
 
         </div>
         
@@ -511,17 +519,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -596,22 +595,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#关于-keep-alive-组件"><span class="nav-number">1.</span> <span class="nav-text">关于 keep-alive 组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#属性介绍"><span class="nav-number">2.</span> <span class="nav-text">属性介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生命周期钩子函数的用法"><span class="nav-number">3.</span> <span class="nav-text">生命周期钩子函数的用法</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -754,10 +737,6 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
 
   
 

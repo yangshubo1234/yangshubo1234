@@ -272,6 +272,164 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/02/%E3%80%90016%E3%80%91Vue%E5%85%A8%E5%B1%80API%E5%AD%A6%E4%B9%A0%EF%BC%9AVue-set/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="19年的猪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/favicon.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/02/%E3%80%90016%E3%80%91Vue%E5%85%A8%E5%B1%80API%E5%AD%A6%E4%B9%A0%EF%BC%9AVue-set/" itemprop="url">【017】Vue全局API学习：Vue.set</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-02T16:43:00+08:00">
+                2020-04-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue2-0/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue2.0</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="先来看一个例子"><a href="#先来看一个例子" class="headerlink" title="先来看一个例子"></a>先来看一个例子</h3><p>示例代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;div&gt;性别：&#123;&#123; obj.sex || &#39;未知&#39; &#125;&#125;&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			var vm &#x3D; new Vue(&#123;</span><br><span class="line">				el: &#39;#app&#39;,</span><br><span class="line">				data() &#123;</span><br><span class="line">					return &#123;</span><br><span class="line">						obj: &#123;&#125;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;);</span><br><span class="line">			setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">				vm.obj.sex &#x3D; &#39;男&#39;;</span><br><span class="line">			&#125;, 2000)</span><br><span class="line">			</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>让我们先来在浏览器上运行一下上面的代码，页面显示内容<code>性别：未知</code>，过了两秒后，新增一个性别<code>sex</code>的属性，并赋值<code>男</code>，但是我们发现页面显示的内容并没有如我们所预期的那样改变。</p>
+<blockquote>
+<p>结论：Vue 无法探测普通的新增属性。</p>
+</blockquote>
+<h3 id="Vue-set-用法"><a href="#Vue-set-用法" class="headerlink" title="Vue.set 用法"></a>Vue.set 用法</h3><blockquote>
+<p>向响应式对象中添加一个属性，并确保这个新属性同样是响应式的，且触发视图更新。</p>
+</blockquote>
+<p>模版代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 对应参数：  </span><br><span class="line">&#x2F;&#x2F; vm.obj	&#123;Object | Array&#125;	target</span><br><span class="line">&#x2F;&#x2F; &#39;sex&#39;	&#123;string | number&#125;	propertyName&#x2F;index</span><br><span class="line">&#x2F;&#x2F; &#39;男&#39;		&#123;any&#125;				value</span><br><span class="line">Vue.set(vm.obj, &#39;sex&#39;, &#39;男&#39;);</span><br></pre></td></tr></table></figure>
+
+<p>示例代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;div&gt;性别：&#123;&#123; obj.sex || &#39;未知&#39; &#125;&#125;&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			var vm &#x3D; new Vue(&#123;</span><br><span class="line">				el: &#39;#app&#39;,</span><br><span class="line">				data() &#123;</span><br><span class="line">					return &#123;</span><br><span class="line">						obj: &#123;&#125;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;);</span><br><span class="line">			setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">				Vue.set(vm.obj, &#39;sex&#39;, &#39;男&#39;);</span><br><span class="line">			&#125;, 2000)</span><br><span class="line">			</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在浏览器中运行上面的代码，刚开始页面显示内容为<code>性别：未知</code>，过了两秒后，页面显示内容为<code>性别：男</code>，内容改变，目的达到。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/01/%E3%80%90015%E3%80%91Vue%E5%85%A8%E5%B1%80API%E5%AD%A6%E4%B9%A0%EF%BC%9AVue-nextTick/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1779,182 +1937,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/27/%E3%80%90006%E3%80%91Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9Av-model%E7%9A%84%E4%BD%BF%E7%94%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="19年的猪">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/favicon.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/27/%E3%80%90006%E3%80%91Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9Av-model%E7%9A%84%E4%BD%BF%E7%94%A8/" itemprop="url">【006】Vue基础学习：v-model的使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-27T16:46:00+08:00">
-                2020-03-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Vue2-0/" itemprop="url" rel="index">
-                    <span itemprop="name">Vue2.0</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="基础用法"><a href="#基础用法" class="headerlink" title="基础用法"></a>基础用法</h3><p>模版写法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input v-model&#x3D;&quot;message&quot;&gt;</span><br></pre></td></tr></table></figure>
-
-<p>完整代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;v-model&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;input v-model&#x3D;&quot;message&quot; &#x2F;&gt;</span><br><span class="line">			&lt;div&gt;&#123;&#123; message &#125;&#125;&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			var vm &#x3D; new Vue(&#123;</span><br><span class="line">				el: &#39;#app&#39;,</span><br><span class="line">				data() &#123;</span><br><span class="line">					return &#123;</span><br><span class="line">						message: &#39;123&#39;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;)</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>在浏览器运行此文件后，在文本框输入内容时可以看到文本框下面的内容也在跟着变化，这是因为v-model 指令在表单<code>&lt;input&gt;</code>、<code>&lt;textarea&gt;</code>及<code>&lt;select&gt;</code>元素上创建双向数据绑定，它会根据控件类型自动选取正确的方法来更新元素。</p>
-<p>注意：<br>v-model 会忽略所有表单元素的 value、checked、selected attribute 的初始值而总是将 Vue 实例的数据作为数据来源。你应该通过 JavaScript 在组件的 data 选项中声明初始值。</p>
-<h3 id="常见修饰符"><a href="#常见修饰符" class="headerlink" title="常见修饰符"></a>常见修饰符</h3><table>
-<thead>
-<tr>
-<th>修饰符</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>.lazy</td>
-<td>取代 input 监听 change 事件。</td>
-</tr>
-<tr>
-<td>.number</td>
-<td>输入字符串转为数字。</td>
-</tr>
-<tr>
-<td>.trim</td>
-<td>输入去掉首尾空格。</td>
-</tr>
-</tbody></table>
-<p>模版写法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input v-model.trim&#x3D;&quot;msg&quot;&gt;</span><br></pre></td></tr></table></figure>
-
-<p>完整代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;v-model&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;input v-model.trim&#x3D;&quot;message&quot; &#x2F;&gt;</span><br><span class="line">			&lt;div&gt;&#123;&#123; message &#125;&#125;&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			var vm &#x3D; new Vue(&#123;</span><br><span class="line">				el: &#39;#app&#39;,</span><br><span class="line">				data() &#123;</span><br><span class="line">					return &#123;</span><br><span class="line">						message: &#39;123&#39;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;)</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>在浏览器运行此文件后，可以看到在文本框的头和尾输入空格是无效的。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2007,7 +1989,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

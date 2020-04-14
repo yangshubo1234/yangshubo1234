@@ -272,6 +272,185 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/14/%E3%80%90036%E3%80%91vue-cli4-0%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9Avue-router%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="19年的猪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/favicon.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/14/%E3%80%90036%E3%80%91vue-cli4-0%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9Avue-router%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/" itemprop="url">【036】vue-cli4.0基础学习：vue-router的简单使用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-14T17:18:13+08:00">
+                2020-04-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/vue-cli4-0/" itemprop="url" rel="index">
+                    <span itemprop="name">vue-cli4.0</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>Vue Router 是 Vue.js 官方的路由管理器。它和 Vue.js 的核心深度集成，让构建单页面应用变得易如反掌。包含的功能有：</p>
+<ul>
+<li>嵌套的路由/视图表</li>
+<li>模块化的、基于组件的路由配置</li>
+<li>路由参数、查询、通配符</li>
+<li>基于 Vue.js 过渡系统的视图过渡效果</li>
+<li>细粒度的导航控制</li>
+<li>带有自动激活的 CSS class 的链接</li>
+<li>HTML5 历史模式或 hash 模式，在 IE9 中自动降级</li>
+<li>自定义的滚动条行为</li>
+</ul>
+<p>对于初学者来说，对于上面的理解可能会有迷糊，不过没关系，我们先来直接使用一下它，慢慢感受下，然后再回来看一下这一些解释。</p>
+<h3 id="安装-vue-router"><a href="#安装-vue-router" class="headerlink" title="安装 vue-router"></a>安装 vue-router</h3><p>引入 vue-router 的方法有两种：<br>第一种：CDN</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;unpkg.com&#x2F;vue-router&#x2F;dist&#x2F;vue-router.js</span><br></pre></td></tr></table></figure>
+
+<p>第二种：NPM</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install vue-router</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h3><p>首先，我们在<code>vue-cli</code>项目中的根目录中新建一个名称为<code>router</code>的文件夹，然后在文件夹中新建一个新的文件<code>index.js</code>。  </p>
+<p>项目目录如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">|-- node_modules</span><br><span class="line">|-- public</span><br><span class="line">|   |-- favicon.</span><br><span class="line">|   |-- index.html</span><br><span class="line">|-- src</span><br><span class="line">|   |-- assets</span><br><span class="line">|   |-- components</span><br><span class="line">|   |   |-- HelloWorld.vue</span><br><span class="line">|   |   |-- v-about.vue</span><br><span class="line">|   |   |-- v-header.vue</span><br><span class="line">|   |   |-- v-index.vue</span><br><span class="line">|   |-- router</span><br><span class="line">|   |   |-- index.js</span><br><span class="line">|   |-- App.vue</span><br><span class="line">|   |-- main.js</span><br><span class="line">|-- .gitignore</span><br><span class="line">|-- babel.config.js</span><br><span class="line">|-- package-lock.json</span><br><span class="line">|-- package.json</span><br><span class="line">|-- README.md</span><br><span class="line">.</span><br></pre></td></tr></table></figure>
+
+<p>router -&gt; index.js 完整代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 引入 Vue</span><br><span class="line">import Vue from &#39;vue&#39;;</span><br><span class="line">&#x2F;&#x2F; 引入 vue-router</span><br><span class="line">import VueRouter from &#39;vue-router&#39;;</span><br><span class="line">&#x2F;&#x2F; 安装使用 vue-router</span><br><span class="line">Vue.use(VueRouter);</span><br><span class="line">&#x2F;&#x2F; 引入首页</span><br><span class="line">import vIndex from &#39;..&#x2F;components&#x2F;v-index.vue&#39;;</span><br><span class="line">&#x2F;&#x2F; 开始使用 vue-router</span><br><span class="line">let routes &#x3D; new VueRouter(&#123;</span><br><span class="line">    routes: [</span><br><span class="line">        &#123; path: &#39;&#x2F;&#39;, component: vIndex &#125;,</span><br><span class="line">        &#123; path: &#39;&#x2F;about&#39;, component: () &#x3D;&gt; import(&#x2F;* webpackChunkName: &quot;about&quot; *&#x2F; &#39;..&#x2F;components&#x2F;v-about.vue&#39;) &#125;,</span><br><span class="line">      ]</span><br><span class="line">&#125;);</span><br><span class="line">&#x2F;&#x2F; 提供接口给外面使用</span><br><span class="line">export default routes;</span><br></pre></td></tr></table></figure>
+
+<h3 id="在项目中应用"><a href="#在项目中应用" class="headerlink" title="在项目中应用"></a>在项目中应用</h3><p>在上面，我们已经将路由配置写完了，那么接下来就是用到项目中去了。在前面的章节中，我们已经知道有<code>main.js</code>这么一个文件了，它的作用是<code>程序入口文件，加载各种公共组件</code>，那么我们接下来就更新下这一个文件吧。  </p>
+<p>main.js 完整代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &#39;vue&#39;</span><br><span class="line">import App from &#39;.&#x2F;App.vue&#39;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 引入我们配置好的路由</span><br><span class="line">import router from &#39;.&#x2F;router&#39;;</span><br><span class="line"></span><br><span class="line">Vue.config.productionTip &#x3D; false</span><br><span class="line"></span><br><span class="line">new Vue(&#123;</span><br><span class="line">  router,</span><br><span class="line">  render: h &#x3D;&gt; h(App),</span><br><span class="line">&#125;).$mount(&#39;#app&#39;)</span><br></pre></td></tr></table></figure>
+
+
+<p>接着我们再更新下<code>App.vue</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">        &lt;v-header &#x2F;&gt;</span><br><span class="line">        &lt;router-view&gt;&lt;&#x2F;router-view&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import vHeader from &#39;.&#x2F;components&#x2F;v-header.vue&#39;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">    name: &#39;App&#39;,</span><br><span class="line">    components: &#123;</span><br><span class="line">        vHeader</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">* &#123;</span><br><span class="line">    padding: 0;</span><br><span class="line">    margin: 0;</span><br><span class="line">&#125;</span><br><span class="line">#app &#123;</span><br><span class="line">    font-family: Avenir, Helvetica, Arial, sans-serif;</span><br><span class="line">    -webkit-font-smoothing: antialiased;</span><br><span class="line">    -moz-osx-font-smoothing: grayscale;</span><br><span class="line">    color: #2c3e50;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+<p>多了一个<code>&lt;router-view /&gt;</code>。  </p>
+<p>修改<code>v-header</code>文件，完整代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;v-header&quot;&gt;</span><br><span class="line">        &lt;ul class&#x3D;&quot;menus&quot;&gt;</span><br><span class="line">            &lt;li </span><br><span class="line">                class&#x3D;&quot;menu&quot; </span><br><span class="line">                v-for&#x3D;&quot;item in menus&quot; </span><br><span class="line">                :key&#x3D;&quot;item.id&quot;</span><br><span class="line">            &gt;</span><br><span class="line">                &lt;router-link :to&#x3D;&quot;item.path&quot;&gt;&#123;&#123; item.name &#125;&#125;&lt;&#x2F;router-link&gt;</span><br><span class="line">            &lt;&#x2F;li&gt;</span><br><span class="line">        &lt;&#x2F;ul&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">    name: &#39;v-header&#39;,</span><br><span class="line">    desc: &#39;头部信息&#39;,</span><br><span class="line">    data() &#123;</span><br><span class="line">        return &#123;</span><br><span class="line">            menus: [</span><br><span class="line">                &#123; id: 1, name: &#39;首页&#39;, path: &#39;&#x2F;&#39; &#125;,</span><br><span class="line">                &#123; id: 2, name: &#39;关于&#39;, path: &#39;&#x2F;about&#39; &#125;,</span><br><span class="line">            ]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">.v-header &#123;</span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 70px;</span><br><span class="line">    background-color: #fff;</span><br><span class="line">    box-shadow: 3px 3px 3px #ddd;</span><br><span class="line">    color: #333;</span><br><span class="line">&#125;</span><br><span class="line">.menus &#123;</span><br><span class="line">    list-style: none;</span><br><span class="line">    padding: 0 20px;</span><br><span class="line">    overflow: hidden;</span><br><span class="line">&#125;</span><br><span class="line">.menu &#123;</span><br><span class="line">    float: left;</span><br><span class="line">    padding: 0 20px;</span><br><span class="line">    height: 70px;</span><br><span class="line">    line-height: 80px;</span><br><span class="line">    transition: .3s;</span><br><span class="line">&#125;</span><br><span class="line">.menu:hover &#123;</span><br><span class="line">    cursor: pointer;</span><br><span class="line">    color: #0051ff;</span><br><span class="line">    background-color: #efefef;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+<p>多了个<code>&lt;router-link :to=&quot;item.path&quot;&gt;&lt;/router-link&gt;</code>。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>上一章出现的问题到了这里已经解决了，大家对于有些代码可能不是很明白，比如<code>vue-router</code>的格式和用法，这一些都会在后面再详细说一下，在这里我们只要能达到目的就可以了。另外，也希望大家能再看几遍项目的代码和目录结构。因为，看着看着说不定就熟悉了。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/13/%E3%80%90035%E3%80%91vue-cli4-0%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9A%E7%BB%A7%E7%BB%AD%E5%88%9B%E5%BB%BA%E7%BB%84%E4%BB%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1744,165 +1923,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/07/%E3%80%90026%E3%80%91Vue%E9%80%89%E9%A1%B9%EF%BC%9A%E6%95%B0%E6%8D%AE%E4%B8%AD%E7%9A%84methods/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="19年的猪">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/favicon.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/04/07/%E3%80%90026%E3%80%91Vue%E9%80%89%E9%A1%B9%EF%BC%9A%E6%95%B0%E6%8D%AE%E4%B8%AD%E7%9A%84methods/" itemprop="url">【026】Vue选项：数据中的 methods</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-07T16:20:45+08:00">
-                2020-04-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Vue2-0/" itemprop="url" rel="index">
-                    <span itemprop="name">Vue2.0</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><blockquote>
-<p>methods 将被混入到 Vue 实例中。可以直接通过 VM 实例访问这些方法，或者在指令表达式中使用。方法中的 this 自动绑定为 Vue 实例。</p>
-</blockquote>
-<p>模版代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">methods: &#123;</span><br><span class="line">	add() &#123;</span><br><span class="line">		this.count +&#x3D; 1;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>示例代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;div&gt;&#123;&#123; count &#125;&#125;&lt;&#x2F;div&gt;</span><br><span class="line">			&lt;button @click&#x3D;&quot;add&quot;&gt;累加&lt;&#x2F;button&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			var vm &#x3D; new Vue(&#123;</span><br><span class="line">				el: &#39;#app&#39;,</span><br><span class="line">				data() &#123;</span><br><span class="line">					return &#123;</span><br><span class="line">						count: 0</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;,</span><br><span class="line">				methods: &#123;</span><br><span class="line">					add() &#123;</span><br><span class="line">						this.count +&#x3D; 1;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;)</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>通过上面的示例代码，我们可以发现：</p>
-<ol>
-<li>methods属性给可以给 Vue 定义<code>add</code>方法</li>
-<li>在方法中使用<code>this.</code>可以直接访问data中的数据<code>count</code></li>
-</ol>
-<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>很多小伙伴在定义方法时喜欢使用<code>es6</code>的语法，比如箭头函数<code>() =&gt; {}</code>，那么在给 Vue 定义方法时，是否也可以使用箭头函数呢？看一下下面的示例代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;div&gt;&#123;&#123; count &#125;&#125;&lt;&#x2F;div&gt;</span><br><span class="line">			&lt;button @click&#x3D;&quot;add&quot;&gt;累加&lt;&#x2F;button&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			var vm &#x3D; new Vue(&#123;</span><br><span class="line">				el: &#39;#app&#39;,</span><br><span class="line">				data() &#123;</span><br><span class="line">					return &#123;</span><br><span class="line">						count: 0</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;,</span><br><span class="line">				methods: &#123;</span><br><span class="line">					add: () &#x3D;&gt; &#123;</span><br><span class="line">						this.count +&#x3D; 1;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;)</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>在浏览器中运行上面的示例代码，我们可以发现，当我们点击<code>累加</code>按钮时，数据并没有出现出现累加的结果。这是为什么呢？<br>了解过箭头函数的小伙伴应该知道，<code>() =&gt; {}</code>有一个用法就是改变<code>this</code>的指向，那么在 Vue 中，箭头函数绑定了父级作用域的上下文，所以 this 将不会按照期望指向 Vue 实例。因此我们可以得出结论：<code>不应该使用箭头函数来定义 method 函数</code>。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1955,7 +1975,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

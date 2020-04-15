@@ -273,6 +273,166 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/15/%E3%80%90037%E3%80%91vue-cli4-0%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9A%E7%BC%96%E7%A8%8B%E5%BC%8F%E7%9A%84%E5%AF%BC%E8%88%AA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="19年的猪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/favicon.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/15/%E3%80%90037%E3%80%91vue-cli4-0%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9A%E7%BC%96%E7%A8%8B%E5%BC%8F%E7%9A%84%E5%AF%BC%E8%88%AA/" itemprop="url">【037】vue-cli4.0基础学习：编程式的导航</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-15T23:22:54+08:00">
+                2020-04-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/vue-cli4-0/" itemprop="url" rel="index">
+                    <span itemprop="name">vue-cli4.0</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在上一章中，我们是依靠<code>&lt;router-link&gt;</code>进行跳转的，其实这个就是创建 a 标签来定义导航链接的。但是在我们实际的开发过程中，往往需要在跳转前处理一些逻辑或验证之类的事情，比如提交一个表单的数据，当点提交时，往往需要先做一个验证，确认数据无误后再进行提交，提交成功后跳转进入提交成功提醒页面。这个时候，我们就可以借助 router 的实例方法，通过编写代码来实现。</p>
+<h3 id="router-的实例方法"><a href="#router-的实例方法" class="headerlink" title="router 的实例方法"></a>router 的实例方法</h3><p>代码模版：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 字符串</span><br><span class="line">router.push(&#39;home&#39;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 对象</span><br><span class="line">router.push(&#123; path: &#39;home&#39; &#125;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 命名的路由</span><br><span class="line">router.push(&#123; name: &#39;user&#39;, params: &#123; userId: &#39;123&#39; &#125;&#125;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 带查询参数，变成 &#x2F;register?plan&#x3D;private</span><br><span class="line">router.push(&#123; path: &#39;register&#39;, query: &#123; plan: &#39;private&#39; &#125;&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>我们在<code>components</code>文件夹下新建一个名字为<code>v-success.vue</code>的文件，在提交信息成功后出现。  </p>
+<p><code>v-success.vue</code>的完整代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;v-success&quot;&gt;</span><br><span class="line">        &lt;h1&gt;提交成功&lt;&#x2F;h1&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">    name: &#39;v-success&#39;,</span><br><span class="line">    desc: &#39;提交成功&#39;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>既然加了新的跳转组件，那么我们肯定也需要修改一下路由配置文件。<br>打开 router -&gt; index.js 文件，完整代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 引入 Vue</span><br><span class="line">import Vue from &#39;vue&#39;;</span><br><span class="line">&#x2F;&#x2F; 引入 vue-router</span><br><span class="line">import VueRouter from &#39;vue-router&#39;;</span><br><span class="line">&#x2F;&#x2F; 安装使用 vue-router</span><br><span class="line">Vue.use(VueRouter);</span><br><span class="line">&#x2F;&#x2F; 引入首页</span><br><span class="line">import vIndex from &#39;..&#x2F;components&#x2F;v-index.vue&#39;;</span><br><span class="line">&#x2F;&#x2F; 开始使用 vue-router</span><br><span class="line">let routes &#x3D; new VueRouter(&#123;</span><br><span class="line">    routes: [</span><br><span class="line">        &#123; path: &#39;&#x2F;&#39;, component: vIndex &#125;,</span><br><span class="line">        &#123; path: &#39;&#x2F;about&#39;, component: () &#x3D;&gt; import(&#x2F;* webpackChunkName: &quot;about&quot; *&#x2F; &#39;..&#x2F;components&#x2F;v-about.vue&#39;) &#125;,</span><br><span class="line">        &#123; path: &#39;&#x2F;success&#39;, component: () &#x3D;&gt; import(&#x2F;* webpackChunkName: &quot;success&quot; *&#x2F; &#39;..&#x2F;components&#x2F;v-success.vue&#39;) &#125;,</span><br><span class="line">      ]</span><br><span class="line">&#125;);</span><br><span class="line">&#x2F;&#x2F; 提供接口给外面使用</span><br><span class="line">export default routes;</span><br></pre></td></tr></table></figure>
+
+<p>最后我们在<code>v-about.vue</code>文件中添加一个能填写信息的表单，完整代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;v-about&quot;&gt;</span><br><span class="line">        &lt;h1&gt;我是关于&lt;&#x2F;h1&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;msg&quot;&gt;</span><br><span class="line">            &lt;h4&gt;信息填写&lt;&#x2F;h4&gt;</span><br><span class="line">            &lt;form style&#x3D;&quot;margin-top: 10px;&quot;&gt;</span><br><span class="line">                &lt;label&gt;</span><br><span class="line">                    &lt;span&gt;姓名：&lt;&#x2F;span&gt;</span><br><span class="line">                    &lt;input v-model&#x3D;&quot;myName&quot; &#x2F;&gt;</span><br><span class="line">                &lt;&#x2F;label&gt;</span><br><span class="line">                &lt;button style&#x3D;&quot;margin-left: 20px; padding: 2px 10px;&quot; @click.prevent&#x3D;&quot;submit&quot;&gt;提交&lt;&#x2F;button&gt;</span><br><span class="line">            &lt;&#x2F;form&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">    name: &#39;v-about&#39;,</span><br><span class="line">    desc: &#39;关于&#39;,</span><br><span class="line">    data() &#123;</span><br><span class="line">        return &#123;</span><br><span class="line">            myName: &#39;&#39;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        submit() &#123;</span><br><span class="line">            let myName &#x3D; this.myName;</span><br><span class="line">            if (myName) &#123;</span><br><span class="line">                this.$router.push(&#39;&#x2F;success&#39;);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                alert(&#39;姓名不能为空！&#39;)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">.v-about &#123;</span><br><span class="line">    padding: 20px 30px;</span><br><span class="line">&#125;</span><br><span class="line">.msg &#123;</span><br><span class="line">    width: 300px;</span><br><span class="line">    padding: 20px;</span><br><span class="line">    border: 1px solid #eee;</span><br><span class="line">    margin-top: 20px;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+
+<p>修改完后，我们在浏览器中看看效果，如果我不填写姓名就点击<code>提交</code>，页面出现<code>姓名不能为空！</code>的提示，填写完姓名后，成功跳转进入成功提示页面。</p>
+<h3 id="目前项目目录结构"><a href="#目前项目目录结构" class="headerlink" title="目前项目目录结构"></a>目前项目目录结构</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">|-- node_modules</span><br><span class="line">|-- public</span><br><span class="line">|   |-- favicon.</span><br><span class="line">|   |-- index.html</span><br><span class="line">|-- src</span><br><span class="line">|   |-- assets</span><br><span class="line">|   |-- components</span><br><span class="line">|   |   |-- HelloWorld.vue</span><br><span class="line">|   |   |-- v-about.vue</span><br><span class="line">|   |   |-- v-header.vue</span><br><span class="line">|   |   |-- v-index.vue</span><br><span class="line">|   |   |-- v-success.vue</span><br><span class="line">|   |-- router</span><br><span class="line">|   |   |-- index.js</span><br><span class="line">|   |-- App.vue</span><br><span class="line">|   |-- main.js</span><br><span class="line">|-- .gitignore</span><br><span class="line">|-- babel.config.js</span><br><span class="line">|-- package-lock.json</span><br><span class="line">|-- package.json</span><br><span class="line">|-- README.md</span><br><span class="line">.</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>以上只是一个简单的例子，代码在书写规范上随意了一些，所以请大家自动忽略我这样的随意，我们主要是看一下这个东西是怎么用的。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/14/%E3%80%90036%E3%80%91vue-cli4-0%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9Avue-router%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1766,164 +1926,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/07/%E3%80%90027%E3%80%91Vue%E9%80%89%E9%A1%B9%EF%BC%9A%E6%95%B0%E6%8D%AE%E4%B8%AD%E7%9A%84watch/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="19年的猪">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/favicon.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/04/07/%E3%80%90027%E3%80%91Vue%E9%80%89%E9%A1%B9%EF%BC%9A%E6%95%B0%E6%8D%AE%E4%B8%AD%E7%9A%84watch/" itemprop="url">【027】Vue选项：数据中的 watch</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-07T16:21:51+08:00">
-                2020-04-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Vue2-0/" itemprop="url" rel="index">
-                    <span itemprop="name">Vue2.0</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><blockquote>
-<p>观察 Vue 实例上的一个表达式或者一个函数计算结果的变化。回调函数得到的参数为新值和旧值。表达式只接受监督的键路径。对于更复杂的表达式，用一个函数取代。</p>
-</blockquote>
-<p>模版代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">watch: &#123;</span><br><span class="line">	name(value) &#123;</span><br><span class="line">		this.newName &#x3D; value;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>示例代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;div&gt;大家好，我新名字是&#123;&#123; newName &#125;&#125;&lt;&#x2F;div&gt;</span><br><span class="line">			&lt;input v-model&#x3D;&quot;name&quot; &#x2F;&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			var vm &#x3D; new Vue(&#123;</span><br><span class="line">				el: &#39;#app&#39;,</span><br><span class="line">				data() &#123;</span><br><span class="line">					return &#123;</span><br><span class="line">						name: &#39;小明&#39;,</span><br><span class="line">						newName: &#39;&#39;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;,</span><br><span class="line">				watch: &#123;</span><br><span class="line">					name(value) &#123;</span><br><span class="line">						this.newName &#x3D; value;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;)</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>在上面的例子中，watch 监听的都是一些简单的数据，如果我们需要监听一些比较复杂的数据，比如对象呢？这个时候我们就需要用到深度监听<code>deep</code>了。</p>
-<h3 id="深度监听"><a href="#深度监听" class="headerlink" title="深度监听"></a>深度监听</h3><p>模版代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">watch: &#123;</span><br><span class="line">	childrens: &#123;</span><br><span class="line">		handler(value) &#123;</span><br><span class="line">			this.name &#x3D; value.name;</span><br><span class="line">		&#125;,</span><br><span class="line">		deep: true</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>示例代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;div&gt;大家好，我是&#123;&#123; childrens.name &#125;&#125;，今年&#123;&#123; childrens.age &#125;&#125;岁了。&lt;&#x2F;div&gt;</span><br><span class="line">			&lt;input v-model&#x3D;&quot;childrens.name&quot; &#x2F;&gt;</span><br><span class="line">			&lt;div&gt;我是监听器，我监听到了 &#123;&#123; oldName &#125;&#125;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			var vm &#x3D; new Vue(&#123;</span><br><span class="line">				el: &#39;#app&#39;,</span><br><span class="line">				data() &#123;</span><br><span class="line">					return &#123;</span><br><span class="line">						childrens: &#123;</span><br><span class="line">							name: &#39;小明&#39;,</span><br><span class="line">							age: 18</span><br><span class="line">						&#125;,</span><br><span class="line">						name: &#39;&#39;,</span><br><span class="line">						oldName: &#39;&#39;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;,</span><br><span class="line">				watch: &#123;</span><br><span class="line">					childrens: &#123;</span><br><span class="line">						handler(value) &#123;</span><br><span class="line">							this.name &#x3D; value.name;</span><br><span class="line">						&#125;,</span><br><span class="line">						deep: true</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;)</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>在日常开发中基本是离不开<code>watch</code>的，所以大家要多敲几遍代码熟悉一下。如果想了解更多<code>watch</code>的用法，大家可以到官网去查看一下，这里只是列举了经常用的的方法。既然<code>watch</code>可以监听，那么它和我们上次提到的<code>computed</code>有什么区别呢？下一章我们来看一下它们之间的区别。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1976,7 +1978,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">43</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

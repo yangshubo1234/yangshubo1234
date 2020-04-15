@@ -273,6 +273,187 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/02/%E3%80%90017%E3%80%91Vue%E5%85%A8%E5%B1%80API%E5%AD%A6%E4%B9%A0%EF%BC%9AVue-directive/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="19年的猪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/favicon.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/02/%E3%80%90017%E3%80%91Vue%E5%85%A8%E5%B1%80API%E5%AD%A6%E4%B9%A0%EF%BC%9AVue-directive/" itemprop="url">【017】Vue全局API学习：Vue.directive</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-02T18:48:00+08:00">
+                2020-04-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue2-0/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue2.0</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><blockquote>
+<p>注册或获取全局指令。</p>
+</blockquote>
+<p>示例代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;input v-focus &#x2F;&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			&#x2F;&#x2F; 注册一个全局自定义指令 &#96;v-focus&#96;</span><br><span class="line">			Vue.directive(&#39;focus&#39;, &#123;</span><br><span class="line">				&#x2F;&#x2F; 当被绑定的元素插入到 DOM 中时……</span><br><span class="line">				inserted(el) &#123;</span><br><span class="line">					&#x2F;&#x2F; 聚焦元素</span><br><span class="line">					el.focus();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;)</span><br><span class="line">			var vm &#x3D; new Vue(&#123; el: &#39;#app&#39; &#125;);</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在浏览器中运行上面的代码，可以看到文本框在页面加载时自动聚焦了。</p>
+<h3 id="自定义指令的生命周期（钩子函数）"><a href="#自定义指令的生命周期（钩子函数）" class="headerlink" title="自定义指令的生命周期（钩子函数）"></a>自定义指令的生命周期（钩子函数）</h3><p>钩子函数说明：</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>bind</td>
+<td>只调用一次，指令第一次绑定到元素时调用。在这里可以进行一次性的初始化设置</td>
+</tr>
+<tr>
+<td>inserted</td>
+<td>被绑定元素插入父节点时调用 (仅保证父节点存在，但不一定已被插入文档中)</td>
+</tr>
+<tr>
+<td>update</td>
+<td>所在组件的 VNode 更新时调用，但是可能发生在其子 VNode 更新之前。指令的值可能发生了改变，也可能没有。但是你可以通过比较更新前后的值来忽略不必要的模板更新</td>
+</tr>
+<tr>
+<td>componentUpdated</td>
+<td>指令所在组件的 VNode 及其子 VNode 全部更新后调用</td>
+</tr>
+<tr>
+<td>unbind</td>
+<td>只调用一次，指令与元素解绑时调用</td>
+</tr>
+</tbody></table>
+<p>看钩子函数说明后，再来看个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;div v-demo&#x3D;&quot;&#39;demo&#39;&quot;&gt;当前数字：&#123;&#123; num &#125;&#125;&lt;&#x2F;div&gt;</span><br><span class="line">			&lt;button @click&#x3D;&quot;num++&quot;&gt;累加&lt;&#x2F;button&gt;</span><br><span class="line">			&lt;button @click&#x3D;&quot;destroy&quot;&gt;解绑&lt;&#x2F;button&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			Vue.directive(&#39;demo&#39;, &#123;</span><br><span class="line">				bind(el, bingind)&#123;</span><br><span class="line">					alert(&#39;bind：&#39; + bingind.value);</span><br><span class="line">				&#125;,</span><br><span class="line">				inserted()&#123;</span><br><span class="line">					alert(&#39;inserted&#39;);</span><br><span class="line">				&#125;,</span><br><span class="line">				update()&#123;</span><br><span class="line">					alert(&#39;update&#39;);</span><br><span class="line">				&#125;,</span><br><span class="line">				componentUpdated()&#123;</span><br><span class="line">					alert(&#39;componentUpdated&#39;);</span><br><span class="line">				&#125;,</span><br><span class="line">				unbind()&#123;</span><br><span class="line">					alert(&#39;unbind&#39;);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;);</span><br><span class="line">			var vm &#x3D; new Vue(&#123;</span><br><span class="line">				el: &#39;#app&#39;,</span><br><span class="line">				data() &#123;</span><br><span class="line">					return &#123;</span><br><span class="line">						num: 0</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;,</span><br><span class="line">				methods: &#123;</span><br><span class="line">					&#x2F;&#x2F; 解绑</span><br><span class="line">					destroy() &#123;</span><br><span class="line">						this.$destroy();</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;);</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>当浏览器加载完成时，页面会先弹出<code>bind：demo</code>，<code>demo</code>为<code>v-demo=&quot;&#39;demo&#39;&quot;</code>中的值，关闭弹出框后，继续弹出<code>inserted</code>，关闭后，首次的钩子函数执行完成。<br>接着我们点击<code>累加</code>按钮，点击完成后，页面弹出<code>update</code>，关闭后继续弹出<code>componentUpdated</code>，到此为止，点击按钮后触发的钩子函数执行完成。<br>最后，我们点击<code>解绑</code>按钮，页面弹出<code>unbind</code>，紧接着试着点击<code>累加</code>按钮，发现没有任何效果，说明解绑成功。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/02/%E3%80%90016%E3%80%91Vue%E5%85%A8%E5%B1%80API%E5%AD%A6%E4%B9%A0%EF%BC%9AVue-set/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1764,180 +1945,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/28/%E3%80%90007%E3%80%91Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9Av-bind%E7%9A%84%E4%BD%BF%E7%94%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="19年的猪">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/favicon.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/28/%E3%80%90007%E3%80%91Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9Av-bind%E7%9A%84%E4%BD%BF%E7%94%A8/" itemprop="url">【007】Vue基础学习：v-bind的使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-28T15:08:00+08:00">
-                2020-03-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Vue2-0/" itemprop="url" rel="index">
-                    <span itemprop="name">Vue2.0</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>v-bind 用于处理 HTML 中的标签属性。</p>
-</blockquote>
-<h3 id="class-对象语法"><a href="#class-对象语法" class="headerlink" title="class 对象语法"></a>class 对象语法</h3><p>模版写法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-bind:class&#x3D;&quot;&#123; green: isActive01 &#125;&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">多个：</span><br><span class="line">&lt;div v-bind:class&#x3D;&quot;&#123; red: isActive02, font: isActive03 &#125;&quot;&gt;白色&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- -------------------- 简写 -------------------- --&gt;</span><br><span class="line">&lt;div :class&#x3D;&quot;&#123; green: isActive01 &#125;&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">多个：</span><br><span class="line">&lt;div :class&#x3D;&quot;&#123; red: isActive02, font: isActive03 &#125;&quot;&gt;白色&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
-
-<p>完整代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line"> &lt;html&gt;</span><br><span class="line"> 	&lt;head&gt;</span><br><span class="line"> 		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line"> 		&lt;title&gt;v-bind class&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt;</span><br><span class="line">			.blue &#123;</span><br><span class="line">				width: 100px;</span><br><span class="line">				height: 100px;</span><br><span class="line">				background-color: blue;</span><br><span class="line">			&#125;</span><br><span class="line">			.green &#123;</span><br><span class="line">				width: 100px;</span><br><span class="line">				height: 100px;</span><br><span class="line">				background-color: green;</span><br><span class="line">			&#125;</span><br><span class="line">			.red &#123;</span><br><span class="line">				width: 100px;</span><br><span class="line">				height: 100px;</span><br><span class="line">				background-color: red;</span><br><span class="line">			&#125;</span><br><span class="line">			.font &#123;</span><br><span class="line">				color: white;</span><br><span class="line">			&#125;</span><br><span class="line">		&lt;&#x2F;style&gt;</span><br><span class="line"> 		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line"> 	&lt;&#x2F;head&gt;</span><br><span class="line"> 	&lt;body&gt;</span><br><span class="line"> 		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line"> 			&lt;div v-bind:class&#x3D;&quot;styl&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">			&lt;div v-bind:class&#x3D;&quot;&#123; green: isActive01 &#125;&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">			&lt;div v-bind:class&#x3D;&quot;&#123; red: isActive02, font: isActive03 &#125;&quot;&gt;白色&lt;&#x2F;div&gt;</span><br><span class="line"> 		&lt;&#x2F;div&gt;</span><br><span class="line"> 		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line"> 			var vm &#x3D; new Vue(&#123;</span><br><span class="line"> 				el: &#39;#app&#39;,</span><br><span class="line"> 				data() &#123;</span><br><span class="line"> 					return &#123;</span><br><span class="line"> 						styl: &#39;blue&#39;,</span><br><span class="line">						isActive01: true,</span><br><span class="line">						isActive02: true,</span><br><span class="line">						isActive03: true</span><br><span class="line"> 					&#125;</span><br><span class="line"> 				&#125;</span><br><span class="line"> 			&#125;)</span><br><span class="line"> 		&lt;&#x2F;script&gt;</span><br><span class="line"> 	&lt;&#x2F;body&gt;</span><br><span class="line"> &lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="class-数组语法"><a href="#class-数组语法" class="headerlink" title="class 数组语法"></a>class 数组语法</h3><p>模版写法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-bind:class&#x3D;&quot;[ class01, class02 ]&quot;&gt;白色&lt;&#x2F;div&gt;</span><br><span class="line">&lt;!-- -------------------- 简写 -------------------- --&gt;</span><br><span class="line">&lt;div :class&#x3D;&quot;[ class01, class02 ]&quot;&gt;白色&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
-
-<p>完整代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;v-bind class&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt;</span><br><span class="line">			.red &#123;</span><br><span class="line">				width: 100px;</span><br><span class="line">				height: 100px;</span><br><span class="line">				background-color: red;</span><br><span class="line">			&#125;</span><br><span class="line">			.font &#123;</span><br><span class="line">				color: white;</span><br><span class="line">			&#125;</span><br><span class="line">		&lt;&#x2F;style&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;div v-bind:class&#x3D;&quot;[ class01, class02 ]&quot;&gt;白色&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			var vm &#x3D; new Vue(&#123;</span><br><span class="line">				el: &#39;#app&#39;,</span><br><span class="line">				data() &#123;</span><br><span class="line">					return &#123;</span><br><span class="line">						class01: &#39;red&#39;,</span><br><span class="line">						class02: &#39;font&#39;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;)</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="style-对象语法"><a href="#style-对象语法" class="headerlink" title="style 对象语法"></a>style 对象语法</h3><p>模版写法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-bind:style&#x3D;&quot;&#123; color: &#39;red&#39;, fontSize: &#39;50px&#39; &#125;&quot;&gt;文字&lt;&#x2F;div&gt;</span><br><span class="line">&lt;!-- -------------------- 简写 -------------------- --&gt;</span><br><span class="line">&lt;div :style&#x3D;&quot;&#123; color: &#39;red&#39;, fontSize: &#39;50px&#39; &#125;&quot;&gt;文字&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
-
-<p>完整代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">	&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;v-bind style&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;div v-bind:style&#x3D;&quot;&#123; color: &#39;red&#39;, fontSize: &#39;50px&#39; &#125;&quot;&gt;文字&lt;&#x2F;div&gt;</span><br><span class="line">			&lt;div v-bind:style&#x3D;&quot;styleObject&quot;&gt;白色&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			var vm &#x3D; new Vue(&#123;</span><br><span class="line">				el: &#39;#app&#39;,</span><br><span class="line">				data() &#123;</span><br><span class="line">					return &#123;</span><br><span class="line">						styleObject: &#123;</span><br><span class="line">							width: &#39;100px&#39;,</span><br><span class="line">							height: &#39;100px&#39;,</span><br><span class="line">							backgroundColor: &#39;red&#39;,</span><br><span class="line">							color: &#39;white&#39;</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;)</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>注：当样式类似于<code>font-size</code>这种形式时，需要改写为<code>fontSize</code>。</p>
-<h3 id="style-数组语法"><a href="#style-数组语法" class="headerlink" title="style 数组语法"></a>style 数组语法</h3><p>模版写法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-bind:style&#x3D;&quot;[style01, style02]&quot;&gt;文字&lt;&#x2F;div&gt;</span><br><span class="line">&lt;!-- -------------------- 简写 -------------------- --&gt;</span><br><span class="line">&lt;div :style&#x3D;&quot;[style01, style02]&quot;&gt;文字&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
-
-
-<p>完整代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">	&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;v-bind style&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;div v-bind:style&#x3D;&quot;[style01, style02]&quot;&gt;文字&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			var vm &#x3D; new Vue(&#123;</span><br><span class="line">				el: &#39;#app&#39;,</span><br><span class="line">				data() &#123;</span><br><span class="line">					return &#123;</span><br><span class="line">						style01: &#123;</span><br><span class="line">							width: &#39;100px&#39;,</span><br><span class="line">							height: &#39;100px&#39;,</span><br><span class="line">							backgroundColor: &#39;red&#39;</span><br><span class="line">						&#125;,</span><br><span class="line">						style02: &#123;</span><br><span class="line">							color: &#39;white&#39;</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;)</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="需要注意的地方"><a href="#需要注意的地方" class="headerlink" title="需要注意的地方"></a>需要注意的地方</h3><p>v-bind 不仅用于 class 和 style 中，还用于其它，如：src，href等等。<br>当<code>v-bind:style</code>使用需要添加浏览器引擎前缀的 CSS 属性时，如 transform，Vue.js 会自动侦测并添加相应的前缀。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1990,7 +1997,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">43</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

@@ -273,6 +273,168 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/17/%E3%80%90038%E3%80%91vue-cli4-0%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E5%8C%B9%E9%85%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="19年的猪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/favicon.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/17/%E3%80%90038%E3%80%91vue-cli4-0%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E5%8C%B9%E9%85%8D/" itemprop="url">【038】vue-cli4.0基础学习：动态路由匹配</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-17T13:18:45+08:00">
+                2020-04-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/vue-cli4-0/" itemprop="url" rel="index">
+                    <span itemprop="name">vue-cli4.0</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>我们经常需要把某种模式匹配到的所有路由，全都映射到同个组件。比如在开发新闻模块的过程中，我们通常是根据ID获取对应的数据的，对于数据的渲染用的都是同一个组件。那么，我们可以在 vue-router 的路由路径中使用“动态路径参数”(dynamic segment) 来达到这个效果。</p>
+<h3 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h3><p>我们在<code>components</code>文件夹中新建两个文件（也是组件），新闻列表<code>v-news.vue</code>和新闻详情<code>v-news-detail.vue</code>。</p>
+<h4 id="新增组件代码"><a href="#新增组件代码" class="headerlink" title="新增组件代码"></a>新增组件代码</h4><p><code>v-news.vue</code>完整代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;v-news&quot;&gt;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">            &lt;li v-for&#x3D;&quot;item in lists&quot; :key&#x3D;&quot;item.id&quot;&gt;</span><br><span class="line">                &lt;router-link :to&#x3D;&quot;&#39;&#x2F;news&#x2F;&#39; + item.id&quot;&gt;&#123;&#123; item.title &#125;&#125;&lt;&#x2F;router-link&gt;</span><br><span class="line">            &lt;&#x2F;li&gt;</span><br><span class="line">        &lt;&#x2F;ul&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">    name: &#39;v-news&#39;,</span><br><span class="line">    desc: &#39;新闻列表&#39;,</span><br><span class="line">    data() &#123;</span><br><span class="line">        return &#123;</span><br><span class="line">            lists: [</span><br><span class="line">                &#123; id: 1, title: &#39;新闻标题 1&#39; &#125;,</span><br><span class="line">                &#123; id: 2, title: &#39;新闻标题 2&#39; &#125;,</span><br><span class="line">                &#123; id: 3, title: &#39;新闻标题 3&#39; &#125;,</span><br><span class="line">                &#123; id: 4, title: &#39;新闻标题 4&#39; &#125;,</span><br><span class="line">                &#123; id: 5, title: &#39;新闻标题 5&#39; &#125;,</span><br><span class="line">                &#123; id: 6, title: &#39;新闻标题 6&#39; &#125;,</span><br><span class="line">            ]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">.v-news &#123;</span><br><span class="line">    padding: 20px 50px;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+
+
+<p><code>v-news-detail.vue</code>完整代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;v-news-detail&quot;&gt;</span><br><span class="line">        &lt;div&gt;我是新闻详情，我的id是：&#123;&#123; id &#125;&#125;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">    name: &#39;v-news-detail&#39;,</span><br><span class="line">    desc: &#39;新闻详情&#39;,</span><br><span class="line">    data() &#123;</span><br><span class="line">        return &#123;</span><br><span class="line">            id: this.$route.params.id || &#39;&#39;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">.v-news-detail &#123;</span><br><span class="line">    padding: 20px 40px;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="修改菜单和路由配置"><a href="#修改菜单和路由配置" class="headerlink" title="修改菜单和路由配置"></a>修改菜单和路由配置</h4><p><code>v-header.vue</code>完整代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;v-header&quot;&gt;</span><br><span class="line">        &lt;ul class&#x3D;&quot;menus&quot;&gt;</span><br><span class="line">            &lt;li </span><br><span class="line">                class&#x3D;&quot;menu&quot; </span><br><span class="line">                v-for&#x3D;&quot;item in menus&quot; </span><br><span class="line">                :key&#x3D;&quot;item.id&quot;</span><br><span class="line">            &gt;</span><br><span class="line">                &lt;router-link :to&#x3D;&quot;item.path&quot;&gt;&#123;&#123; item.name &#125;&#125;&lt;&#x2F;router-link&gt;</span><br><span class="line">            &lt;&#x2F;li&gt;</span><br><span class="line">        &lt;&#x2F;ul&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">    name: &#39;v-header&#39;,</span><br><span class="line">    desc: &#39;头部信息&#39;,</span><br><span class="line">    data() &#123;</span><br><span class="line">        return &#123;</span><br><span class="line">            menus: [</span><br><span class="line">                &#123; id: 1, name: &#39;首页&#39;, path: &#39;&#x2F;&#39; &#125;,</span><br><span class="line">                &#123; id: 2, name: &#39;新闻&#39;, path: &#39;&#x2F;news&#39; &#125;,</span><br><span class="line">                &#123; id: 3, name: &#39;关于&#39;, path: &#39;&#x2F;about&#39; &#125;,</span><br><span class="line">            ]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">.v-header &#123;</span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 70px;</span><br><span class="line">    background-color: #fff;</span><br><span class="line">    box-shadow: 3px 3px 3px #ddd;</span><br><span class="line">    color: #333;</span><br><span class="line">&#125;</span><br><span class="line">.menus &#123;</span><br><span class="line">    list-style: none;</span><br><span class="line">    padding: 0 20px;</span><br><span class="line">    overflow: hidden;</span><br><span class="line">&#125;</span><br><span class="line">.menu &#123;</span><br><span class="line">    float: left;</span><br><span class="line">    padding: 0 20px;</span><br><span class="line">    height: 70px;</span><br><span class="line">    line-height: 80px;</span><br><span class="line">    transition: .3s;</span><br><span class="line">&#125;</span><br><span class="line">.menu:hover &#123;</span><br><span class="line">    cursor: pointer;</span><br><span class="line">    color: #0051ff;</span><br><span class="line">    background-color: #efefef;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+
+<p><code>router -&gt; index.js</code>完整代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 引入 Vue</span><br><span class="line">import Vue from &#39;vue&#39;;</span><br><span class="line">&#x2F;&#x2F; 引入 vue-router</span><br><span class="line">import VueRouter from &#39;vue-router&#39;;</span><br><span class="line">&#x2F;&#x2F; 安装使用 vue-router</span><br><span class="line">Vue.use(VueRouter);</span><br><span class="line">&#x2F;&#x2F; 引入首页</span><br><span class="line">import vIndex from &#39;..&#x2F;components&#x2F;v-index.vue&#39;;</span><br><span class="line">&#x2F;&#x2F; 开始使用 vue-router</span><br><span class="line">let routes &#x3D; new VueRouter(&#123;</span><br><span class="line">    routes: [</span><br><span class="line">        &#123; path: &#39;&#x2F;&#39;, component: vIndex &#125;,</span><br><span class="line">        &#123; path: &#39;&#x2F;about&#39;, component: () &#x3D;&gt; import(&#x2F;* webpackChunkName: &quot;about&quot; *&#x2F; &#39;..&#x2F;components&#x2F;v-about.vue&#39;) &#125;,</span><br><span class="line">        &#123; path: &#39;&#x2F;success&#39;, component: () &#x3D;&gt; import(&#x2F;* webpackChunkName: &quot;success&quot; *&#x2F; &#39;..&#x2F;components&#x2F;v-success.vue&#39;) &#125;,</span><br><span class="line">        &#123; path: &#39;&#x2F;news&#39;, component: () &#x3D;&gt; import(&#x2F;* webpackChunkName: &quot;news&quot; *&#x2F; &#39;..&#x2F;components&#x2F;v-news.vue&#39;) &#125;,</span><br><span class="line">        &#123; path: &#39;&#x2F;news&#x2F;:id&#39;, component: () &#x3D;&gt; import(&#x2F;* webpackChunkName: &quot;news&quot; *&#x2F; &#39;..&#x2F;components&#x2F;v-news-detail.vue&#39;) &#125;,</span><br><span class="line">      ]</span><br><span class="line">&#125;);</span><br><span class="line">&#x2F;&#x2F; 提供接口给外面使用</span><br><span class="line">export default routes;</span><br></pre></td></tr></table></figure>
+
+<p>好了，到目前位置，代码已经写完了，我们可以在浏览器上看一下效果。</p>
+<h3 id="目前项目目录结构"><a href="#目前项目目录结构" class="headerlink" title="目前项目目录结构"></a>目前项目目录结构</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">|-- node_modules</span><br><span class="line">|-- public</span><br><span class="line">|   |-- favicon.</span><br><span class="line">|   |-- index.html</span><br><span class="line">|-- src</span><br><span class="line">|   |-- assets</span><br><span class="line">|   |-- components</span><br><span class="line">|   |   |-- HelloWorld.vue</span><br><span class="line">|   |   |-- v-about.vue</span><br><span class="line">|   |   |-- v-header.vue</span><br><span class="line">|   |   |-- v-index.vue</span><br><span class="line">|   |   |-- v-news-detail.vue</span><br><span class="line">|   |   |-- v-news.vue</span><br><span class="line">|   |   |-- v-success.vue</span><br><span class="line">|   |-- router</span><br><span class="line">|   |   |-- index.js</span><br><span class="line">|   |-- App.vue</span><br><span class="line">|   |-- main.js</span><br><span class="line">|-- .gitignore</span><br><span class="line">|-- babel.config.js</span><br><span class="line">|-- package-lock.json</span><br><span class="line">|-- package.json</span><br><span class="line">|-- README.md</span><br><span class="line">.</span><br></pre></td></tr></table></figure>
+
+
+<p>大家可以对照一下目录，看看文件是否有缺失，另外也看一下代码是否能正常运行，如果有报错，可以私聊我哈。希望大家能动手敲一下代码，好记性不如烂笔头，至理名言。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/15/%E3%80%90037%E3%80%91vue-cli4-0%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9A%E7%BC%96%E7%A8%8B%E5%BC%8F%E7%9A%84%E5%AF%BC%E8%88%AA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1776,156 +1938,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/08/%E3%80%90028%E3%80%91Vue%E9%80%89%E9%A1%B9%EF%BC%9Awatch%E5%92%8Ccomputed%E7%9A%84%E5%8C%BA%E5%88%AB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="19年的猪">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/favicon.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/04/08/%E3%80%90028%E3%80%91Vue%E9%80%89%E9%A1%B9%EF%BC%9Awatch%E5%92%8Ccomputed%E7%9A%84%E5%8C%BA%E5%88%AB/" itemprop="url">【028】Vue选项：watch 和 computed 的区别</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-08T19:45:50+08:00">
-                2020-04-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Vue2-0/" itemprop="url" rel="index">
-                    <span itemprop="name">Vue2.0</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="关于-watch"><a href="#关于-watch" class="headerlink" title="关于 watch"></a>关于 watch</h3><p>1，当数据改变时，直接触发对应操作；<br>2，可以监听的数据有三部分，即<code>props</code>，<code>data</code>，<code>computed</code>；<br>3，所触发的对应操作函数中包含两个参数，第一个参数是新值<code>newValue</code>，第二个参数是旧值<code>oldValue</code>；<br>4，不支持缓存，但支持异步，在数据变化时执行异步或开销较大的操作时使用；<br>5，一对多，即一个数据改变时，可以通过触发对应操作改变多个其他的数据。  </p>
-<h3 id="关于-computed"><a href="#关于-computed" class="headerlink" title="关于 computed"></a>关于 computed</h3><p>1，computed 依赖于 data 中的数据，只有在它的相关依赖数据发生改变时才会重新求值；<br>2，用于处理复杂的逻辑运算；<br>3，支持缓存，但不支持异步；<br>4，多对一或一对一，即一个属性是由其他属性计算而来的，这个属性可能是依赖其他一个或多个属性。  </p>
-<h3 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;div&gt;watchMsg &#x3D; &#123;&#123; watchMsg &#125;&#125;&lt;&#x2F;div&gt;</span><br><span class="line">			&lt;div&gt;computedMsg &#x3D; &#123;&#123; computedMsg &#125;&#125;&lt;&#x2F;div&gt;</span><br><span class="line">			&lt;div&gt;msg &#x3D; &#123;&#123; msg &#125;&#125;&lt;&#x2F;div&gt;</span><br><span class="line">			&lt;div&gt;watchAsync &#x3D; &#123;&#123; watchAsync &#125;&#125;&lt;&#x2F;div&gt;</span><br><span class="line">			&lt;button @click&#x3D;&quot;msg &#x3D; 1&quot;&gt;msg &#x3D; 1&lt;&#x2F;button&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			var vm &#x3D; new Vue(&#123;</span><br><span class="line">				el: &#39;#app&#39;,</span><br><span class="line">				data() &#123;</span><br><span class="line">					return &#123;</span><br><span class="line">						msg: &#39;0&#39;,</span><br><span class="line">						watchMsg: &#39;&#39;,</span><br><span class="line">						watchAsync: &#39;&#39;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;,</span><br><span class="line">				computed: &#123;</span><br><span class="line">					computedMsg() &#123;</span><br><span class="line">						return this.msg;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;,</span><br><span class="line">				watch: &#123;</span><br><span class="line">					msg(value) &#123;</span><br><span class="line">						this.watchMsg &#x3D; value;</span><br><span class="line">						&#x2F;&#x2F; 模拟一个异步</span><br><span class="line">						setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">							this.watchAsync &#x3D; value;</span><br><span class="line">						&#125;, 1000)</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;)</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>在浏览器中运行上面的代码，当页面加载时，<code>computed</code>会先执行一次，显示结果如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">watchMsg &#x3D;</span><br><span class="line">computedMsg &#x3D; 0</span><br><span class="line">msg &#x3D; 0</span><br><span class="line">watchAsync &#x3D;</span><br></pre></td></tr></table></figure>
-<p>为什么<code>watch</code>没有触发监听呢？因为在Vue实例时，<code>msg</code>的值一直都为<code>0</code>，不存在数据变化，自然无法触发<code>watch</code>，<code>watchMsg</code>也不会发生变化。当点击按钮时，显示如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">watchMsg &#x3D; 1</span><br><span class="line">computedMsg &#x3D; 1</span><br><span class="line">msg &#x3D; 1</span><br><span class="line">watchAsync &#x3D; 1</span><br></pre></td></tr></table></figure>
-<p>可以看到，<code>watchAsync = 1</code>是过了一秒后才显示出来的，说明<code>watch</code>支持异步。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1978,7 +1990,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

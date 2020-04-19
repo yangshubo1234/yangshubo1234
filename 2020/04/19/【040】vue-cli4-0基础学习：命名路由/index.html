@@ -69,7 +69,7 @@
 
 
 
-  <meta name="keywords" content="Vue全局API学习," />
+  <meta name="keywords" content="vue-cli4.0基础学习," />
 
 
 
@@ -80,16 +80,16 @@
 
 
 
-<meta name="description" content="先来看一个例子示例代码： 123456789101112131415161718192021222324252627&lt;!DOCTYPE html&gt;&lt;html&gt;	&lt;head&gt;		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;		&lt;title&gt;&lt;&#x2F;title&gt;		&lt;script src&amp;">
+<meta name="description" content="一，前言我们经常会一边开发项目，一边调整项目。比如现在我们把所有的组件都放在了components文件夹下面，如果后期我们需要修改组件的路径，那么问题就来了，比如我需要修改v-about.vue文件的路径，那么我们就需要修改v-header.vue和router -&gt; index.js文件对应的路径。如果只是修改一个文件路径，问题倒不大，可是如果我们需要修改十几个或更多组件的路径，这就很头疼">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【017】Vue全局API学习：Vue.set">
-<meta property="og:url" content="http://yoursite.com/2020/04/02/%E3%80%90016%E3%80%91Vue%E5%85%A8%E5%B1%80API%E5%AD%A6%E4%B9%A0%EF%BC%9AVue-set/index.html">
+<meta property="og:title" content="【040】vue-cli4.0基础学习：命名路由">
+<meta property="og:url" content="http://yoursite.com/2020/04/19/%E3%80%90040%E3%80%91vue-cli4-0%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%91%BD%E5%90%8D%E8%B7%AF%E7%94%B1/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="先来看一个例子示例代码： 123456789101112131415161718192021222324252627&lt;!DOCTYPE html&gt;&lt;html&gt;	&lt;head&gt;		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;		&lt;title&gt;&lt;&#x2F;title&gt;		&lt;script src&amp;">
-<meta property="article:published_time" content="2020-04-02T08:43:00.000Z">
-<meta property="article:modified_time" content="2020-04-07T08:38:55.420Z">
+<meta property="og:description" content="一，前言我们经常会一边开发项目，一边调整项目。比如现在我们把所有的组件都放在了components文件夹下面，如果后期我们需要修改组件的路径，那么问题就来了，比如我需要修改v-about.vue文件的路径，那么我们就需要修改v-header.vue和router -&gt; index.js文件对应的路径。如果只是修改一个文件路径，问题倒不大，可是如果我们需要修改十几个或更多组件的路径，这就很头疼">
+<meta property="article:published_time" content="2020-04-19T09:11:50.000Z">
+<meta property="article:modified_time" content="2020-04-19T09:12:07.463Z">
 <meta property="article:author" content="19年的猪">
-<meta property="article:tag" content="Vue全局API学习">
+<meta property="article:tag" content="vue-cli4.0基础学习">
 <meta name="twitter:card" content="summary">
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/04/02/【016】Vue全局API学习：Vue-set/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/04/19/【040】vue-cli4-0基础学习：命名路由/"/>
 
 
 
 
 
-  <title>【017】Vue全局API学习：Vue.set | 个人博客</title>
+  <title>【040】vue-cli4.0基础学习：命名路由 | 个人博客</title>
   
 
 
@@ -277,7 +277,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/02/%E3%80%90016%E3%80%91Vue%E5%85%A8%E5%B1%80API%E5%AD%A6%E4%B9%A0%EF%BC%9AVue-set/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/19/%E3%80%90040%E3%80%91vue-cli4-0%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%91%BD%E5%90%8D%E8%B7%AF%E7%94%B1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="19年的猪">
@@ -294,7 +294,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">【017】Vue全局API学习：Vue.set</h1>
+          <h1 class="post-title" itemprop="name headline">【040】vue-cli4.0基础学习：命名路由</h1>
         
 
         <div class="post-meta">
@@ -306,8 +306,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-02T16:43:00+08:00">
-                2020-04-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-19T17:11:50+08:00">
+                2020-04-19
               </time>
             
 
@@ -329,8 +329,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Vue2-0/" itemprop="url" rel="index">
-                    <span itemprop="name">Vue2.0</span>
+                  <a href="/categories/vue-cli4-0/" itemprop="url" rel="index">
+                    <span itemprop="name">vue-cli4.0</span>
                   </a>
                 </span>
 
@@ -366,23 +366,35 @@
       
 
       
-        <h3 id="先来看一个例子"><a href="#先来看一个例子" class="headerlink" title="先来看一个例子"></a>先来看一个例子</h3><p>示例代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;div&gt;性别：&#123;&#123; obj.sex || &#39;未知&#39; &#125;&#125;&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			var vm &#x3D; new Vue(&#123;</span><br><span class="line">				el: &#39;#app&#39;,</span><br><span class="line">				data() &#123;</span><br><span class="line">					return &#123;</span><br><span class="line">						obj: &#123;&#125;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;);</span><br><span class="line">			setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">				vm.obj.sex &#x3D; &#39;男&#39;;</span><br><span class="line">			&#125;, 2000)</span><br><span class="line">			</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>让我们先来在浏览器上运行一下上面的代码，页面显示内容<code>性别：未知</code>，过了两秒后，新增一个性别<code>sex</code>的属性，并赋值<code>男</code>，但是我们发现页面显示的内容并没有如我们所预期的那样改变。</p>
-<blockquote>
-<p>结论：Vue 无法探测普通的新增属性。</p>
-</blockquote>
-<h3 id="Vue-set-用法"><a href="#Vue-set-用法" class="headerlink" title="Vue.set 用法"></a>Vue.set 用法</h3><blockquote>
-<p>向响应式对象中添加一个属性，并确保这个新属性同样是响应式的，且触发视图更新。</p>
-</blockquote>
+        <h3 id="一，前言"><a href="#一，前言" class="headerlink" title="一，前言"></a>一，前言</h3><p>我们经常会一边开发项目，一边调整项目。比如现在我们把所有的组件都放在了<code>components</code>文件夹下面，如果后期我们需要修改组件的路径，那么问题就来了，比如我需要修改<code>v-about.vue</code>文件的路径，那么我们就需要修改<code>v-header.vue</code>和<code>router -&gt; index.js</code>文件对应的路径。如果只是修改一个文件路径，问题倒不大，可是如果我们需要修改十几个或更多组件的路径，这就很头疼了。那么怎么解决这个问题呢？你可以在创建 Router 实例的时候，在 routes 配置中给某个路由设置名称。</p>
 <p>模版代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 对应参数：  </span><br><span class="line">&#x2F;&#x2F; vm.obj	&#123;Object | Array&#125;	target</span><br><span class="line">&#x2F;&#x2F; &#39;sex&#39;	&#123;string | number&#125;	propertyName&#x2F;index</span><br><span class="line">&#x2F;&#x2F; &#39;男&#39;		&#123;any&#125;				value</span><br><span class="line">Vue.set(vm.obj, &#39;sex&#39;, &#39;男&#39;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const router &#x3D; new VueRouter(&#123;</span><br><span class="line">	routes: [</span><br><span class="line">		&#123;</span><br><span class="line">			path: &#39;&#x2F;user&#x2F;:userId&#39;,</span><br><span class="line">			name: &#39;user&#39;,</span><br><span class="line">			component: User</span><br><span class="line">		&#125;</span><br><span class="line">	]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<p>示例代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;div&gt;性别：&#123;&#123; obj.sex || &#39;未知&#39; &#125;&#125;&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			var vm &#x3D; new Vue(&#123;</span><br><span class="line">				el: &#39;#app&#39;,</span><br><span class="line">				data() &#123;</span><br><span class="line">					return &#123;</span><br><span class="line">						obj: &#123;&#125;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;);</span><br><span class="line">			setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">				Vue.set(vm.obj, &#39;sex&#39;, &#39;男&#39;);</span><br><span class="line">			&#125;, 2000)</span><br><span class="line">			</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
 
-<p>在浏览器中运行上面的代码，刚开始页面显示内容为<code>性别：未知</code>，过了两秒后，页面显示内容为<code>性别：男</code>，内容改变，目的达到。</p>
+<p>其实就是在路由配置时，给该组件加了一个<code>name</code>。</p>
+<h3 id="二，开始尝试"><a href="#二，开始尝试" class="headerlink" title="二，开始尝试"></a>二，开始尝试</h3><p>我们现在<code>components</code>文件夹下新建一个名称为<code>content</code>的文件夹，然后将<code>v-about.vue</code>，<code>v-index.vue</code>，<code>v-news.vue</code>和<code>v-news-detail.vue</code>等四个文件放到<code>content</code>文件夹中。  </p>
+<blockquote>
+<p>当修改了路径后，大家可以看到<code>cmd</code>窗口开始报错，<code>vue-cli</code>项目在浏览器中打开是一片空白，什么都没有。</p>
+</blockquote>
+<h4 id="目前项目目录结构如下："><a href="#目前项目目录结构如下：" class="headerlink" title="目前项目目录结构如下："></a>目前项目目录结构如下：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">|-- node_modules</span><br><span class="line">|-- public</span><br><span class="line">|   |-- favicon.ico</span><br><span class="line">|   |-- index.html</span><br><span class="line">|-- src</span><br><span class="line">|   |-- assets</span><br><span class="line">|   |   |-- css</span><br><span class="line">|   |   |   |-- app.css</span><br><span class="line">|   |-- components</span><br><span class="line">|   |   |   |-- content</span><br><span class="line">|   |   |   |   |-- v-about.vue</span><br><span class="line">|   |   |   |   |-- v-index.vue</span><br><span class="line">|   |   |   |   |-- v-news-detail.vue</span><br><span class="line">|   |   |   |   |-- v-news.vue</span><br><span class="line">|   |   |-- HelloWorld.vue</span><br><span class="line">|   |   |-- v-header.vue</span><br><span class="line">|   |   |-- v-success.vue</span><br><span class="line">|   |-- router</span><br><span class="line">|   |   |-- index.js</span><br><span class="line">|   |-- App.vue</span><br><span class="line">|   |-- main.js</span><br><span class="line">|-- .gitignore</span><br><span class="line">|-- babel.config.js</span><br><span class="line">|-- package-lock.json</span><br><span class="line">|-- package.json</span><br><span class="line">|-- README.md</span><br><span class="line">.</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="修改路由配置"><a href="#修改路由配置" class="headerlink" title="修改路由配置"></a>修改路由配置</h4><p>打开<code>router -&gt; index.js</code>文件添加<code>name</code>。  </p>
+<p>修改后的完整代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 引入 Vue</span><br><span class="line">import Vue from &#39;vue&#39;;</span><br><span class="line">&#x2F;&#x2F; 引入 vue-router</span><br><span class="line">import VueRouter from &#39;vue-router&#39;;</span><br><span class="line">&#x2F;&#x2F; 安装使用 vue-router</span><br><span class="line">Vue.use(VueRouter);</span><br><span class="line">&#x2F;&#x2F; 引入首页</span><br><span class="line">import vIndex from &#39;..&#x2F;components&#x2F;content&#x2F;v-index.vue&#39;;</span><br><span class="line">&#x2F;&#x2F; 开始使用 vue-router</span><br><span class="line">let routes &#x3D; new VueRouter(&#123;</span><br><span class="line">routes: [</span><br><span class="line">    &#123; </span><br><span class="line">        path: &#39;&#x2F;&#39;, </span><br><span class="line">        name: &#39;index&#39;, </span><br><span class="line">        component: vIndex </span><br><span class="line">    &#125;,</span><br><span class="line">    &#123; </span><br><span class="line">        path: &#39;&#x2F;about&#39;, </span><br><span class="line">        name: &#39;about&#39;, </span><br><span class="line">        component: () &#x3D;&gt; import(&#x2F;* webpackChunkName: &quot;about&quot; *&#x2F; &#39;..&#x2F;components&#x2F;content&#x2F;v-about.vue&#39;) </span><br><span class="line">    &#125;,</span><br><span class="line">    &#123; </span><br><span class="line">        path: &#39;&#x2F;success&#39;, </span><br><span class="line">        component: () &#x3D;&gt; import(&#x2F;* webpackChunkName: &quot;success&quot; *&#x2F; &#39;..&#x2F;components&#x2F;v-success.vue&#39;) </span><br><span class="line">    &#125;,</span><br><span class="line">    &#123; </span><br><span class="line">        path: &#39;&#x2F;news&#39;, </span><br><span class="line">        name: &#39;news&#39;, </span><br><span class="line">        component: () &#x3D;&gt; import(&#x2F;* webpackChunkName: &quot;news&quot; *&#x2F; &#39;..&#x2F;components&#x2F;content&#x2F;v-news.vue&#39;) </span><br><span class="line">    &#125;,</span><br><span class="line">    &#123; </span><br><span class="line">        path: &#39;&#x2F;news&#x2F;:id&#39;, </span><br><span class="line">        name: &#39;detail&#39;, </span><br><span class="line">        component: () &#x3D;&gt; import(&#x2F;* webpackChunkName: &quot;news&quot; *&#x2F; &#39;..&#x2F;components&#x2F;content&#x2F;v-news-detail.vue&#39;) </span><br><span class="line">    &#125;,</span><br><span class="line">]</span><br><span class="line">&#125;);</span><br><span class="line">&#x2F;&#x2F; 提供接口给外面使用</span><br><span class="line">export default routes;</span><br></pre></td></tr></table></figure>
+
+<p>接着打开<code>v-header.vue</code>文件修改<code>router-link</code>中的<code>to</code>。  </p>
+<p>修改后的完整代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;v-header&quot;&gt;</span><br><span class="line">        &lt;ul class&#x3D;&quot;menus&quot;&gt;</span><br><span class="line">            &lt;li </span><br><span class="line">                class&#x3D;&quot;menu&quot; </span><br><span class="line">                v-for&#x3D;&quot;item in menus&quot; </span><br><span class="line">                :key&#x3D;&quot;item.id&quot;</span><br><span class="line">            &gt;</span><br><span class="line">                &lt;router-link :to&#x3D;&quot;&#123; name: item.path &#125;&quot;&gt;&#123;&#123; item.name &#125;&#125;&lt;&#x2F;router-link&gt;</span><br><span class="line">            &lt;&#x2F;li&gt;</span><br><span class="line">        &lt;&#x2F;ul&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">    name: &#39;v-header&#39;,</span><br><span class="line">    desc: &#39;头部信息&#39;,</span><br><span class="line">    data() &#123;</span><br><span class="line">        return &#123;</span><br><span class="line">            menus: [</span><br><span class="line">                &#123; id: 1, name: &#39;首页&#39;, path: &#39;index&#39; &#125;,</span><br><span class="line">                &#123; id: 2, name: &#39;新闻&#39;, path: &#39;news&#39; &#125;,</span><br><span class="line">                &#123; id: 3, name: &#39;关于&#39;, path: &#39;about&#39; &#125;,</span><br><span class="line">            ]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">.v-header &#123;</span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 70px;</span><br><span class="line">    background-color: #fff;</span><br><span class="line">    box-shadow: 3px 3px 3px #ddd;</span><br><span class="line">    color: #333;</span><br><span class="line">&#125;</span><br><span class="line">.menus &#123;</span><br><span class="line">    list-style: none;</span><br><span class="line">    padding: 0 20px;</span><br><span class="line">    overflow: hidden;</span><br><span class="line">&#125;</span><br><span class="line">.menu &#123;</span><br><span class="line">    float: left;</span><br><span class="line">    padding: 0 20px;</span><br><span class="line">    height: 70px;</span><br><span class="line">    line-height: 80px;</span><br><span class="line">    transition: .3s;</span><br><span class="line">&#125;</span><br><span class="line">.menu:hover &#123;</span><br><span class="line">    cursor: pointer;</span><br><span class="line">    color: #0051ff;</span><br><span class="line">    background-color: #efefef;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+
+
+<p>最后再打开<code>v-news.vue</code>文件修改<code>router-link</code>中的<code>to</code>。</p>
+<p>修改后的完整代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;v-news content&quot;&gt;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">            &lt;li v-for&#x3D;&quot;item in lists&quot; :key&#x3D;&quot;item.id&quot;&gt;</span><br><span class="line">                &lt;router-link :to&#x3D;&quot;&#123; name: &#39;detail&#39;, params: &#123; id: item.id &#125; &#125;&quot;&gt;&#123;&#123; item.title &#125;&#125;&lt;&#x2F;router-link&gt;</span><br><span class="line">            &lt;&#x2F;li&gt;</span><br><span class="line">        &lt;&#x2F;ul&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">    name: &#39;v-news&#39;,</span><br><span class="line">    desc: &#39;新闻列表&#39;,</span><br><span class="line">    data() &#123;</span><br><span class="line">        return &#123;</span><br><span class="line">            lists: [</span><br><span class="line">                &#123; id: 1, title: &#39;新闻标题 1&#39; &#125;,</span><br><span class="line">                &#123; id: 2, title: &#39;新闻标题 2&#39; &#125;,</span><br><span class="line">                &#123; id: 3, title: &#39;新闻标题 3&#39; &#125;,</span><br><span class="line">                &#123; id: 4, title: &#39;新闻标题 4&#39; &#125;,</span><br><span class="line">                &#123; id: 5, title: &#39;新闻标题 5&#39; &#125;,</span><br><span class="line">                &#123; id: 6, title: &#39;新闻标题 6&#39; &#125;,</span><br><span class="line">            ]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+
+<p>到目前位置，代码已经修改完成了，可以在浏览器中打开看看效果。如果再次发生组件的路径改变，那么我们只需要直接修改<code>router -&gt; index.js</code>文件即可。</p>
+<h3 id="三，总结"><a href="#三，总结" class="headerlink" title="三，总结"></a>三，总结</h3><p>希望大家能敲一遍代码，体验修改的繁琐和添加命名路由的方便，这样在以后开发时，就会考虑到底要使用<code>path</code>还是<code>name</code>。如果大家需要<code>vue-cli</code>项目源码，可以私信我哈。</p>
 
       
     </div>
@@ -400,7 +412,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Vue%E5%85%A8%E5%B1%80API%E5%AD%A6%E4%B9%A0/" rel="tag"># Vue全局API学习</a>
+            <a href="/tags/vue-cli4-0%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/" rel="tag"># vue-cli4.0基础学习</a>
           
         </div>
       
@@ -413,8 +425,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/04/01/%E3%80%90015%E3%80%91Vue%E5%85%A8%E5%B1%80API%E5%AD%A6%E4%B9%A0%EF%BC%9AVue-nextTick/" rel="next" title="【015】Vue全局API学习：Vue.nextTick">
-                <i class="fa fa-chevron-left"></i> 【015】Vue全局API学习：Vue.nextTick
+              <a href="/2020/04/17/%E3%80%90039%E3%80%91vue-cli4-0%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%85%AC%E5%85%B1%E6%A0%B7%E5%BC%8F%E7%9A%84%E7%BC%96%E5%86%99/" rel="next" title="【039】vue-cli4.0基础学习：公共样式的编写">
+                <i class="fa fa-chevron-left"></i> 【039】vue-cli4.0基础学习：公共样式的编写
               </a>
             
           </div>
@@ -422,10 +434,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/04/02/%E3%80%90017%E3%80%91Vue%E5%85%A8%E5%B1%80API%E5%AD%A6%E4%B9%A0%EF%BC%9AVue-directive/" rel="prev" title="【017】Vue全局API学习：Vue.directive">
-                【017】Vue全局API学习：Vue.directive <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -572,7 +580,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#先来看一个例子"><span class="nav-number">1.</span> <span class="nav-text">先来看一个例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vue-set-用法"><span class="nav-number">2.</span> <span class="nav-text">Vue.set 用法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一，前言"><span class="nav-number">1.</span> <span class="nav-text">一，前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二，开始尝试"><span class="nav-number">2.</span> <span class="nav-text">二，开始尝试</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#目前项目目录结构如下："><span class="nav-number">2.1.</span> <span class="nav-text">目前项目目录结构如下：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改路由配置"><span class="nav-number">2.2.</span> <span class="nav-text">修改路由配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三，总结"><span class="nav-number">3.</span> <span class="nav-text">三，总结</span></a></li></ol></div>
             
 
           </div>

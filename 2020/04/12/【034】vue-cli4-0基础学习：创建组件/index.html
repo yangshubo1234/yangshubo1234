@@ -86,13 +86,11 @@
 <meta property="og:url" content="http://yoursite.com/2020/04/12/%E3%80%90034%E3%80%91vue-cli4-0%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%88%9B%E5%BB%BA%E7%BB%84%E4%BB%B6/index.html">
 <meta property="og:site_name" content="个人博客">
 <meta property="og:description" content="看一下 HelloWorld.vue打开 components 文件夹中的 HelloWorld.vue 文件，先简单看一下，可以看到其实和 App.vue 是差不多的。    html 结构内容写在 template里面   js 部分写在script里面，使用export default{}暴露出去   css 部分写在style里面，不过有点区别，就是多了一个scoped    scoped">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/8802304-63fbfcc044ee4c85.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="article:published_time" content="2020-04-12T14:50:04.000Z">
-<meta property="article:modified_time" content="2020-04-13T04:44:53.887Z">
+<meta property="article:modified_time" content="2020-04-21T06:27:02.214Z">
 <meta property="article:author" content="19年的猪">
 <meta property="article:tag" content="vue-cli4.0基础学习">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/8802304-63fbfcc044ee4c85.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -383,7 +381,7 @@
 <h3 id="引入组件"><a href="#引入组件" class="headerlink" title="引入组件"></a>引入组件</h3><p>上一章说过，App.vue 是页面入口文件，所以我们需要修改这个文件，代码如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">        &lt;v-header &#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import vHeader from &#39;.&#x2F;components&#x2F;v-header.vue&#39;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">    name: &#39;App&#39;,</span><br><span class="line">    components: &#123;</span><br><span class="line">        vHeader</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">* &#123;</span><br><span class="line">    padding: 0;</span><br><span class="line">    margin: 0;</span><br><span class="line">&#125;</span><br><span class="line">#app &#123;</span><br><span class="line">    font-family: Avenir, Helvetica, Arial, sans-serif;</span><br><span class="line">    -webkit-font-smoothing: antialiased;</span><br><span class="line">    -moz-osx-font-smoothing: grayscale;</span><br><span class="line">    color: #2c3e50;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
 
-<h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><p>完成这一系列操作后，来看一下效果怎么样，如图：<br><img src="https://upload-images.jianshu.io/upload_images/8802304-63fbfcc044ee4c85.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="效果图.png"><br>如果大家的效果和效果图一样，那么恭喜大家，成功创建了一个组件。相信大家此刻一定有想继续做下去的冲动，先不要急，大家再好好看一下这个项目的其他文件，冷静一下，我们需要保持清醒。</p>
+<h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><p>打开 cmd 窗口并输入指令<code>npm run serve</code>，然后在浏览器中运行，正常显示，相信大家此刻一定有想继续做下去的冲动，先不要急，大家再好好看一下这个项目的其他文件，冷静一下，我们需要保持清醒。</p>
 
       
     </div>
@@ -573,7 +571,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#看一下-HelloWorld-vue"><span class="nav-number">1.</span> <span class="nav-text">看一下 HelloWorld.vue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scoped-的作用"><span class="nav-number">2.</span> <span class="nav-text">scoped 的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建组件"><span class="nav-number">3.</span> <span class="nav-text">创建组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引入组件"><span class="nav-number">4.</span> <span class="nav-text">引入组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#效果"><span class="nav-number">5.</span> <span class="nav-text">效果</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#看一下-HelloWorld-vue"><span class="nav-number">1.</span> <span class="nav-text">看一下 HelloWorld.vue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scoped-的作用"><span class="nav-number">2.</span> <span class="nav-text">scoped 的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建组件"><span class="nav-number">3.</span> <span class="nav-text">创建组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引入组件"><span class="nav-number">4.</span> <span class="nav-text">引入组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行"><span class="nav-number">5.</span> <span class="nav-text">运行</span></a></li></ol></div>
             
 
           </div>

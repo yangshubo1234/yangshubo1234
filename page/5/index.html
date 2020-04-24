@@ -275,6 +275,361 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/25/%E3%80%90002%E3%80%91Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9Av-if%E5%92%8Cv-show%E7%9A%84%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="19年的猪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/favicon.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/25/%E3%80%90002%E3%80%91Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9Av-if%E5%92%8Cv-show%E7%9A%84%E4%BD%BF%E7%94%A8/" itemprop="url">【002】Vue基础学习：v-if和v-show的使用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-25T20:03:00+08:00">
+                2020-03-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue2-0/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue2.0</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="先写一个例子"><a href="#先写一个例子" class="headerlink" title="先写一个例子"></a>先写一个例子</h3><p>创建一个<code>HelloWorld.html</code>文件，开始写入以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;Hello World&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">			&lt;h1&gt;&#123;&#123; title &#125;&#125;&lt;&#x2F;h1&gt;</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">			var vm &#x3D; new Vue(&#123;</span><br><span class="line">				el: &#39;#app&#39;,</span><br><span class="line">				data() &#123;</span><br><span class="line">					return &#123;</span><br><span class="line">						title: &#39;Hello World&#39;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;)</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在浏览器运行此文件，可以看到<code>Hello World</code>成功显示出来。</p>
+<h3 id="v-if-v-show-指令"><a href="#v-if-v-show-指令" class="headerlink" title="v-if, v-show 指令"></a>v-if, v-show 指令</h3><ul>
+<li>v-if 的使用  </li>
+</ul>
+<blockquote>
+<p>用来判断是否加载html的DOM  </p>
+<p><code>v-if</code> 的使用方法并不复杂，只需要挂在元素上即可，与之配套的有 <code>v-else-if</code> 和 <code>v-else</code>，这两个只能个 <code>v-if</code> 配套使用。</p>
+</blockquote>
+<p>创建一个<code>v-if.html</code>文件，开始写入以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line"> &lt;html&gt;</span><br><span class="line"> 	&lt;head&gt;</span><br><span class="line"> 		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line"> 		&lt;title&gt;v-if&lt;&#x2F;title&gt;</span><br><span class="line"> 		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line"> 	&lt;&#x2F;head&gt;</span><br><span class="line"> 	&lt;body&gt;</span><br><span class="line"> 		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line"> 			&lt;div v-if&#x3D;&quot;isShow&quot;&gt;isShow 为 true，所以我要显示出来&lt;&#x2F;div&gt;</span><br><span class="line">			&lt;div v-else&gt;isShow 为 false，所以我要隐藏出来&lt;&#x2F;div&gt;</span><br><span class="line"> 		&lt;&#x2F;div&gt;</span><br><span class="line"> 		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line"> 			var vm &#x3D; new Vue(&#123;</span><br><span class="line"> 				el: &#39;#app&#39;,</span><br><span class="line"> 				data() &#123;</span><br><span class="line"> 					return &#123;</span><br><span class="line"> 						isShow: true</span><br><span class="line"> 					&#125;</span><br><span class="line"> 				&#125;</span><br><span class="line"> 			&#125;)</span><br><span class="line"> 		&lt;&#x2F;script&gt;</span><br><span class="line"> 	&lt;&#x2F;body&gt;</span><br><span class="line"> &lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在浏览器运行此文件，可以看到<code>isShow 为 true，所以我要显示出来</code>成功显示出来。<br>如果将 <code>isShow</code> 的值修改为 <code>false</code>，则显示出<code>isShow 为 false，所以我要隐藏出来</code></p>
+<ul>
+<li>v-show 的使用</li>
+</ul>
+<blockquote>
+<p>调整css中display属性，DOM已经加载，只是CSS控制没有显示出来。</p>
+</blockquote>
+<p>创建一个<code>v-show.html</code>文件，开始写入以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line"> &lt;html&gt;</span><br><span class="line"> 	&lt;head&gt;</span><br><span class="line"> 		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line"> 		&lt;title&gt;v-show&lt;&#x2F;title&gt;</span><br><span class="line"> 		&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line"> 	&lt;&#x2F;head&gt;</span><br><span class="line"> 	&lt;body&gt;</span><br><span class="line"> 		&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line"> 			&lt;div v-show&#x3D;&quot;isShow&quot;&gt;isShow 为 true，所以我要显示出来&lt;&#x2F;div&gt;</span><br><span class="line"> 		&lt;&#x2F;div&gt;</span><br><span class="line"> 		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line"> 			var vm &#x3D; new Vue(&#123;</span><br><span class="line"> 				el: &#39;#app&#39;,</span><br><span class="line"> 				data() &#123;</span><br><span class="line"> 					return &#123;</span><br><span class="line"> 						isShow: false</span><br><span class="line"> 					&#125;</span><br><span class="line"> 				&#125;</span><br><span class="line"> 			&#125;)</span><br><span class="line"> 		&lt;&#x2F;script&gt;</span><br><span class="line"> 	&lt;&#x2F;body&gt;</span><br><span class="line"> &lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在浏览器运行此文件，可以看到页面一片空白什么都没有。但是，当打开浏览器调试界面<code>按F12</code>时，可以看到有以下代码出现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style&#x3D;&quot;display: none;&quot;&gt;isShow 为 true，所以我要显示出来&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>由此可以看出，其实内容已经加载出来了，只是使用了 css 中的 <code>display: none;</code> 给隐藏了。</p>
+<h3 id="v-if-和-v-show-的区别"><a href="#v-if-和-v-show-的区别" class="headerlink" title="v-if 和 v-show 的区别"></a>v-if 和 v-show 的区别</h3><ul>
+<li>v-if 在切换中将组件上的事件监听器和子组件销毁和重建。</li>
+<li>v-show 调整了 dispaly 属性，可以使客户端操作更加流畅。</li>
+<li>v-show 有更高的初始渲染开销，而 v-if 有更高的切换开销。</li>
+</ul>
+<p>简单点理解就是：v-if被判定为假时，Vue不会做任何事情，而 v-show 不管为真假，Vue都会进行DOM渲染。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/25/%E3%80%90001%E3%80%91Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="19年的猪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/favicon.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/25/%E3%80%90001%E3%80%91Vue%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87/" itemprop="url">【001】Vue基础学习：前期准备</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-25T16:52:00+08:00">
+                2020-03-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue2-0/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue2.0</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="学习Vue的前提条件"><a href="#学习Vue的前提条件" class="headerlink" title="学习Vue的前提条件"></a>学习<code>Vue</code>的前提条件</h3><ul>
+<li>HTML的基础知识，比如基本元素的使用和结构代码的编写  </li>
+<li>CSS的基础知识，比如常见样式的编写和页面的布局  </li>
+<li>Javascript的基础知识，比如常见函数的使用  </li>
+<li>如果能懂一点node 和 webpack，那就更好了</li>
+</ul>
+<h3 id="开发工具的选用"><a href="#开发工具的选用" class="headerlink" title="开发工具的选用"></a>开发工具的选用</h3><p>开发工具的选用并没有太多的要求，只要适合自己的就行，我在三年前使用的是<code>WebStorm</code>，现在使用的是<code>VSCode</code>。</p>
+<h3 id="安装和引入"><a href="#安装和引入" class="headerlink" title="安装和引入"></a>安装和引入</h3><p>在<a href="https://cn.vuejs.org/v2/guide/installation.html" target="_blank" rel="noopener"><code>Vue官网</code></a>中有两个版本，分别是：  </p>
+<ol>
+<li>开发版本：包含了完整的警告和调试模式  </li>
+<li>生产版本：删除了警告  </li>
+</ol>
+<h4 id="1，安装方式一：直接用-lt-script-gt-引入（不推荐）"><a href="#1，安装方式一：直接用-lt-script-gt-引入（不推荐）" class="headerlink" title="1，安装方式一：直接用&lt;script&gt;引入（不推荐）"></a>1，安装方式一：直接用<code>&lt;script&gt;</code>引入（不推荐）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 最新版本 --&gt;</span><br><span class="line">&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue&#x2F;dist&#x2F;vue.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 明确的版本号 --&gt;</span><br><span class="line">&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2.6.11&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2，安装方式二：使用npm进行安装（推荐）"><a href="#2，安装方式二：使用npm进行安装（推荐）" class="headerlink" title="2，安装方式二：使用npm进行安装（推荐）"></a>2，安装方式二：使用<code>npm</code>进行安装（推荐）</h4><p>打开cmd命令窗口，输入以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install vue</span><br><span class="line">或：</span><br><span class="line">npm i vue</span><br></pre></td></tr></table></figure>
+
+<p>注：</p>
+<blockquote>
+<p>npm是随同NodeJS一起安装的包管理工具，新版的nodejs已经集成了npm，所以不需要另外安装npm，可以通过输入 “npm -v” 进行检测是否安装成功。  </p>
+</blockquote>
+<p>nodejs的安装方法比较简单，不懂的可以<code>百度</code>或<code>谷歌</code>，这里就不再阐述。</p>
+<h3 id="安装cnpm"><a href="#安装cnpm" class="headerlink" title="安装cnpm"></a>安装<code>cnpm</code></h3><blockquote>
+<p>由于用于npm的仓库源是在国外，资源传输速度较慢而且可能会受到限制，所以建议使用淘宝镜像源<code>cnpm</code></p>
+</blockquote>
+<p>打开cmd命令窗口，输入以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm -registry&#x3D;https:&#x2F;&#x2F;registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+
+<p>执行完后，可输入以下命令进行检测<code>cnpm</code>是否安装成功：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm -v</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>cnpm</code>安装vue：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cnpm install vue</span><br><span class="line">或：</span><br><span class="line">cnpm i vue</span><br></pre></td></tr></table></figure>
+
+<p>执行完后，可输入以下命令进行检测<code>Vue</code>是否安装成功：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue -V</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>前期准备差不多就这些了，其中官网推荐在浏览器安装<a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener"><code>Vue Devtools</code></a>，这个我想在后面需要用时再进行安装。还有脚手架<code>vue-cli</code>也会在<code>Vue</code>基础学完后进行使用。<br>好了，下一章就准备开始写vue了。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/26/%E3%80%90806%E3%80%91es6%E4%B8%AD%E7%9A%84map%E3%80%81forEach%E3%80%81filter%E3%80%81reduce/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1460,7 +1815,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">48</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
